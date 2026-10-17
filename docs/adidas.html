@@ -49,17 +49,14 @@ button, input, select { font: inherit; color: inherit; }
 .kicker--pastilla { padding: 7px 12px; border-radius: 20px; background: rgba(37, 37, 37, .1); }
 .banda--noche .kicker--pastilla, .hero .kicker--pastilla { background: rgba(237, 232, 219, .1); }
 .titulo-seccion { font-size: clamp(38px, 6.6vw, 80px); line-height: 1.04; letter-spacing: -.045em; font-weight: 700; }
-.titulo-seccion .st { padding-inline: .05em; }
 .bajada { font-size: clamp(17px, 1.6vw, 19px); line-height: 1.5; max-width: 60ch; opacity: .85; }
 
-/* sticker: letra llena con contorno grueso, sin bordes internos rotos (igual que en la Cápsula) */
-.st { position: relative; display: inline-block; z-index: 0; color: var(--crema); font-weight: 700; white-space: nowrap; }
-.st::before, .st::after { content: attr(data-t); position: absolute; inset: 0; white-space: nowrap; }
-.st::before { z-index: -1; color: var(--c, var(--azul)); -webkit-text-stroke: .15em var(--c, var(--azul)); }
-.st::after { z-index: -2; color: var(--oscuro); -webkit-text-stroke: .22em var(--oscuro); }
+/* sticker: pastilla de color con texto oscuro, levemente torcida */
+.st { display: inline-block; padding: .02em .2em .08em; border-radius: .2em; background: var(--c, var(--azul)); color: var(--oscuro); font-weight: 700; white-space: nowrap; line-height: 1.05; rotate: -2deg; box-shadow: .05em .06em 0 var(--oscuro); }
+.banda--noche .st, .hero .st { box-shadow: .05em .06em 0 var(--crema); }
 .st--rosa { --c: var(--rosa); }
 .st--azul { --c: var(--azul); }
-.st--crema { --c: var(--crema); color: var(--oscuro); }
+.st--crema { --c: var(--crema); }
 
 /* botones pastilla */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border: 0; border-radius: 30px; font: 700 17px var(--f-texto); text-decoration: none; cursor: pointer; transition: transform .15s, box-shadow .2s; }
@@ -110,7 +107,7 @@ button, input, select { font: inherit; color: inherit; }
 .hero__titulo .linea + .linea { margin-top: .08em; }
 .hero__texto { align-content: start; }
 .con-logo { white-space: nowrap; }
-.hero__titulo .st { padding-inline: .06em; }
+.hero__titulo .st { margin-left: .1em; }
 .hero__datos { display: flex; flex-wrap: wrap; gap: 10px; }
 .chip { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 22px; background: rgba(237, 232, 219, .1); font: 700 15px var(--f-texto); }
 .chip b { font: 800 12px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; opacity: .6; }
@@ -342,36 +339,44 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 @keyframes entrar-foto { from { opacity: 0; transform: translateY(30px) rotate(-6deg); } }
 @media (max-width: 860px) { .hero__grilla { grid-template-columns: minmax(0, 1fr); } .foto--grande { rotate: 1deg; } }
 
-/* ---------- manifiesto ---------- */
-.manifiesto__texto { margin-top: 16px; font: 700 clamp(30px, 5.2vw, 64px)/1.12 var(--f-titulo); letter-spacing: -.04em; max-width: 20ch; }
-.manifiesto__remate { display: inline-block; margin-top: .3em; padding: .05em .3em .1em; background: var(--oscuro); color: var(--crema); border-radius: .25em; rotate: -1.5deg; }
-.tira { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 36px; }
-.tira .foto { flex: 1 1 260px; max-width: 460px; aspect-ratio: 3 / 2; box-shadow: 0 0 0 3px var(--oscuro), 8px 8px 0 var(--oscuro); }
-.tira .foto:nth-child(odd) { rotate: -1.5deg; }
-.tira .foto:nth-child(even) { rotate: 1.5deg; }
-
-/* ---------- la línea: paradas como estaciones ---------- */
-.paradas-linea { list-style: none; margin: 40px 0 0; padding: 0; position: relative; display: grid; gap: 4px; max-width: 860px; }
-.paradas-linea::before { content: ""; position: absolute; left: 89px; top: 22px; bottom: 22px; width: 8px; border-radius: 4px; background: var(--crema); }
-.estacion { position: relative; display: grid; grid-template-columns: 60px 52px minmax(0, 1fr); gap: 0 14px; align-items: start; padding: 10px 0; }
-.estacion__hora { font: 800 14px var(--f-mono); color: rgba(237, 232, 219, .6); padding-top: 14px; text-align: right; font-variant-numeric: tabular-nums; }
-.estacion__punto { position: relative; z-index: 1; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; font: 800 18px var(--f-mono); color: var(--oscuro); box-shadow: 0 0 0 4px var(--noche), 0 0 0 7px var(--crema); }
-.estacion--pre .estacion__punto { background: var(--rosa); }
-.estacion--carrera .estacion__punto { background: var(--azul); }
-.estacion--post .estacion__punto { background: var(--crema); }
-.estacion > div { padding: 6px 0 14px; }
-.estacion__lugar { font: 700 12px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--rosa); }
-.estacion--carrera .estacion__lugar { color: var(--azul); }
-.estacion--post .estacion__lugar { color: rgba(237, 232, 219, .65); }
-.estacion strong { display: block; margin-top: 4px; font: 700 clamp(24px, 3.2vw, 34px)/1.1 var(--f-titulo); letter-spacing: -.03em; }
-.estacion p { margin-top: 6px; font-size: 15px; opacity: .75; max-width: 52ch; }
-.estacion:hover .estacion__punto { animation: latido .6s ease-in-out; }
-@media (max-width: 560px) {
-  .paradas-linea::before { left: 23px; }
-  .estacion { grid-template-columns: 46px minmax(0, 1fr); }
-  .estacion__punto { width: 46px; height: 46px; grid-row: 1 / span 2; grid-column: 1; }
-  .estacion__hora { grid-column: 2; text-align: left; padding-top: 0; font-size: 12px; }
-  .estacion > div { grid-column: 2; padding-top: 2px; }
+/* ---------- la línea: paradas desplegables que se encienden al bajar ---------- */
+.paradas-linea { list-style: none; margin: 40px 0 0; padding: 0; position: relative; display: grid; gap: 2px; max-width: 880px; --x: 100px; }
+.paradas-linea::before, .paradas-linea::after { content: ""; position: absolute; left: calc(var(--x) - 4px); top: 30px; width: 8px; border-radius: 4px; }
+.paradas-linea::before { bottom: 30px; background: rgba(237, 232, 219, .14); }
+.paradas-linea::after { height: calc((100% - 60px) * var(--avance, 0)); background: linear-gradient(var(--rosa), var(--azul) 40%, var(--crema)); z-index: 1; }
+.estacion { position: relative; z-index: 2; }
+.estacion__btn { width: 100%; display: grid; grid-template-columns: 60px 52px minmax(0, 1fr) 40px; gap: 14px; align-items: center; padding: 8px 0; border: 0; background: none; text-align: left; cursor: pointer; }
+.estacion__hora { font: 800 14px var(--f-mono); color: rgba(237, 232, 219, .5); text-align: right; font-variant-numeric: tabular-nums; }
+.estacion__punto { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; font: 800 18px var(--f-mono); color: var(--crema); background: var(--noche); box-shadow: 0 0 0 4px var(--noche), 0 0 0 7px rgba(237, 232, 219, .25); transition: background .4s, color .4s, box-shadow .4s, scale .4s var(--ease-rebote); }
+.estacion.activa .estacion__punto { color: var(--oscuro); background: var(--c); box-shadow: 0 0 0 4px var(--noche), 0 0 0 7px var(--crema); }
+.estacion.activa .estacion__hora { color: var(--c); }
+.estacion--pre { --c: var(--rosa); }
+.estacion--carrera { --c: var(--azul); }
+.estacion--post { --c: var(--crema); }
+.estacion__lugar { display: block; font: 700 12px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: rgba(237, 232, 219, .55); }
+.estacion__btn strong { display: block; margin-top: 2px; font: 700 clamp(22px, 3vw, 32px)/1.1 var(--f-titulo); letter-spacing: -.03em; transition: color .2s; }
+.estacion__btn:hover strong { color: var(--c); }
+.estacion__mas { width: 36px; height: 36px; border-radius: 50%; background: rgba(237, 232, 219, .1); display: grid; place-items: center; transition: rotate .35s var(--ease-out), background .2s; }
+.estacion__mas::before { content: "+"; font: 700 22px/1 var(--f-texto); }
+.estacion.abierta .estacion__mas { rotate: 45deg; background: var(--c); color: var(--oscuro); }
+.estacion__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease-out); padding-left: calc(var(--x) + 40px); }
+.estacion.abierta .estacion__panel { grid-template-rows: 1fr; }
+.estacion__panel > div { overflow: hidden; min-height: 0; }
+.estacion__cont { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; align-items: end; padding: 6px 0 22px; }
+.estacion__cont p { font-size: 17px; line-height: 1.45; opacity: .85; }
+.duo { position: relative; margin: 0; overflow: hidden; border-radius: 18px; aspect-ratio: 16 / 9; background: var(--c); box-shadow: 6px 6px 0 var(--c); }
+.duo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--p, center); filter: grayscale(1) contrast(1.15) brightness(1.5); mix-blend-mode: multiply; transform: scale(1.15); transition: transform 1.2s var(--ease-out); }
+.duo::after { content: ""; position: absolute; inset: 0; background: var(--oscuro); mix-blend-mode: lighten; }
+.estacion.abierta .duo img { transform: none; }
+@media (max-width: 640px) {
+  .paradas-linea { --x: 23px; }
+  .estacion__btn { grid-template-columns: 46px minmax(0, 1fr) 36px; gap: 12px; }
+  .estacion__hora { grid-column: 2; grid-row: 1; text-align: left; font-size: 12px; }
+  .estacion__punto { width: 46px; height: 46px; grid-column: 1; grid-row: 1 / span 2; }
+  .estacion__cab { grid-column: 2; grid-row: 2; }
+  .estacion__mas { grid-column: 3; grid-row: 1 / span 2; }
+  .estacion__panel { padding-left: 58px; }
+  .estacion__cont { grid-template-columns: minmax(0, 1fr); }
 }
 .nota-mapa { font-size: 13px; opacity: .7; }
 .mapa .verde { fill: rgba(122, 161, 255, .12); }
@@ -395,13 +400,6 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 @keyframes flotar-obj { from { transform: translateY(0); } to { transform: translateY(-12px); } }
 @media (max-width: 820px) { .capsula { grid-template-columns: minmax(0, 1fr); } .capsulas { order: -1; } }
 
-/* ---------- sponsors ---------- */
-.marcas { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 10px; }
-.marcas li { display: grid; gap: 4px; padding: 18px; border-radius: 18px; background: rgba(237, 232, 219, .06); }
-.marcas strong { font: 700 20px/1.1 var(--f-titulo); letter-spacing: -.02em; }
-.marcas li.principal { grid-column: 1 / -1; background: var(--crema); color: var(--oscuro); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-.marcas li.principal svg { height: 44px; width: auto; fill: currentColor; }
-.marcas span { font: 700 11px var(--f-mono); text-transform: uppercase; letter-spacing: .05em; opacity: .6; }
 .btn--chico { min-height: 44px; padding: 0 20px; font-size: 15px; justify-self: start; margin-top: 10px; box-shadow: none; }
 .precio { align-content: start; }
 .pases { grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); }
@@ -451,6 +449,59 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 .mapa .pin text { fill: var(--crema); font: 800 12px var(--f-mono); }
 .mapa .pin .sub { font: 700 10px var(--f-mono); opacity: .65; }
 .mapa .calle-txt { fill: rgba(237, 232, 219, .35); font: 700 9px var(--f-mono); letter-spacing: .06em; }
+
+/* ---------- qué es stop: el cartel de la parada ---------- */
+.parada__grilla { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.parada__texto { display: grid; gap: 22px; justify-items: start; }
+.cartel { display: grid; justify-items: center; }
+.cartel__chapa { width: min(230px, 62vw); aspect-ratio: 1; border-radius: 50%; background: var(--crema); box-shadow: 0 0 0 6px var(--oscuro), 0 0 0 14px var(--crema), 0 0 0 18px var(--oscuro), 10px 14px 0 18px rgba(37, 37, 37, .25); display: grid; place-items: center; transform-origin: 50% 100%; animation: hamacar 4s ease-in-out infinite alternate; position: relative; z-index: 2; }
+.cartel__chapa img { width: 78%; height: auto; }
+@keyframes hamacar { from { rotate: -4deg; } to { rotate: 4deg; } }
+.cartel__poste { width: 16px; height: 34px; background: var(--oscuro); }
+.cartel__tabla { width: min(340px, 100%); padding: 16px; border-radius: 18px; background: var(--oscuro); color: var(--crema); display: grid; gap: 8px; box-shadow: 8px 8px 0 var(--azul); }
+.cartel__tabla p { font: 800 11px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .55; }
+.cartel__fila { display: grid; grid-template-columns: auto auto minmax(0, 1fr); gap: 10px; align-items: center; font: 700 13px var(--f-mono); }
+.cartel__fila i { font-style: normal; opacity: .7; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cartel__fila b { padding: 3px 8px; border-radius: 8px; background: var(--c); color: var(--oscuro); font-weight: 800; }
+.flap { display: inline-flex; gap: 2px; }
+.flap span { display: inline-grid; place-items: center; width: 1.25em; height: 1.6em; border-radius: 4px; background: #343436; font: 800 18px var(--f-mono); color: var(--c); position: relative; }
+.flap span::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--oscuro); }
+.flap span.dos-puntos { width: .5em; background: none; }
+.flap span.dos-puntos::after { display: none; }
+.tres { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.tres li { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 10px; border-radius: 30px; background: var(--oscuro); color: var(--crema); font: 700 15px var(--f-texto); }
+.tres svg { width: 26px; height: 26px; flex: none; }
+.tres b { font: 800 11px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--c); }
+@media (max-width: 820px) { .parada__grilla { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- el circuito real ---------- */
+.mapa { padding: 10px; overflow: hidden; }
+.mapa svg { max-height: 680px; margin-inline: auto; }
+.mapa .ruta-borde { fill: none; stroke: var(--noche); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.mapa .ruta { stroke-width: 4.5; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+.mapa.dibujar .ruta { animation: trazar 3.2s var(--ease-out) forwards; }
+@keyframes trazar { to { stroke-dashoffset: 0; } }
+.mapa .agua-txt { fill: rgba(122, 161, 255, .75); font: 800 8px var(--f-mono); letter-spacing: .1em; }
+.mapa .bus { stroke-width: 2.6; stroke-dasharray: 1 7; }
+.mapa .pin rect { fill: var(--crema); }
+.mapa .pin text { fill: var(--oscuro); font: 800 9px var(--f-mono); letter-spacing: .04em; }
+.mapa .pin circle { stroke: var(--oscuro); stroke-width: 2.5; }
+.mapa #corredor { fill: var(--crema); stroke: var(--oscuro); stroke-width: 2.5; }
+.km-vivo { display: flex; align-items: baseline; gap: 10px; }
+.km-vivo strong { font: 800 clamp(64px, 10vw, 120px)/.9 var(--f-titulo); letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
+.km-vivo span { font: 800 14px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; }
+
+/* ---------- nos acompañan ---------- */
+.acompanan { margin-top: 44px; padding-top: 22px; border-top: 2px solid rgba(37, 37, 37, .2); display: grid; gap: 18px; }
+.logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); justify-items: center; align-items: center; gap: 22px 24px; text-align: center; }
+.logos li { display: inline-flex; align-items: center; gap: 6px; opacity: .78; transition: opacity .2s, transform .2s var(--ease-rebote); }
+.logos li:hover { opacity: 1; transform: translateY(-2px) rotate(-2deg); }
+.logos li:nth-child(4n+1) { font: 800 20px var(--f-titulo); letter-spacing: -.04em; }
+.logos li:nth-child(4n+2) { font: 800 15px var(--f-mono); text-transform: uppercase; letter-spacing: .1em; }
+.logos li:nth-child(4n+3) { font: 700 italic 21px var(--f-texto); letter-spacing: -.02em; }
+.logos li:nth-child(4n) { font: 700 16px var(--f-titulo); text-transform: uppercase; letter-spacing: .1em; }
+.logos svg { height: 44px; width: auto; fill: currentColor; }
+.logos .marca-sim { width: 18px; height: 18px; }
 .con-logo svg { height: 18px; width: auto; fill: currentColor; }
 .sponsor { display: inline-flex; align-items: center; gap: 12px; }
 .sponsor svg { height: 34px; width: auto; fill: currentColor; }
@@ -496,7 +547,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         <img class="hero__logo" src="assets/logo-stop.png" alt="STOP" width="640" height="296">
         <h1 class="hero__titulo" id="t-hero">
           <span class="linea">No pares ahora.</span>
-          <span class="linea">Pará en <span class="st st--rosa" data-t="Stop.">Stop.</span></span>
+          <span class="linea">Pará en<span class="st st--rosa">Stop.</span></span>
         </h1>
         <p class="bajada" style="color:var(--crema)">Vos corrés la adidas Hyper Night 10K. Nosotros armamos el antes y el después.</p>
         <div class="hero__datos">
@@ -527,9 +578,9 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     <span class="deco gira" style="right:4%;top:30px;width:56px;height:56px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#estrella" fill="var(--rosa)" stroke="var(--oscuro)" stroke-width="4"/></svg></span>
     <div class="envolver muro__grilla">
       <div class="muro__texto">
-        <span class="kicker">Parada 1 · el muro de intenciones</span>
+        <span class="kicker">El muro del pre</span>
         <h2 class="titulo-seccion" id="t-muro">¿Con qué <span class="st st--rosa" data-t="llegás?">llegás?</span></h2>
-        <p class="bajada">Dejá en una palabra lo que traés a la largada. Va al muro del pre y te espera en la terraza cuando cruces la meta.</p>
+        <p class="bajada">Una palabra. Va al muro del pre y te espera en la meta.</p>
         <form class="muro__form" id="muro-form" novalidate>
           <label class="sr" for="muro-in">Tu palabra</label>
           <input id="muro-in" maxlength="24" autocomplete="off" placeholder="nervios, ganas, una promesa…">
@@ -541,21 +592,28 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     </div>
   </section>
 
-  <!-- ============ LA PARTE EMOCIONAL ============ -->
-  <section class="banda banda--rosa manifiesto" id="que-es" aria-labelledby="t-que">
-    <span class="deco gira" style="right:4%;top:36px;width:84px;height:84px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#explosion" fill="var(--crema)" stroke="var(--oscuro)" stroke-width="3"/></svg></span>
-    <div class="envolver">
-      <span class="kicker">Qué es Stop</span>
-      <h2 class="manifiesto__texto" id="t-que">
-        Los meses de entrenamiento.<br>
-        Los nervios en el corral.<br>
-        Alguien gritando tu nombre en el <span class="st st--azul" data-t="km 9.">km 9.</span><br>
-        <span class="manifiesto__remate">Stop es la parada para mirar todo eso.</span>
-      </h2>
-      <p class="bajada" style="margin-top:22px"><span class="sponsor"><svg viewBox="0 0 176 64" role="img" aria-label="adidas"><g transform="skewX(-0)"><path d="M4 40 16 33 24 47 8 47z"/><path d="M20 30 33 23 47 47 31 47z"/><path d="M37 20 50 12 71 47 55 47z"/></g><text x="76" y="46" font-family="Reddit Sans, Arial, sans-serif" font-weight="800" font-size="30" letter-spacing="-1">adidas</text></svg></span><br>El evento de la comunidad SPOT!. La carrera la organiza adidas; Stop diseña lo que pasa alrededor.</p>
-      <div class="tira">
-        <figure class="foto"><img src="assets/foto-largada.jpg" alt="Largada nocturna de la adidas Hyper Night 10K" width="720" height="480" loading="lazy"><figcaption>Largada · edición anterior</figcaption></figure>
-        <figure class="foto"><img src="assets/foto-meta.jpg" alt="Llegada de un corredor con el reloj de la carrera de fondo" width="548" height="364" loading="lazy"><figcaption>La meta</figcaption></figure>
+  <!-- ============ QUÉ ES STOP: el cartel de la parada ============ -->
+  <section class="banda banda--rosa" id="que-es" aria-labelledby="t-que">
+    <div class="envolver parada__grilla">
+      <div class="cartel" id="cartel">
+        <div class="cartel__chapa"><img src="assets/logo-stop.png" alt="Cartel de parada de Stop" width="640" height="296"></div>
+        <div class="cartel__poste" aria-hidden="true"></div>
+        <div class="cartel__tabla" role="img" aria-label="Horarios: pre 17:30, largada 19:00, post 20:15">
+          <p>Próximas salidas · 28/11</p>
+          <div class="cartel__fila" style="--c:var(--rosa)"><span class="flap" data-v="17:30"></span><b>PRE</b><i>Parque Mujeres Arg.</i></div>
+          <div class="cartel__fila" style="--c:var(--azul)"><span class="flap" data-v="19:00"></span><b>10K</b><i>Largada</i></div>
+          <div class="cartel__fila" style="--c:var(--crema)"><span class="flap" data-v="20:15"></span><b>POST</b><i>Palacio Libertad</i></div>
+        </div>
+      </div>
+      <div class="parada__texto">
+        <span class="kicker">Qué es Stop</span>
+        <h2 class="titulo-seccion" id="t-que">Vos corrés.<br>Stop es <span class="st st--azul">la parada.</span></h2>
+        <p class="bajada">El evento de la comunidad SPOT! que arma el antes y el después de la adidas Hyper Night 10K.</p>
+        <ul class="tres">
+          <li style="--c:var(--rosa)"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#estrella" fill="var(--rosa)" stroke="var(--crema)" stroke-width="5"/></svg><span><b>Antes</b><br>El pre en el parque</span></li>
+          <li style="--c:var(--azul)"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#explosion" fill="var(--azul)" stroke="var(--crema)" stroke-width="5"/></svg><span><b>Durante</b><br>Tu gente en las pantallas</span></li>
+          <li style="--c:var(--crema)"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#estrella" fill="var(--crema)" stroke="var(--crema)" stroke-width="5"/></svg><span><b>Después</b><br>3 pisos y terraza</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -566,54 +624,67 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     <div class="envolver">
       <span class="kicker" style="color:var(--rosa)">Línea Stop · 7 paradas</span>
       <h2 class="titulo-seccion" id="t-linea" style="margin-top:12px">Una noche, <span class="st st--azul" data-t="parada por parada">parada por parada</span></h2>
-      <p class="bajada" style="margin-top:16px">Cada parada te deja una pregunta. Cuando llegás a la última, ya sabés la respuesta.</p>
-      <ol class="paradas-linea">
-        <li class="estacion estacion--pre"><span class="estacion__hora">17:30</span><span class="estacion__punto">1</span><div><span class="estacion__lugar">El pre · Parque Mujeres Argentinas</span><strong>¿Con qué llego?</strong><p>Dejás en una palabra lo que traés: nervios, ganas, una promesa. Armás tu cápsula y te grabamos antes de largar.</p></div></li>
-        <li class="estacion estacion--carrera"><span class="estacion__hora">19:00</span><span class="estacion__punto">2</span><div><span class="estacion__lugar">La carrera · 10K</span><strong>¿Quién me acompaña?</strong><p>Tu gente te escribe desde las terminales y el mensaje aparece en las pantallas del recorrido.</p></div></li>
-        <li class="estacion estacion--carrera"><span class="estacion__hora">20:00</span><span class="estacion__punto">3</span><div><span class="estacion__lugar">La parada · Micro Stop</span><strong>¿Qué acabo de hacer?</strong><p>Subís al micro y escuchás los audios que te dejaron antes de largar.</p></div></li>
-        <li class="estacion estacion--post"><span class="estacion__hora">20:15</span><span class="estacion__punto">4</span><div><span class="estacion__lugar">Piso 1 · Palacio Libertad</span><strong>¿Qué dejo atrás?</strong><p>Te cambiás, te refrescás y dejás el cansancio en el espejo.</p></div></li>
-        <li class="estacion estacion--post"><span class="estacion__hora">20:15</span><span class="estacion__punto">5</span><div><span class="estacion__lugar">Piso 2 · Palacio Libertad</span><strong>¿Con quién lo viví?</strong><p>Te reencontrás con los tuyos: café, algo dulce y la cabina de fotos.</p></div></li>
-        <li class="estacion estacion--post"><span class="estacion__hora">20:15</span><span class="estacion__punto">6</span><div><span class="estacion__lugar">Piso 3 · Palacio Libertad</span><strong>¿Qué me costó llegar?</strong><p>Elongación, masajes y una sala en silencio para respirar.</p></div></li>
-        <li class="estacion estacion--post"><span class="estacion__hora">21:30</span><span class="estacion__punto">7</span><div><span class="estacion__lugar">La terraza</span><strong>¿Hacia dónde sigo?</strong><p>Coffee rave con DJ, la ciudad de noche, tu cápsula y el video de toda la noche.</p></div></li>
+      <p class="bajada" style="margin-top:22px">Tocá cada parada.</p>
+      <ol class="paradas-linea" id="paradas">
+        <li class="estacion estacion--pre abierta">
+          <button class="estacion__btn" type="button" aria-expanded="true" aria-controls="panel-1"><span class="estacion__hora">17:30</span><span class="estacion__punto">1</span><span class="estacion__cab"><span class="estacion__lugar">El pre · Parque Mujeres Argentinas</span><strong>¿Con qué llego?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-1"><div><div class="estacion__cont"><figure class="duo" style="--p:30% 40%"><img src="assets/foto-salto.jpg" alt="" loading="lazy"></figure><p>Dejás tu palabra, armás tu cápsula y te grabamos antes de largar.</p></div></div></div>
+        </li>
+        <li class="estacion estacion--carrera">
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-2"><span class="estacion__hora">19:00</span><span class="estacion__punto">2</span><span class="estacion__cab"><span class="estacion__lugar">La carrera · 10K</span><strong>¿Quién me acompaña?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-2"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 30%"><img src="assets/foto-largada.jpg" alt="" loading="lazy"></figure><p>Los mensajes de tu gente aparecen en las pantallas del recorrido.</p></div></div></div>
+        </li>
+        <li class="estacion estacion--carrera">
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-3"><span class="estacion__hora">20:00</span><span class="estacion__punto">3</span><span class="estacion__cab"><span class="estacion__lugar">Micro Stop · 7 min</span><strong>¿Qué acabo de hacer?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-3"><div><div class="estacion__cont"><figure class="duo" style="--p:75% 80%"><img src="assets/foto-salto.jpg" alt="" loading="lazy"></figure><p>Subís al micro y escuchás los audios que te dejaron antes de largar.</p></div></div></div>
+        </li>
+        <li class="estacion estacion--post">
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-4"><span class="estacion__hora">20:15</span><span class="estacion__punto">4</span><span class="estacion__cab"><span class="estacion__lugar">Piso 1 · Palacio Libertad</span><strong>¿Qué dejo atrás?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-4"><div><div class="estacion__cont"><figure class="duo" style="--p:15% 40%"><img src="assets/foto-meta.jpg" alt="" loading="lazy"></figure><p>Te cambiás y dejás el cansancio en el espejo.</p></div></div></div>
+        </li>
+        <li class="estacion estacion--post">
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-5"><span class="estacion__hora">20:15</span><span class="estacion__punto">5</span><span class="estacion__cab"><span class="estacion__lugar">Piso 2 · Palacio Libertad</span><strong>¿Con quién lo viví?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-5"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 40%"><img src="assets/foto-meta.jpg" alt="" loading="lazy"></figure><p>Café, algo dulce y la cabina de fotos con los tuyos.</p></div></div></div>
+        </li>
+        <li class="estacion estacion--post">
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-6"><span class="estacion__hora">20:15</span><span class="estacion__punto">6</span><span class="estacion__cab"><span class="estacion__lugar">Piso 3 · Palacio Libertad</span><strong>¿Qué me costó llegar?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-6"><div><div class="estacion__cont"><figure class="duo" style="--p:45% 60%"><img src="assets/foto-salto.jpg" alt="" loading="lazy"></figure><p>Elongación, masajes y una sala en silencio para respirar.</p></div></div></div>
+        </li>
+        <li class="estacion estacion--post">
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-7"><span class="estacion__hora">21:30</span><span class="estacion__punto">7</span><span class="estacion__cab"><span class="estacion__lugar">La terraza</span><strong>¿Hacia dónde sigo?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-7"><div><div class="estacion__cont"><figure class="duo" style="--p:85% 20%"><img src="assets/foto-luces.jpg" alt="" loading="lazy"></figure><p>Coffee rave, la ciudad de noche y tu cápsula, abierta.</p></div></div></div>
+        </li>
       </ol>
     </div>
   </section>
 
-  <!-- ============ MAPA DE LA CARRERA ============ -->
+  <!-- ============ MAPA DE LA CARRERA: el circuito real ============ -->
   <section class="banda banda--azul" id="recorrido" aria-labelledby="t-recorrido">
-    <span class="deco salta" style="right:4%;top:40px;width:50px;height:50px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#estrella" fill="var(--rosa)" stroke="var(--oscuro)" stroke-width="4"/></svg></span>
     <div class="envolver recorrido">
       <div class="recorrido__texto">
-        <span class="kicker">El recorrido</span>
-        <h2 class="titulo-seccion" id="t-recorrido">10K por <span class="st st--crema" data-t="Puerto Madero">Puerto Madero</span></h2>
+        <span class="kicker">El circuito</span>
+        <h2 class="titulo-seccion" id="t-recorrido">10K por <span class="st st--crema">Puerto Madero</span></h2>
+        <div class="km-vivo" aria-hidden="true"><strong id="km-vivo">0.0</strong><span>km</span></div>
         <ul class="datos-lista">
-          <li><span>Largada y llegada</span><span>Parque Mujeres Argentinas</span></li>
-          <li><span>Por dónde</span><span>Diques, Costanera Sur y Puente de la Mujer</span></li>
-          <li><span>Hidratación</span><span>Km 3, km 7 y llegada</span></li>
+          <li><span>Pre</span><span>Parque Mujeres Argentinas · 17:30</span></li>
+          <li><span>Por dónde</span><span>Diques y Costanera Sur</span></li>
           <li><span>Después</span><span>Micro Stop al Palacio Libertad · 7 min</span></li>
         </ul>
-        <p class="nota-mapa">Recorrido orientativo. El trazado oficial lo publica la organización de la carrera.</p>
       </div>
-      <figure class="mapa" style="margin:0">
-        <svg viewBox="0 0 520 440" role="img" aria-label="Mapa de la carrera de 10 km por Puerto Madero: largada en el Parque Mujeres Argentinas, vuelta por los diques y la Costanera Sur, y micro de Stop al Palacio Libertad">
-          <path class="rio" d="M180 0 L232 0 L222 440 L170 440 Z"/>
-          <path class="rio" d="M470 0 L520 0 L520 440 L462 440 Z" opacity=".75"/>
-          <path class="verde" d="M330 40 L452 40 L448 400 L330 400 Z"/>
-          <text class="calle-txt" x="364" y="230" transform="rotate(-90 364 230)">RESERVA ECOLÓGICA</text>
-          <path class="calle" d="M64 0 L36 440"/><text class="calle-txt" x="26" y="330" transform="rotate(-86 26 330)">AV. L. N. ALEM</text>
-          <path class="calle" d="M144 0 L120 440"/><text class="calle-txt" x="106" y="190" transform="rotate(-86 106 190)">AV. MADERO</text>
-          <path class="calle" d="M286 0 L286 440"/><text class="calle-txt" x="276" y="430" transform="rotate(-90 276 430)">JUANA MANSO</text>
-          <path class="calle" d="M318 0 L318 440"/><text class="calle-txt" x="330" y="430" transform="rotate(-90 330 430)">COSTANERA SUR</text>
-          <path class="calle" d="M130 250 L300 250"/><text class="calle-txt" x="214" y="242">PUENTE DE LA MUJER</text>
-          <path id="ruta" class="ruta" d="M250 262 C246 210 248 120 262 70 C272 36 312 26 318 60 C324 120 320 220 320 300 C320 360 316 404 290 410 C258 416 252 360 250 262 Z"/>
-          <path class="ruta-brillo" d="M250 262 C246 210 248 120 262 70 C272 36 312 26 318 60 C324 120 320 220 320 300 C320 360 316 404 290 410 C258 416 252 360 250 262 Z"/>
-          <g class="km" id="kms"></g>
-          <g class="agua"><circle r="9" id="agua3"/><circle r="9" id="agua7"/></g>
-          <path class="bus" d="M250 262 C210 254 160 226 120 180 C96 150 86 120 82 96"/>
-          <g class="pin" transform="translate(82 96)"><circle r="13" fill="var(--azul)"/><text x="-50" y="-22">PALACIO LIBERTAD</text><text class="sub" x="-50" y="-8">EL POST</text></g>
-          <g class="meta" transform="translate(140 270)"><rect x="0" y="0" width="118" height="26" rx="13"/><text x="12" y="17">LARGADA·META</text></g>
+      <figure class="mapa" id="mapa" style="margin:0">
+        <svg viewBox="60 30 380 640" role="img" aria-label="Circuito de la carrera de 10 km por Puerto Madero y la Costanera Sur, con el pre en el Parque Mujeres Argentinas y el micro de Stop al Palacio Libertad">
+          <image href="assets/agua.png" x="0" y="0" width="449" height="708"/>
+          <text class="agua-txt" x="352" y="200" transform="rotate(72 352 200)">LAGUNA DE LAS GAVIOTAS</text>
+          <text class="agua-txt" x="372" y="380" transform="rotate(80 372 380)">LAGUNA DE LOS PATOS</text>
+          <text class="agua-txt" x="150" y="470" transform="rotate(-88 150 470)">DIQUES</text>
+          <path class="bus" d="M257 288 C220 300 160 250 112 168"/>
+          <path class="ruta-borde" d="M257 288 L192 58 L185 50 L190 100 L200 215 L222 216 L222 222 L201 224 L210 330 L232 345 L250 353 L267 365 L280 367 L285 383 L283 387 L237 392 L233 397 L238 399 L293 398 L295 410 L270 430 L255 450 L252 470 L260 497 L265 520 L268 533 L230 540 L225 547 L232 553 L237 633 L257 633 L242 628 L237 556 L275 548 L280 630 L262 652 L338 553 L335 530 L305 525 L300 470 L296 410 L292 370 L280 310 L260 243 L242 170 L220 130 L203 53 L195 50"/>
+          <path class="ruta" id="ruta" pathLength="1000" d="M257 288 L192 58 L185 50 L190 100 L200 215 L222 216 L222 222 L201 224 L210 330 L232 345 L250 353 L267 365 L280 367 L285 383 L283 387 L237 392 L233 397 L238 399 L293 398 L295 410 L270 430 L255 450 L252 470 L260 497 L265 520 L268 533 L230 540 L225 547 L232 553 L237 633 L257 633 L242 628 L237 556 L275 548 L280 630 L262 652 L338 553 L335 530 L305 525 L300 470 L296 410 L292 370 L280 310 L260 243 L242 170 L220 130 L203 53 L195 50"/>
+          <circle id="corredor" r="6" cx="257" cy="288"/>
+          <g class="pin" transform="translate(112 168)"><circle r="8" fill="var(--crema)"/><rect x="-48" y="-36" width="104" height="20" rx="10"/><text x="-40" y="-22">POST · PALACIO</text></g>
+          <g class="pin" transform="translate(257 288)"><circle r="8" fill="var(--rosa)"/><rect x="10" y="-10" width="96" height="20" rx="10"/><text x="18" y="4">PRE · LARGADA</text></g>
         </svg>
-        <figcaption class="mapa__leyenda"><span><i style="background:var(--rosa)"></i>Carrera 10K</span><span><i style="background:var(--azul)"></i>Hidratación</span><span><i style="background:var(--crema)"></i>Micro al post</span></figcaption>
+        <figcaption class="mapa__leyenda"><span><i style="background:var(--rosa)"></i>Carrera 10K</span><span><i style="background:var(--crema)"></i>Micro al post</span></figcaption>
       </figure>
     </div>
   </section>
@@ -624,7 +695,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <div class="capsula__texto">
         <span class="kicker">En el stand de SPOT!</span>
         <h2 class="titulo-seccion" id="t-capsula">Armá tu <span class="st st--rosa" data-t="cápsula">cápsula</span> del tiempo</h2>
-        <p class="bajada">Antes de largar elegís tu cápsula y la llenás con tus objetivos, tu canción y un mensaje para vos. Se sella hasta que cruzás la meta. Cuando la abrís en la terraza, adentro te espera una sorpresa.</p>
+        <p class="bajada">La llenás antes de largar y se sella hasta la meta. Adentro te espera una sorpresa.</p>
         <a class="btn btn--oscuro" href="https://claude.ai/artifact/5wfWNB3oxHaz2D1wSzP9PK" target="_blank" rel="noopener">Armar mi cápsula
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M14 5l7 7-7 7"/></svg></a>
       </div>
@@ -633,15 +704,6 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         <div class="cap cap--trofeo" data-zona="26 10 74 48" data-items="SUB 60'|NOTA|@estrella-rosa|+3 KM"><img class="cap__atras" src="assets/trofeo-atras.png" alt="" width="600" height="600"><div class="cap__relleno" style="--m:url(assets/trofeo-atras.png)"></div><img class="cap__frente" src="assets/trofeo-frente.png" alt="" width="600" height="600"></div>
         <div class="cap cap--zapatilla" data-zona="14 30 72 54" data-items="PATINAR|@canchera-rosa|DESCANSAR|4 DÍAS"><img class="cap__atras" src="assets/zapatilla-atras.png" alt="" width="600" height="600"><div class="cap__relleno" style="--m:url(assets/zapatilla-atras.png)"></div><img class="cap__frente" src="assets/zapatilla-frente.png" alt="" width="600" height="600"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ SPONSORS ============ -->
-  <section class="banda banda--noche sponsors" aria-labelledby="t-sponsors" style="padding-block:64px">
-    <div class="envolver">
-      <span class="kicker" style="color:var(--azul)">Nos acompañan</span>
-      <h2 class="titulo-seccion" id="t-sponsors" style="margin-top:12px;font-size:clamp(32px,5vw,56px)">Cada marca, <span class="st st--rosa" data-t="en su parada">en su parada</span></h2>
-      <ul class="marcas"><li class="principal"><svg viewBox="0 0 176 64" role="img" aria-label="adidas"><g transform="skewX(-0)"><path d="M4 40 16 33 24 47 8 47z"/><path d="M20 30 33 23 47 47 31 47z"/><path d="M37 20 50 12 71 47 55 47z"/></g><text x="76" y="46" font-family="Reddit Sans, Arial, sans-serif" font-weight="800" font-size="30" letter-spacing="-1">adidas</text></svg><span>Sponsor principal · organiza la Hyper Night 10K</span></li><li><strong>Samsung</strong><span>Mediciones con Galaxy Watch</span></li><li><strong>Íntegra</strong><span>Energía para largar</span></li><li><strong>Rexona · Hansaplast</strong><span>Kit de recuperación</span></li><li><strong>Hyperice</strong><span>Theragun y kinesiología</span></li><li><strong>Inti Zen</strong><span>Infusiones y matcha</span></li><li><strong>Café Martínez</strong><span>Café y tiramisú</span></li><li><strong>Al Diablo Coffee Roasters</strong><span>Coffee rave en la terraza</span></li><li><strong>Cerveza Patagonia</strong><span>El Mirador</span></li><li><strong>Big Pons</strong><span>Bajo La Gran Lámpara</span></li></ul>
     </div>
   </section>
 
@@ -663,7 +725,6 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 
   <!-- ============ FORMULARIO ============ -->
   <section class="banda banda--noche" id="inscripcion" aria-labelledby="t-inscripcion">
-    <span class="deco gira" style="left:3%;top:46px;width:60px;height:60px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#explosion" fill="var(--rosa)" stroke="var(--crema)" stroke-width="3"/></svg></span>
     <div class="envolver inscripcion">
       <div class="inscripcion__intro">
         <span class="kicker" style="color:var(--rosa)">Sacá tu pase</span>
@@ -809,6 +870,10 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <h2 class="pie__titulo"><span class="st st--azul" data-t="Seguí,">Seguí,</span><span class="st st--crema" data-t="que alguien te espera">que alguien te espera</span><span class="st st--azul" data-t="en la parada.">en la parada.</span></h2>
       <a class="btn btn--oscuro" href="#inscripcion">Sacá tu pase</a>
     </div>
+    <div class="acompanan">
+      <h2 class="kicker" id="t-sponsors">Nos acompañan</h2>
+      <ul class="logos"><li title="Sponsor principal"><svg viewBox="0 0 176 64" role="img" aria-label="adidas"><g transform="skewX(-0)"><path d="M4 40 16 33 24 47 8 47z"/><path d="M20 30 33 23 47 47 31 47z"/><path d="M37 20 50 12 71 47 55 47z"/></g><text x="76" y="46" font-family="Reddit Sans, Arial, sans-serif" font-weight="800" font-size="30" letter-spacing="-1">adidas</text></svg></li><li title="Mediciones con Galaxy Watch">Samsung</li><li title="Energía para largar"><svg class="marca-sim" viewBox="0 0 100 100" aria-hidden="true"><use href="#aro-puntos"/></svg>Íntegra</li><li title="Kit de recuperación">Rexona · Hansaplast</li><li title="Theragun y kinesiología"><svg class="marca-sim" viewBox="0 0 100 100" aria-hidden="true"><use href="#explosion"/></svg>Hyperice</li><li title="Infusiones y matcha">Inti Zen</li><li title="Café y tiramisú"><svg class="marca-sim" viewBox="0 0 100 100" aria-hidden="true"><use href="#estrella"/></svg>Café Martínez</li><li title="Coffee rave en la terraza">Al Diablo Coffee Roasters</li><li title="El Mirador"><svg class="marca-sim" viewBox="0 0 100 100" aria-hidden="true"><use href="#aro-puntos"/></svg>Cerveza Patagonia</li><li title="Bajo La Gran Lámpara">Big Pons</li></ul>
+    </div>
     <div class="pie__filas">
       <nav aria-label="Pie"><a href="#que-es">Qué es Stop</a><a href="#recorrido">Recorrido</a><a href="#capsula">Cápsula</a><a href="#preguntas">Preguntas</a></nav>
       <span>Stop es un evento de la comunidad SPOT! · Buenos Aires</span>
@@ -893,16 +958,56 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   }
   tic(); setInterval(tic, 1000);
 
-  // ---------- kilómetros del recorrido ----------
-  const ruta = $('#ruta'), largo = ruta.getTotalLength();
-  for (let k = 1; k <= 9; k++) {
-    const q = ruta.getPointAtLength(largo * k / 10);
-    $('#kms').insertAdjacentHTML('beforeend', `<circle cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="11"/><text x="${q.x.toFixed(1)}" y="${q.y.toFixed(1)}">${k}</text>`);
+  // ---------- circuito: se dibuja al verlo y un corredor lo recorre contando km ----------
+  const mapa = $('#mapa'), ruta = $('#ruta'), largo = ruta.getTotalLength(), corredor = $('#corredor'), kmVivo = $('#km-vivo');
+  let t0 = 0, corriendo = false;
+  function correr(ts) {
+    if (!t0) t0 = ts;
+    const k = ((ts - t0) / 16000) % 1, q = ruta.getPointAtLength(largo * k);
+    corredor.setAttribute('cx', q.x.toFixed(1)); corredor.setAttribute('cy', q.y.toFixed(1));
+    kmVivo.textContent = (k * 10).toFixed(1);
+    if (corriendo) requestAnimationFrame(correr);
   }
-  for (const [id, k] of [['agua3', 3.5], ['agua7', 7.5]]) {
-    const q = ruta.getPointAtLength(largo * k / 10);
-    $('#' + id).setAttribute('cx', q.x.toFixed(1)); $('#' + id).setAttribute('cy', q.y.toFixed(1));
+  const verMapa = (si) => {
+    if (si) mapa.classList.add('dibujar');
+    if (REDUCIDO) { kmVivo.textContent = '10'; return; }
+    if (si && !corriendo) { corriendo = true; t0 = 0; setTimeout(() => requestAnimationFrame(correr), 1200); }
+    if (!si) corriendo = false;
+  };
+
+  // ---------- cartel de la parada: los horarios caen como un tablero de estación ----------
+  const flaps = $$('.flap');
+  flaps.forEach((f) => { f.innerHTML = [...f.dataset.v].map((c) => `<span${c === ':' ? ' class="dos-puntos"' : ''}>${c}</span>`).join(''); f.setAttribute('aria-hidden', 'true'); });
+  function girarFlaps() {
+    if (REDUCIDO) return;
+    flaps.forEach((f, n) => [...f.children].forEach((d, i) => {
+      if (d.classList.contains('dos-puntos')) return;
+      const fin = f.dataset.v[i]; let vueltas = 8 + i * 3 + n * 4;
+      const iv = setInterval(() => { d.textContent = vueltas-- > 0 ? Math.floor(Math.random() * 10) : fin; if (vueltas < 0) clearInterval(iv); }, 55);
+    }));
   }
+
+  // ---------- línea stop: paradas desplegables que se encienden al bajar ----------
+  const lista = $('#paradas'), estaciones = $$('.estacion');
+  estaciones.forEach((e) => $('.estacion__btn', e).addEventListener('click', () => {
+    const abrir = !e.classList.contains('abierta');
+    e.classList.toggle('abierta', abrir);
+    $('.estacion__btn', e).setAttribute('aria-expanded', abrir);
+  }));
+  function avanzar() {
+    const r = lista.getBoundingClientRect(), mira = innerHeight * .62;
+    lista.style.setProperty('--avance', Math.min(1, Math.max(0, (mira - r.top - 30) / (r.height - 60))).toFixed(3));
+    estaciones.forEach((e) => e.classList.toggle('activa', $('.estacion__punto', e).getBoundingClientRect().top + 26 < mira));
+  }
+  addEventListener('scroll', avanzar, { passive: true }); addEventListener('resize', avanzar); avanzar();
+
+  if ('IntersectionObserver' in window) {
+    const vistos = new IntersectionObserver((ents) => ents.forEach((e) => {
+      if (e.target === mapa) verMapa(e.isIntersecting);
+      else if (e.isIntersecting) { girarFlaps(); vistos.unobserve(e.target); }
+    }), { threshold: .3 });
+    vistos.observe(mapa); vistos.observe($('#cartel'));
+  } else { verMapa(true); }
 
   // ---------- muro de intenciones (palabras compartidas entre visitantes) ----------
   const EJEMPLOS = ['nervios', 'ganas', 'una promesa', 'miedo', 'por mi viejo', 'disfrutar'];
