@@ -9,4 +9,4 @@ Fuera de claude.ai el muro de intenciones muestra palabras de ejemplo y guarda l
 
 Hay dos versiones: `index.html` (sin marcas) y `adidas.html` (con adidas como sponsor principal, el resto de los sponsors y fotos de ediciones anteriores de la carrera).
 
-Para verla como página: Settings → Pages → Deploy from a branch → `main` / `(root)`.
+La página se publica desde la carpeta `docs/` (Settings → Pages → Deploy from a branch → `main` / `/docs`).
