@@ -48,12 +48,12 @@ button, input, select { font: inherit; color: inherit; }
 .kicker { display: inline-flex; align-items: center; gap: 8px; font: 800 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; }
 .kicker--pastilla { padding: 7px 12px; border-radius: 20px; background: rgba(37, 37, 37, .1); }
 .banda--noche .kicker--pastilla, .hero .kicker--pastilla { background: rgba(237, 232, 219, .1); }
-.titulo-seccion { font-size: clamp(38px, 6.6vw, 80px); line-height: 1.04; letter-spacing: -.045em; font-weight: 700; }
-.bajada { font-size: clamp(17px, 1.6vw, 19px); line-height: 1.5; max-width: 60ch; opacity: .85; }
+.titulo-seccion { font-size: clamp(32px, 6.4vw, 78px); line-height: 1.16; margin-block: 14px 6px; letter-spacing: -.045em; font-weight: 700; }
+.bajada { font-size: clamp(17px, 1.6vw, 19px); line-height: 1.6; margin-top: 8px; max-width: 60ch; opacity: .85; }
 
-/* sticker: pastilla de color con texto oscuro, levemente torcida */
-.st { display: inline-block; padding: .02em .2em .08em; border-radius: .2em; background: var(--c, var(--azul)); color: var(--oscuro); font-weight: 700; white-space: nowrap; line-height: 1.05; rotate: -2deg; box-shadow: .05em .06em 0 var(--oscuro); }
-.banda--noche .st, .hero .st { box-shadow: .05em .06em 0 var(--crema); }
+/* sticker: recuadro igual a los stickers de las cápsulas (pastilla con contorno oscuro) */
+.st { display: inline-block; padding: .04em .32em .1em; border-radius: .45em; background: var(--c, var(--azul)); color: var(--oscuro); font-weight: 700; white-space: nowrap; line-height: 1.05; rotate: -2deg; box-shadow: 0 0 0 .05em var(--oscuro), .07em .08em 0 .05em var(--oscuro); }
+.banda--noche .st, .hero .st, .banner .st { box-shadow: 0 0 0 .05em var(--oscuro), 0 0 0 .1em var(--crema); }
 .st--rosa { --c: var(--rosa); }
 .st--azul { --c: var(--azul); }
 .st--crema { --c: var(--crema); }
@@ -94,14 +94,14 @@ button, input, select { font: inherit; color: inherit; }
 /* ---------- hero ---------- */
 .hero { position: relative; overflow: hidden; background: var(--noche); padding-block: clamp(36px, 6vw, 72px) clamp(48px, 7vw, 88px); }
 .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
-.hero .envolver { position: relative; z-index: 2; display: grid; gap: 28px; }
+.hero .envolver { position: relative; z-index: 2; display: grid; gap: 36px; }
 .hero__tope { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .hero__vivo { display: inline-flex; align-items: center; gap: 8px; font: 800 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--rosa); }
 .hero__vivo i { width: 8px; height: 8px; border-radius: 50%; background: var(--rosa); animation: latido 1.4s ease-in-out infinite; }
 .hero__logo { width: min(480px, 100%); height: auto; display: block; margin: 8px 0 0 -10px; transform-origin: 40% 60%; animation: entrar-logo 1s var(--ease-rebote) both, mecer 6s ease-in-out 1s infinite alternate; }
 @keyframes entrar-logo { from { opacity: 0; transform: scale(.6) rotate(-10deg); } }
 @keyframes mecer { from { transform: rotate(-2deg); } to { transform: rotate(1.5deg) translateY(-6px); } }
-.hero__titulo { font-size: clamp(30px, 5.4vw, 64px); line-height: 1.12; letter-spacing: -.035em; display: grid; gap: .08em; }
+.hero__titulo { font-size: clamp(30px, 5.4vw, 64px); line-height: 1.22; letter-spacing: -.035em; display: grid; gap: .08em; }
 .hero__titulo .linea { display: block; }
 .hero__titulo { display: block; }
 .hero__titulo .linea + .linea { margin-top: .08em; }
@@ -146,7 +146,7 @@ button, input, select { font: inherit; color: inherit; }
 
 /* ---------- recorrido ---------- */
 .recorrido { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
-.recorrido__texto { display: grid; gap: 22px; }
+.recorrido__texto { display: grid; gap: 30px; }
 .recorrido__texto .titulo-seccion { font-size: clamp(38px, 5vw, 60px); }
 .recorrido__texto, .mapa { min-width: 0; }
 .datos-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
@@ -200,7 +200,7 @@ button, input, select { font: inherit; color: inherit; }
 
 /* ---------- inscripción ---------- */
 .inscripcion { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
-.inscripcion__intro { display: grid; gap: 18px; position: sticky; top: 96px; }
+.inscripcion__intro { display: grid; gap: 26px; position: sticky; top: 96px; }
 @media (max-width: 900px) { .inscripcion { grid-template-columns: minmax(0, 1fr); } .inscripcion__intro { position: static; } }
 .form-card { scroll-margin-top: 84px; background: var(--crema); color: var(--oscuro); border-radius: 28px; box-shadow: 0 0 0 2px var(--oscuro), 8px 8px 0 var(--oscuro); padding: clamp(20px, 3.5vw, 36px); }
 .pasos { display: flex; gap: 6px; margin-bottom: 26px; }
@@ -210,7 +210,7 @@ button, input, select { font: inherit; color: inherit; }
 .pasos li.hecho::before { background: var(--oscuro); }
 .pasos li.actual::before { background: var(--rosa); box-shadow: inset 0 0 0 1.5px var(--oscuro); }
 .pasos { padding: 0; margin-top: 0; }
-.paso-form { display: grid; gap: 18px; }
+.paso-form { display: grid; gap: 22px; }
 .paso-form[hidden] { display: none; }
 .paso-form h3 { font-size: 24px; }
 .paso-form .ayuda { font-size: 15px; color: rgba(37, 37, 37, .72); margin-top: -10px; }
@@ -282,15 +282,24 @@ button, input, select { font: inherit; color: inherit; }
 
 .listo { display: grid; gap: 18px; justify-items: center; text-align: center; padding-block: 10px; }
 .listo .st { font-size: clamp(34px, 6vw, 48px); }
-.dorsal { width: min(320px, 100%); padding: 18px 18px 14px; border-radius: 18px; background: #fff; color: var(--oscuro); box-shadow: 0 0 0 2px var(--oscuro), 6px 6px 0 var(--rosa); rotate: -2deg; animation: entrar-dorsal .7s var(--ease-rebote) both; }
-@keyframes entrar-dorsal { from { opacity: 0; transform: translateY(30px) rotate(-12deg) scale(.7); } }
-.dorsal__tope { display: flex; justify-content: space-between; align-items: center; }
-.dorsal__tope img { width: 70px; height: auto; }
-.dorsal__tope span { font: 800 11px var(--f-mono); letter-spacing: .06em; }
-.dorsal__numero { font: 800 76px/1 var(--f-titulo); letter-spacing: -.05em; margin: 8px 0 2px; font-variant-numeric: tabular-nums; }
-.dorsal__nombre { font: 700 15px var(--f-mono); text-transform: uppercase; letter-spacing: .04em; }
-.dorsal__palabra { margin-top: 10px; padding: 6px 12px; border-radius: 14px; background: var(--rosa); font: 700 15px var(--f-titulo); justify-self: start; display: inline-block; }
-.dorsal__chip { margin-top: 10px; height: 14px; border-radius: 4px; background: repeating-linear-gradient(90deg, var(--oscuro) 0 3px, transparent 3px 6px); opacity: .6; }
+.dorsal { position: relative; width: min(340px, 100%); border-radius: 14px; background: #fff; color: var(--oscuro); box-shadow: 0 0 0 2.5px var(--oscuro), 8px 8px 0 2.5px var(--rosa); rotate: -2deg; overflow: hidden; text-align: left; animation: entrar-dorsal .8s var(--ease-rebote) both; }
+@keyframes entrar-dorsal { from { opacity: 0; transform: translateY(40px) rotate(-14deg) scale(.7); } }
+.dorsal__ojal { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--crema); box-shadow: inset 0 0 0 2px var(--oscuro), 0 0 0 3px #d9d4c8; z-index: 2; }
+.dorsal__ojal:nth-of-type(1) { left: 10px; top: 10px; } .dorsal__ojal:nth-of-type(2) { right: 10px; top: 10px; }
+.dorsal__ojal:nth-of-type(3) { left: 10px; bottom: 12px; } .dorsal__ojal:nth-of-type(4) { right: 10px; bottom: 12px; }
+.dorsal__banda { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 34px; background: var(--rosa); border-bottom: 2.5px solid var(--oscuro); }
+.dorsal__banda img { width: 64px; height: auto; }
+.dorsal__banda span { font: 800 10px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; }
+.dorsal__cuerpo { padding: 6px 22px 14px; display: grid; gap: 6px; justify-items: center; text-align: center; }
+.dorsal__numero { font: 800 clamp(84px, 24vw, 108px)/.95 var(--f-titulo); letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
+.dorsal__nombre { font: 800 15px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; }
+.dorsal__etiquetas { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 4px; }
+.dorsal__etiquetas span { padding: 4px 10px; border-radius: 12px; font: 800 11px var(--f-mono); text-transform: uppercase; letter-spacing: .04em; box-shadow: 0 0 0 2px var(--oscuro); }
+.dorsal__cat { background: var(--azul); }
+.dorsal__palabra { background: var(--crema); }
+.dorsal__chip { display: flex; align-items: center; gap: 10px; margin: 4px 22px 0; padding: 8px 10px; border-radius: 8px; background: var(--oscuro); color: var(--crema); font: 800 10px var(--f-mono); letter-spacing: .1em; }
+.dorsal__chip i { flex: 1; height: 16px; background: repeating-linear-gradient(90deg, var(--crema) 0 2px, transparent 2px 4px, var(--crema) 4px 5px, transparent 5px 8px); opacity: .85; }
+.dorsal__talon { margin-top: 12px; padding: 10px 34px 12px; border-top: 2.5px dashed var(--oscuro); display: grid; justify-items: center; text-align: center; gap: 2px; font: 700 11px var(--f-mono); text-transform: uppercase; letter-spacing: .04em; background: #f7f3ea; }
 .comprobante { font: 700 14px var(--f-mono); }
 .listo p { max-width: 46ch; color: rgba(37, 37, 37, .78); }
 
@@ -330,7 +339,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 
 /* ---------- hero con foto ---------- */
 .hero__grilla { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(28px, 4vw, 56px); }
-.hero__texto { display: grid; gap: 24px; min-width: 0; }
+.hero__texto { display: grid; gap: 30px; min-width: 0; }
 .hero__fotos { position: relative; display: grid; gap: 18px; justify-items: start; min-width: 0; }
 .foto { margin: 0; position: relative; border-radius: 22px; overflow: hidden; background: var(--oscuro); box-shadow: 0 0 0 3px var(--crema), 8px 8px 0 var(--rosa); }
 .foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -383,7 +392,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 
 /* ---------- cápsulas que se llenan ---------- */
 .capsula { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: clamp(24px, 5vw, 64px); align-items: center; }
-.capsula__texto { display: grid; gap: 20px; justify-items: start; }
+.capsula__texto { display: grid; gap: 26px; justify-items: start; }
 .capsulas { position: relative; margin-inline: -4%; display: flex; justify-content: center; align-items: flex-end; min-width: 0; }
 .cap { position: relative; container-type: inline-size; flex: none; width: 40%; aspect-ratio: 1; max-width: 100%; animation: flotar-obj 5s ease-in-out infinite alternate; }
 .cap--botella { width: 46%; margin-right: -17%; z-index: 2; }
@@ -453,7 +462,6 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 /* ---------- qué es stop: el cartel de la parada ---------- */
 .parada__grilla { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
 .parada__texto { display: grid; gap: 22px; justify-items: start; }
-.cartel { display: grid; justify-items: center; }
 .cartel__chapa { width: min(230px, 62vw); aspect-ratio: 1; border-radius: 50%; background: var(--crema); box-shadow: 0 0 0 6px var(--oscuro), 0 0 0 14px var(--crema), 0 0 0 18px var(--oscuro), 10px 14px 0 18px rgba(37, 37, 37, .25); display: grid; place-items: center; transform-origin: 50% 100%; animation: hamacar 4s ease-in-out infinite alternate; position: relative; z-index: 2; }
 .cartel__chapa img { width: 78%; height: auto; }
 @keyframes hamacar { from { rotate: -4deg; } to { rotate: 4deg; } }
@@ -502,6 +510,83 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 .logos li:nth-child(4n) { font: 700 16px var(--f-titulo); text-transform: uppercase; letter-spacing: .1em; }
 .logos svg { height: 44px; width: auto; fill: currentColor; }
 .logos .marca-sim { width: 18px; height: 18px; }
+
+/* ---------- estrellas del hero ---------- */
+.hero canvas { opacity: .9; }
+
+/* ---------- contador como separador a todo el ancho ---------- */
+.cuenta-banda { background: var(--oscuro); color: var(--crema); border-block: 3px solid var(--oscuro); }
+.cuenta-banda__rotulo { display: flex; justify-content: space-between; gap: 12px; padding: 12px max(20px, env(safe-area-inset-left, 0px)); font: 800 12px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; }
+.cuenta-banda__rotulo span:first-child { color: var(--rosa); }
+.cuenta-banda .cuenta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3px; }
+.cuenta-banda .cuenta div { min-width: 0; padding: clamp(14px, 2.4vw, 26px) 6px clamp(12px, 2vw, 22px); border-radius: 0; box-shadow: none; display: grid; gap: 6px; justify-items: center; }
+.cuenta-banda .cuenta div:nth-child(1) { background: var(--azul); } .cuenta-banda .cuenta div:nth-child(2) { background: var(--rosa); }
+.cuenta-banda .cuenta div:nth-child(3) { background: var(--crema); } .cuenta-banda .cuenta div:nth-child(4) { background: var(--azul); }
+.cuenta-banda .cuenta strong { font: 800 clamp(52px, 13vw, 180px)/.9 var(--f-titulo); letter-spacing: -.06em; }
+.cuenta-banda .cuenta span { font: 800 clamp(10px, 1.2vw, 14px) var(--f-mono); letter-spacing: .1em; }
+
+/* ---------- qué es stop: banner con stickers ---------- */
+.banner { position: relative; overflow: hidden; background: var(--oscuro); color: var(--crema); padding-block: clamp(90px, 12vw, 150px); }
+.blob { position: absolute; z-index: 0; width: var(--t, 170px); aspect-ratio: 1.1; display: grid; place-items: center; background: var(--c); border-radius: 46% 54% 40% 60% / 55% 40% 60% 45%; rotate: var(--r, 0deg); animation: flotar-blob 6s ease-in-out var(--dl, 0s) infinite alternate; }
+.blob img { width: 52%; height: auto; rotate: calc(var(--r, 0deg) * -1.6); }
+.blob span { font: 800 clamp(13px, 1.6vw, 18px) var(--f-mono); color: var(--oscuro); letter-spacing: .04em; }
+@keyframes flotar-blob { to { translate: 0 -12px; rotate: calc(var(--r, 0deg) + 5deg); } }
+.banner__centro { position: relative; z-index: 1; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; max-width: 960px; }
+.banner__texto { display: grid; gap: 22px; justify-items: start; }
+.banner__texto .bajada { color: var(--crema); }
+.senal { display: grid; justify-items: center; transform-origin: 50% 100%; animation: hamacar 4s ease-in-out infinite alternate; }
+.senal__octo { --o: polygon(29.3% 0, 70.7% 0, 100% 29.3%, 100% 70.7%, 70.7% 100%, 29.3% 100%, 0 70.7%, 0 29.3%); width: clamp(170px, 24vw, 260px); aspect-ratio: 1; clip-path: var(--o); background: var(--oscuro); padding: 3%; position: relative; z-index: 2; }
+.senal__aro { width: 100%; height: 100%; clip-path: var(--o); background: var(--crema); padding: 5%; }
+.senal__cara { width: 100%; height: 100%; clip-path: var(--o); background: var(--rosa); display: grid; place-items: center; }
+.senal__cara img { width: 84%; height: auto; }
+.senal__poste { width: 18px; height: clamp(90px, 14vw, 170px); background: linear-gradient(90deg, #bdb8ad, var(--crema) 45%, #a9a49a); box-shadow: 0 0 0 3px var(--oscuro); margin-top: -2px; }
+@keyframes hamacar { from { rotate: -3deg; } to { rotate: 3deg; } }
+@media (max-width: 760px) {
+  .banner__centro { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
+  .banner__texto { justify-items: center; } .banner .cartel__tabla { text-align: left; }
+  .blob { --t: 112px !important; }
+}
+
+/* ---------- el circuito: mapa limpio ---------- */
+.mapa svg { max-height: 720px; }
+.mapa .calles path { fill: none; stroke: rgba(237, 232, 219, .07); stroke-width: 2; }
+.mapa .calles .avenida { stroke: rgba(237, 232, 219, .2); stroke-width: 4; }
+.mapa .verde { fill: rgba(122, 161, 255, .1); }
+.mapa .agua path, .mapa .agua rect { fill: rgba(122, 161, 255, .38); }
+.mapa .rotulos text { fill: rgba(237, 232, 219, .45); font: 700 14px var(--f-mono); }
+.mapa .rotulos .agua-txt { fill: rgba(237, 232, 219, .7); font-size: 15px; }
+.mapa .rotulos .cursiva { font: italic 600 19px var(--f-texto); }
+.mapa .rotulos .verde-txt { fill: rgba(122, 161, 255, .9); font-size: 14px; }
+.mapa .ruta-borde { stroke-width: 15; stroke: var(--oscuro); }
+.mapa .ruta { stroke-width: 8; }
+.mapa .bus { stroke-width: 4; stroke-dasharray: 1 11; }
+.mapa #corredor { stroke-width: 4; }
+.mapa .pin circle { fill: var(--crema); stroke: var(--oscuro); stroke-width: 4; }
+.mapa .pin--largada circle { fill: var(--rosa); r: 13; stroke: var(--crema); }
+.mapa .pin rect { fill: var(--oscuro); stroke: rgba(237, 232, 219, .2); stroke-width: 1.5; }
+.mapa .pin text { fill: var(--crema); font: 800 13px var(--f-mono); letter-spacing: .04em; }
+.mapa .pin .grande { fill: var(--rosa); font: 700 21px var(--f-titulo); letter-spacing: -.02em; }
+.mapa .pin--km rect { fill: var(--rosa); stroke: var(--oscuro); stroke-width: 3; }
+.mapa .pin--km text { fill: var(--oscuro); font-size: 15px; }
+
+/* ---------- formulario: reglas de acompañantes, muro y aviso de fotos ---------- */
+.reglas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.reglas li { padding: 12px; border-radius: 16px; background: var(--oscuro); color: var(--crema); font-size: 13px; line-height: 1.35; }
+.reglas b { display: block; font: 800 17px var(--f-titulo); color: var(--c); margin-bottom: 2px; }
+@media (max-width: 520px) { .reglas { grid-template-columns: minmax(0, 1fr); } .reglas li { display: flex; gap: 10px; align-items: baseline; } .reglas b { margin: 0; } }
+.nota { font-size: 14px; color: rgba(37, 37, 37, .72); padding-left: 12px; border-left: 3px solid var(--rosa); }
+.card-muro { display: grid; gap: 14px; }
+.card-muro .muro__form input { border-color: rgba(37, 37, 37, .25); }
+.card-muro .muro__nube { min-height: 200px; box-shadow: 6px 6px 0 var(--rosa); }
+.aviso-fotos { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; align-items: center; padding: 14px 16px; border-radius: 18px; background: var(--rosa); box-shadow: 0 0 0 2px var(--oscuro); font-size: 14px; line-height: 1.45; }
+.aviso-fotos svg { width: 40px; height: 40px; fill: none; stroke: var(--oscuro); stroke-width: 2.2; stroke-linejoin: round; }
+.precios-nota { margin-top: 18px; display: inline-flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; padding: 12px 18px; border-radius: 30px; background: var(--oscuro); color: var(--crema); font-size: 15px; }
+.precios-nota b { color: var(--rosa); }
+.precios--dos { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; }
+@media (max-width: 760px) { .precios--dos { grid-template-columns: minmax(0, 1fr); } }
+.pases--dos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.listo > * { max-width: 100%; }
+.listo > .st { font-size: clamp(26px, 7.4vw, 44px); }
 .con-logo svg { height: 18px; width: auto; fill: currentColor; }
 .sponsor { display: inline-flex; align-items: center; gap: 12px; }
 .sponsor svg { height: 34px; width: auto; fill: currentColor; }
@@ -558,62 +643,49 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         <div class="hero__acciones">
           <a class="btn btn--crema" href="#inscripcion">Sacá tu pase
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M14 5l7 7-7 7"/></svg></a>
-          <a class="btn btn--borde" href="#linea">Ver la noche</a>
+          <a class="btn btn--borde" href="#linea">Ver cronograma</a>
         </div>
       </div>
       <div class="hero__fotos">
         <figure class="foto foto--grande"><img src="assets/foto-salto.jpg" alt="Corredor en plena zancada, de noche" width="977" height="651"><figcaption>adidas Hyper Night 10K · edición anterior</figcaption></figure>
-        <div class="cuenta" id="cuenta" aria-label="Tiempo hasta la largada">
-          <div><strong data-u="d">00</strong><span>días</span></div>
-          <div><strong data-u="h">00</strong><span>horas</span></div>
-          <div><strong data-u="m">00</strong><span>min</span></div>
-          <div><strong data-u="s">00</strong><span>seg</span></div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ MURO DE INTENCIONES ============ -->
-  <section class="banda banda--crema muro" id="muro" aria-labelledby="t-muro">
-    <span class="deco gira" style="right:4%;top:30px;width:56px;height:56px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#estrella" fill="var(--rosa)" stroke="var(--oscuro)" stroke-width="4"/></svg></span>
-    <div class="envolver muro__grilla">
-      <div class="muro__texto">
-        <span class="kicker">El muro del pre</span>
-        <h2 class="titulo-seccion" id="t-muro">¿Con qué <span class="st st--rosa" data-t="llegás?">llegás?</span></h2>
-        <p class="bajada">Una palabra. Va al muro del pre y te espera en la meta.</p>
-        <form class="muro__form" id="muro-form" novalidate>
-          <label class="sr" for="muro-in">Tu palabra</label>
-          <input id="muro-in" maxlength="24" autocomplete="off" placeholder="nervios, ganas, una promesa…">
-          <button class="btn btn--oscuro" type="submit" id="muro-btn">Dejarla en el muro</button>
-        </form>
-        <p class="muro__estado" id="muro-estado" aria-live="polite"></p>
-      </div>
-      <div class="muro__nube" id="muro-nube" aria-label="Palabras del muro"></div>
+  <!-- ============ CONTADOR: separador a todo el ancho ============ -->
+  <div class="cuenta-banda" role="timer" aria-label="Tiempo hasta la largada">
+    <p class="cuenta-banda__rotulo"><span>Faltan para la largada</span><span>Sáb 28.11 · 19:00</span></p>
+    <div class="cuenta" id="cuenta">
+      <div><strong data-u="d">00</strong><span>días</span></div>
+      <div><strong data-u="h">00</strong><span>horas</span></div>
+      <div><strong data-u="m">00</strong><span>min</span></div>
+      <div><strong data-u="s">00</strong><span>seg</span></div>
     </div>
-  </section>
+  </div>
 
-  <!-- ============ QUÉ ES STOP: el cartel de la parada ============ -->
-  <section class="banda banda--rosa" id="que-es" aria-labelledby="t-que">
-    <div class="envolver parada__grilla">
-      <div class="cartel" id="cartel">
-        <div class="cartel__chapa"><img src="assets/logo-stop.png" alt="Cartel de parada de Stop" width="640" height="296"></div>
-        <div class="cartel__poste" aria-hidden="true"></div>
-        <div class="cartel__tabla" role="img" aria-label="Horarios: pre 17:30, largada 19:00, post 20:15">
+  <!-- ============ QUÉ ES STOP: banner con la señal de la parada ============ -->
+  <section class="banner" id="que-es" aria-labelledby="t-que">
+    <div class="blob" style="left:-46px;top:6%;--t:200px;--c:var(--azul);--r:-8deg;--dl:0s" aria-hidden="true"><img src="assets/sonadora-rosa.png" alt=""></div>
+    <div class="blob" style="right:-30px;top:-34px;--t:190px;--c:var(--crema);--r:10deg;--dl:-1.5s" aria-hidden="true"><img src="assets/gafas-azul.png" alt=""></div>
+    <div class="blob" style="left:6%;bottom:-60px;--t:160px;--c:var(--rosa);--r:6deg;--dl:-3s" aria-hidden="true"><img src="assets/dormida-crema.png" alt=""></div>
+    <div class="blob" style="right:-50px;bottom:12%;--t:210px;--c:var(--rosa);--r:-12deg;--dl:-2s" aria-hidden="true"><img src="assets/puntos-azul.png" alt=""></div>
+    <div class="blob" style="left:38%;top:-70px;--t:140px;--c:var(--crema);--r:4deg;--dl:-4s" aria-hidden="true"><span>META</span></div>
+    <div class="blob" style="right:22%;bottom:-70px;--t:150px;--c:var(--azul);--r:-4deg;--dl:-1s" aria-hidden="true"><img src="assets/canchera-rosa.png" alt=""></div>
+    <div class="envolver banner__centro">
+      <div class="senal" aria-hidden="true">
+        <div class="senal__octo"><div class="senal__aro"><div class="senal__cara"><img src="assets/logo-stop.png" alt="" width="640" height="296"></div></div></div>
+        <div class="senal__poste"></div>
+      </div>
+      <div class="banner__texto">
+        <span class="kicker" style="color:var(--rosa)">Qué es Stop</span>
+        <h2 class="titulo-seccion" id="t-que">Vos corrés.<br>Stop es <span class="st st--rosa">la parada.</span></h2>
+        <div class="cartel__tabla" id="cartel" role="img" aria-label="Horarios: pre 17:30, largada 19:00, post 20:15">
           <p>Próximas salidas · 28/11</p>
           <div class="cartel__fila" style="--c:var(--rosa)"><span class="flap" data-v="17:30"></span><b>PRE</b><i>Parque Mujeres Arg.</i></div>
           <div class="cartel__fila" style="--c:var(--azul)"><span class="flap" data-v="19:00"></span><b>10K</b><i>Largada</i></div>
           <div class="cartel__fila" style="--c:var(--crema)"><span class="flap" data-v="20:15"></span><b>POST</b><i>Palacio Libertad</i></div>
         </div>
-      </div>
-      <div class="parada__texto">
-        <span class="kicker">Qué es Stop</span>
-        <h2 class="titulo-seccion" id="t-que">Vos corrés.<br>Stop es <span class="st st--azul">la parada.</span></h2>
         <p class="bajada">El evento de la comunidad SPOT! que arma el antes y el después de la adidas Hyper Night 10K.</p>
-        <ul class="tres">
-          <li style="--c:var(--rosa)"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#estrella" fill="var(--rosa)" stroke="var(--crema)" stroke-width="5"/></svg><span><b>Antes</b><br>El pre en el parque</span></li>
-          <li style="--c:var(--azul)"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#explosion" fill="var(--azul)" stroke="var(--crema)" stroke-width="5"/></svg><span><b>Durante</b><br>Tu gente en las pantallas</span></li>
-          <li style="--c:var(--crema)"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#estrella" fill="var(--crema)" stroke="var(--crema)" stroke-width="5"/></svg><span><b>Después</b><br>3 pisos y terraza</span></li>
-        </ul>
       </div>
     </div>
   </section>
@@ -622,12 +694,12 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   <section class="banda banda--noche" id="linea" aria-labelledby="t-linea">
     <span class="deco late" style="right:5%;top:40px;width:70px;height:70px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#x-puntos" fill="var(--crema)" opacity=".5"/></svg></span>
     <div class="envolver">
-      <span class="kicker" style="color:var(--rosa)">Línea Stop · 7 paradas</span>
-      <h2 class="titulo-seccion" id="t-linea" style="margin-top:12px">Una noche, <span class="st st--azul" data-t="parada por parada">parada por parada</span></h2>
+      <span class="kicker" style="color:var(--rosa)">Cronograma · 7 paradas</span>
+      <h2 class="titulo-seccion" id="t-linea">El itinerario de <span class="st st--azul">la mejor noche</span> del año</h2>
       <p class="bajada" style="margin-top:22px">Tocá cada parada.</p>
       <ol class="paradas-linea" id="paradas">
         <li class="estacion estacion--pre abierta">
-          <button class="estacion__btn" type="button" aria-expanded="true" aria-controls="panel-1"><span class="estacion__hora">17:30</span><span class="estacion__punto">1</span><span class="estacion__cab"><span class="estacion__lugar">El pre · Parque Mujeres Argentinas</span><strong>¿Con qué llego?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <button class="estacion__btn" type="button" aria-expanded="true" aria-controls="panel-1"><span class="estacion__hora">17:30</span><span class="estacion__punto">1</span><span class="estacion__cab"><span class="estacion__lugar">El pre · Parque Mujeres Argentinas</span><strong>¿Cómo llego?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
           <div class="estacion__panel" id="panel-1"><div><div class="estacion__cont"><figure class="duo" style="--p:30% 40%"><img src="assets/foto-salto.jpg" alt="" loading="lazy"></figure><p>Dejás tu palabra, armás tu cápsula y te grabamos antes de largar.</p></div></div></div>
         </li>
         <li class="estacion estacion--carrera">
@@ -666,25 +738,48 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         <h2 class="titulo-seccion" id="t-recorrido">10K por <span class="st st--crema">Puerto Madero</span></h2>
         <div class="km-vivo" aria-hidden="true"><strong id="km-vivo">0.0</strong><span>km</span></div>
         <ul class="datos-lista">
-          <li><span>Pre</span><span>Parque Mujeres Argentinas · 17:30</span></li>
-          <li><span>Por dónde</span><span>Diques y Costanera Sur</span></li>
+          <li><span>Largada y llegada</span><span>Parque Mujeres Argentinas</span></li>
+          <li><span>Por dónde</span><span>Puerto Madero y Costanera Sur</span></li>
           <li><span>Después</span><span>Micro Stop al Palacio Libertad · 7 min</span></li>
         </ul>
       </div>
       <figure class="mapa" id="mapa" style="margin:0">
-        <svg viewBox="60 30 380 640" role="img" aria-label="Circuito de la carrera de 10 km por Puerto Madero y la Costanera Sur, con el pre en el Parque Mujeres Argentinas y el micro de Stop al Palacio Libertad">
-          <image href="assets/agua.png" x="0" y="0" width="449" height="708"/>
-          <text class="agua-txt" x="352" y="200" transform="rotate(72 352 200)">LAGUNA DE LAS GAVIOTAS</text>
-          <text class="agua-txt" x="372" y="380" transform="rotate(80 372 380)">LAGUNA DE LOS PATOS</text>
-          <text class="agua-txt" x="150" y="470" transform="rotate(-88 150 470)">DIQUES</text>
-          <path class="bus" d="M257 288 C220 300 160 250 112 168"/>
-          <path class="ruta-borde" d="M257 288 L192 58 L185 50 L190 100 L200 215 L222 216 L222 222 L201 224 L210 330 L232 345 L250 353 L267 365 L280 367 L285 383 L283 387 L237 392 L233 397 L238 399 L293 398 L295 410 L270 430 L255 450 L252 470 L260 497 L265 520 L268 533 L230 540 L225 547 L232 553 L237 633 L257 633 L242 628 L237 556 L275 548 L280 630 L262 652 L338 553 L335 530 L305 525 L300 470 L296 410 L292 370 L280 310 L260 243 L242 170 L220 130 L203 53 L195 50"/>
-          <path class="ruta" id="ruta" pathLength="1000" d="M257 288 L192 58 L185 50 L190 100 L200 215 L222 216 L222 222 L201 224 L210 330 L232 345 L250 353 L267 365 L280 367 L285 383 L283 387 L237 392 L233 397 L238 399 L293 398 L295 410 L270 430 L255 450 L252 470 L260 497 L265 520 L268 533 L230 540 L225 547 L232 553 L237 633 L257 633 L242 628 L237 556 L275 548 L280 630 L262 652 L338 553 L335 530 L305 525 L300 470 L296 410 L292 370 L280 310 L260 243 L242 170 L220 130 L203 53 L195 50"/>
-          <circle id="corredor" r="6" cx="257" cy="288"/>
-          <g class="pin" transform="translate(112 168)"><circle r="8" fill="var(--crema)"/><rect x="-48" y="-36" width="104" height="20" rx="10"/><text x="-40" y="-22">POST · PALACIO</text></g>
-          <g class="pin" transform="translate(257 288)"><circle r="8" fill="var(--rosa)"/><rect x="10" y="-10" width="96" height="20" rx="10"/><text x="18" y="4">PRE · LARGADA</text></g>
+        <svg viewBox="0 0 740 865" role="img" aria-label="Circuito de la carrera de 10 km: largada y llegada en el Parque Mujeres Argentinas, vuelta por Puerto Madero y la Costanera Sur, y micro de Stop al Palacio Libertad">
+          <g class="calles">
+            <path d="M0 75H330M0 217H330M0 640H260M0 30H200M0 128H330M0 170H330M0 262H215M0 307H215M0 350H215M0 470H200M0 515H200M0 560H200M0 600H200M0 690H200M0 735H200M0 780H200M0 825H200"/>
+            <path d="M50 0V865M100 0V865M150 0V865"/>
+            <path class="avenida" d="M213 0L256 865M200 360V865M352 0L392 250M480 680L560 770L592 865"/>
+          </g>
+          <path class="verde" d="M352 0H585C612 70 650 150 700 220C715 245 730 262 740 270V640C650 668 560 682 485 672L462 645L428 410L392 250Z"/>
+          <path class="verde" d="M300 86H340L364 650H306Z" opacity=".6"/>
+          <g class="agua">
+            <path d="M585 0H740V272C700 262 668 220 645 168C625 118 600 60 585 0Z"/>
+            <path d="M470 118C540 102 610 128 645 175C664 205 658 262 640 300C620 340 575 360 520 355C460 350 425 315 414 270C404 225 420 145 470 118Z"/>
+            <path d="M500 362C560 352 620 372 632 420C640 470 625 530 598 575C578 605 546 616 520 600C480 575 455 520 452 460C450 410 465 370 500 362Z"/>
+            <rect x="220" y="-20" width="73" height="83" rx="12"/>
+            <rect x="227" y="88" width="65" height="235" rx="12"/>
+            <rect x="240" y="345" width="60" height="135" rx="12"/>
+            <rect x="253" y="500" width="59" height="150" rx="12"/>
+            <path d="M283 673H338Q348 673 350 683L362 880H292L276 685Q275 673 283 673Z"/>
+          </g>
+          <g class="rotulos">
+            <text x="10" y="68">Av. Córdoba</text><text x="10" y="210">Av. Corrientes</text><text x="10" y="632">Av. Independencia</text>
+            <text x="28" y="392">Plaza de Mayo</text><text x="125" y="372">Puente de la Mujer</text><text x="158" y="20">Puerto Madero</text>
+            <text class="agua-txt" x="534" y="236" text-anchor="middle">Laguna de</text><text class="agua-txt" x="534" y="254" text-anchor="middle">las Gaviotas</text>
+            <text class="agua-txt" x="545" y="470" text-anchor="middle">Laguna de</text><text class="agua-txt" x="545" y="488" text-anchor="middle">los Patos</text>
+            <text class="agua-txt cursiva" x="715" y="38" text-anchor="end">Río de la Plata</text>
+            <text class="agua-txt cursiva" x="262" y="210" transform="rotate(84 262 210)">Río Dique</text>
+            <text class="agua-txt cursiva" x="302" y="720" transform="rotate(84 302 720)">Dársena Sur</text>
+            <text class="verde-txt" x="560" y="640">Reserva Ecológica</text><text class="verde-txt" x="560" y="657">Costanera Sur</text>
+          </g>
+          <path class="bus" d="M345 437C300 420 240 360 190 262"/>
+          <path class="ruta-borde" d="M345 437 C343.2 430.8 337.2 415.3 334 400 C330.8 384.7 328.5 365.0 326 345 C323.5 325.0 320.3 304.2 319 280 C317.7 255.8 318.2 228.0 318 200 C317.8 172.0 317.0 130.3 318 112 C319.0 93.7 321.0 95.0 324 90 C327.0 85.0 332.3 81.7 336 82 C339.7 82.3 343.0 85.3 346 92 C349.0 98.7 351.3 110.7 354 122 C356.7 133.3 359.0 139.5 362 160 C365.0 180.5 368.5 215.8 372 245 C375.5 274.2 382.8 334.5 383 335 C383.2 335.5 376.0 273.5 373 248 C370.0 222.5 363.8 187.5 365 182 C366.2 176.5 374.2 198.7 380 215 C385.8 231.3 393.3 257.5 400 280 C406.7 302.5 414.8 326.7 420 350 C425.2 373.3 427.7 398.3 431 420 C434.3 441.7 436.8 456.7 440 480 C443.2 503.3 446.3 533.3 450 560 C453.7 586.7 456.7 621.7 462 640 C467.3 658.3 479.3 661.7 482 670 C484.7 678.3 491.3 671.7 478 690 C464.7 708.3 416.7 764.0 402 780 C387.3 796.0 397.0 787.3 390 786 C383.0 784.7 367.2 778.3 360 772 C352.8 765.7 349.2 762.0 347 748 C344.8 734.0 345.2 702.0 347 688 C348.8 674.0 352.7 669.7 358 664 C363.3 658.3 374.8 660.0 379 654 C383.2 648.0 382.2 637.7 383 628 C383.8 618.3 383.2 606.3 384 596 C384.8 585.7 385.0 574.3 388 566 C391.0 557.7 397.0 554.3 402 546 C407.0 537.7 414.5 524.7 418 516 C421.5 507.3 424.0 500.0 423 494 C422.0 488.0 420.8 482.0 412 480 C403.2 478.0 372.0 483.0 370 482 C368.0 481.0 394.7 477.3 400 474 C405.3 470.7 403.0 466.0 402 462 C401.0 458.0 399.0 453.2 394 450 C389.0 446.8 380.2 445.2 372 443 C363.8 440.8 349.5 438.0 345 437"/>
+          <path class="ruta" id="ruta" pathLength="1000" d="M345 437 C343.2 430.8 337.2 415.3 334 400 C330.8 384.7 328.5 365.0 326 345 C323.5 325.0 320.3 304.2 319 280 C317.7 255.8 318.2 228.0 318 200 C317.8 172.0 317.0 130.3 318 112 C319.0 93.7 321.0 95.0 324 90 C327.0 85.0 332.3 81.7 336 82 C339.7 82.3 343.0 85.3 346 92 C349.0 98.7 351.3 110.7 354 122 C356.7 133.3 359.0 139.5 362 160 C365.0 180.5 368.5 215.8 372 245 C375.5 274.2 382.8 334.5 383 335 C383.2 335.5 376.0 273.5 373 248 C370.0 222.5 363.8 187.5 365 182 C366.2 176.5 374.2 198.7 380 215 C385.8 231.3 393.3 257.5 400 280 C406.7 302.5 414.8 326.7 420 350 C425.2 373.3 427.7 398.3 431 420 C434.3 441.7 436.8 456.7 440 480 C443.2 503.3 446.3 533.3 450 560 C453.7 586.7 456.7 621.7 462 640 C467.3 658.3 479.3 661.7 482 670 C484.7 678.3 491.3 671.7 478 690 C464.7 708.3 416.7 764.0 402 780 C387.3 796.0 397.0 787.3 390 786 C383.0 784.7 367.2 778.3 360 772 C352.8 765.7 349.2 762.0 347 748 C344.8 734.0 345.2 702.0 347 688 C348.8 674.0 352.7 669.7 358 664 C363.3 658.3 374.8 660.0 379 654 C383.2 648.0 382.2 637.7 383 628 C383.8 618.3 383.2 606.3 384 596 C384.8 585.7 385.0 574.3 388 566 C391.0 557.7 397.0 554.3 402 546 C407.0 537.7 414.5 524.7 418 516 C421.5 507.3 424.0 500.0 423 494 C422.0 488.0 420.8 482.0 412 480 C403.2 478.0 372.0 483.0 370 482 C368.0 481.0 394.7 477.3 400 474 C405.3 470.7 403.0 466.0 402 462 C401.0 458.0 399.0 453.2 394 450 C389.0 446.8 380.2 445.2 372 443 C363.8 440.8 349.5 438.0 345 437"/>
+          <circle id="corredor" r="9" cx="345" cy="437"/>
+          <g class="pin pin--post" transform="translate(190 262)"><circle r="10"/><rect x="-150" y="-50" width="190" height="34" rx="17"/><text x="-136" y="-28">POST · PALACIO LIBERTAD</text></g>
+          <g class="pin pin--largada" transform="translate(345 437)"><circle r="12"/><rect x="-292" y="-6" width="270" height="56" rx="14"/><text class="grande" x="-276" y="17">Largada y llegada</text><text x="-276" y="38">PARQUE MUJERES ARGENTINAS</text></g>
+          <g class="pin pin--km" transform="translate(470 545)"><rect x="0" y="0" width="166" height="36" rx="18"/><text x="18" y="23">CARRERA · 10 KM</text></g>
         </svg>
-        <figcaption class="mapa__leyenda"><span><i style="background:var(--rosa)"></i>Carrera 10K</span><span><i style="background:var(--crema)"></i>Micro al post</span></figcaption>
       </figure>
     </div>
   </section>
@@ -694,7 +789,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     <div class="envolver capsula">
       <div class="capsula__texto">
         <span class="kicker">En el stand de SPOT!</span>
-        <h2 class="titulo-seccion" id="t-capsula">Armá tu <span class="st st--rosa" data-t="cápsula">cápsula</span> del tiempo</h2>
+        <h2 class="titulo-seccion" id="t-capsula">Armá tu<br><span class="st st--rosa">cápsula del tiempo</span></h2>
         <p class="bajada">La llenás antes de largar y se sella hasta la meta. Adentro te espera una sorpresa.</p>
         <a class="btn btn--oscuro" href="https://claude.ai/artifact/5wfWNB3oxHaz2D1wSzP9PK" target="_blank" rel="noopener">Armar mi cápsula
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M14 5l7 7-7 7"/></svg></a>
@@ -711,15 +806,14 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   <section class="banda banda--crema" aria-labelledby="t-precios" style="padding-block:72px">
     <div class="envolver">
       <span class="kicker">Pases</span>
-      <h2 class="titulo-seccion" id="t-precios" style="margin-top:12px">Elegí hasta dónde llegás</h2>
-      <div class="precios">
+      <h2 class="titulo-seccion" id="t-precios">Elegí tu pase</h2>
+      <div class="precios precios--dos">
         <div class="precio"><span>Carrera</span><strong>$38.000</strong><small>La 10K y el pre.</small>
-          <ul><li>Kit de la carrera</li><li>Pre y cápsula del tiempo</li></ul><a class="btn btn--borde btn--chico" href="#inscripcion" data-elegir="carrera">Elegir</a></div>
+          <ul><li>Kit: remera, dorsal y chip</li><li>Pre y cápsula del tiempo</li></ul><a class="btn btn--borde btn--chico" href="#inscripcion" data-elegir="carrera">Elegir</a></div>
         <div class="precio precio--vigente"><span>Carrera + post</span><strong>$56.000</strong><small>De la largada al cierre.</small>
-          <ul><li>Todo lo del pase Carrera</li><li>Micro, 4 pisos y terraza</li></ul><span class="etiqueta-agotado">El más elegido</span><a class="btn btn--crema btn--chico" href="#inscripcion" data-elegir="completo">Elegir</a></div>
-        <div class="precio"><span>Acompañante</span><strong>$18.000</strong><small>Para quien te alienta, sin correr.</small>
-          <ul><li>Micro, post y terraza</li><li>El pre es sin cargo</li></ul><a class="btn btn--borde btn--chico" href="#inscripcion" data-elegir="acompanante">Elegir</a></div>
+          <ul><li>Todo lo del pase Carrera</li><li>Micro, 3 pisos y terraza</li></ul><span class="etiqueta-agotado">El más elegido</span><a class="btn btn--crema btn--chico" href="#inscripcion" data-elegir="completo">Elegir</a></div>
       </div>
+      <p class="precios-nota"><b>+ hasta 2 acompañantes sin cargo.</b> Para sumarlos al post: $30.000 cada uno.</p>
     </div>
   </section>
 
@@ -729,30 +823,31 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <div class="inscripcion__intro">
         <span class="kicker" style="color:var(--rosa)">Sacá tu pase</span>
         <h2 class="titulo-seccion" id="t-inscripcion">Tu lugar en Stop</h2>
-        <p class="bajada">3 pasos. ¿Venís a alentar? Elegí el pase Acompañante.</p>
+        <p class="bajada">4 pasos y estás adentro.</p>
         <ul class="datos-lista" style="color:var(--crema)">
-          <li style="border-color:rgba(237,232,219,.14)"><span>Edad mínima</span><span>16 años para correr</span></li>
+          <li style="border-color:rgba(237,232,219,.14)"><span>Edad</span><span>Evento +18</span></li>
+          <li style="border-color:rgba(237,232,219,.14)"><span>Kit</span><span>Remera, dorsal y chip</span></li>
           <li style="border-color:rgba(237,232,219,.14)"><span>Traé</span><span>Una muda de ropa para el post</span></li>
         </ul>
       </div>
 
       <div class="form-card" id="card">
         <ol class="pasos" id="pasos" aria-label="Pasos de la inscripción">
-          <li class="actual">1 · Tus datos</li>
-          <li>2 · Acompañantes</li>
-          <li>3 · Pago</li>
+          <li class="actual">Datos</li>
+          <li>Acomp.</li>
+          <li>Palabra</li>
+          <li>Pago</li>
         </ol>
 
         <form id="form" novalidate autocomplete="on">
           <fieldset class="paso-form" data-paso="1" style="border:0;margin:0;padding:0">
             <h3>Tus datos</h3>
             <div class="campo"><span class="rotulo" id="r-pase">Tu pase</span>
-              <div class="pases" role="radiogroup" aria-labelledby="r-pase">
-                <label class="pase"><input type="radio" name="pase" value="carrera" id="p-carrera"><strong>Carrera</strong><span>$38.000</span><small>Night 10K y pre</small></label>
-                <label class="pase"><input type="radio" name="pase" value="completo" id="p-completo" checked><strong>Carrera + post</strong><span>$56.000</span><small>De la largada al cierre del post</small></label>
-                <label class="pase"><input type="radio" name="pase" value="acompanante" id="p-acompanante"><strong>Acompañante</strong><span>$18.000</span><small>No corrés: venís a alentar</small></label>
+              <div class="pases pases--dos" role="radiogroup" aria-labelledby="r-pase">
+                <label class="pase"><input type="radio" name="pase" value="carrera" id="p-carrera"><strong>Carrera</strong><span>$38.000</span><small>10K, pre y kit</small></label>
+                <label class="pase"><input type="radio" name="pase" value="completo" id="p-completo" checked><strong>Carrera + post</strong><span>$56.000</span><small>De la largada al cierre</small></label>
               </div></div>
-            <p class="ayuda" style="margin-top:0">Tal como figuran en tu DNI: los usamos para el ingreso, el kit y el seguro.</p>
+            <p class="ayuda" style="margin-top:0">Tal como figuran en tu DNI. Stop es un evento +18.</p>
             <div class="grilla">
               <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="given-name" required><span class="error"></span></div>
               <div class="campo"><label for="apellido">Apellido</label><input id="apellido" name="apellido" autocomplete="family-name" required><span class="error"></span></div>
@@ -760,8 +855,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
               <div class="campo"><label for="nacimiento">Fecha de nacimiento</label><input id="nacimiento" name="nacimiento" inputmode="numeric" placeholder="dd/mm/aaaa" maxlength="10" autocomplete="bday" required><span class="error"></span></div>
               <div class="campo"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@mail.com" required><span class="error"></span></div>
               <div class="campo"><label for="celular">Celular</label><input id="celular" name="celular" type="tel" autocomplete="tel" placeholder="11 2345 6789" required><span class="error"></span></div>
-              <div class="campo ancho" id="campo-corredor" hidden><label for="corredor">¿A quién acompañás? (opcional)</label><input id="corredor" name="corredor" placeholder="Nombre o número de dorsal"></div>
-              <div class="campo ancho" id="campo-talle"><span class="rotulo" id="r-talle">Talle de remera</span>
+              <div class="campo ancho" id="campo-talle"><span class="rotulo" id="r-talle">Talle de remera del kit</span>
                 <div class="talles" role="radiogroup" aria-labelledby="r-talle">
                   <label><input type="radio" name="talle" value="XS" id="t-xs"><span>XS</span></label>
                   <label><input type="radio" name="talle" value="S" id="t-s"><span>S</span></label>
@@ -778,13 +872,17 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 
           <fieldset class="paso-form" data-paso="2" hidden style="border:0;margin:0;padding:0">
             <h3>Acompañantes</h3>
-            <p class="ayuda">No corren, pero son parte: recorren el pre, te escriben desde las terminales de mensajes y pueden sumarse al post.</p>
+            <ul class="reglas">
+              <li style="--c:var(--rosa)"><b>Hasta 2</b>por corredor</li>
+              <li style="--c:var(--azul)"><b>Sin cargo</b>al pre y la carrera</li>
+              <li style="--c:var(--crema)"><b>+$30.000</b>cada uno para el post</li>
+            </ul>
             <label class="opcion opcion--post" id="upsell" hidden>
               <input type="checkbox" id="sumar-post" name="sumar-post">
-              <span><strong>Sumarme al post (+$18.000)</strong><small>Micro Stop, los cuatro pisos del Palacio Libertad, la terraza y tu bolso esperándote en los lockers.</small></span>
+              <span><strong>Sumarme al post (+$18.000)</strong><small>Si no, al terminar la carrera podés anotarte en el stand de Stop, con cupo limitado.</small></span>
             </label>
             <div class="contador">
-              <div><strong id="acomp-titulo">Acompañantes</strong><small id="acomp-sub">Hasta 2 por corredor</small></div>
+              <div><strong>Acompañantes</strong><small>Máximo 2</small></div>
               <div class="stepper">
                 <button type="button" id="menos" aria-label="Quitar acompañante">−</button>
                 <output id="cant" aria-live="polite">0</output>
@@ -792,9 +890,22 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
               </div>
             </div>
             <div id="acomps" style="display:grid;gap:12px"></div>
+            <p class="nota">¿No los anotás ahora? Los que te queden libres los podés sumar el día de la carrera en el stand de Stop, con cupo limitado.</p>
           </fieldset>
 
-          <fieldset class="paso-form" data-paso="3" hidden style="border:0;margin:0;padding:0">
+          <fieldset class="paso-form card-muro" data-paso="3" hidden style="border:0;margin:0;padding:0">
+            <h3>¿Cómo llegás?</h3>
+            <p class="ayuda">Una palabra. Va al muro del pre y te espera en la meta.</p>
+            <div class="muro__form">
+              <label class="sr" for="muro-in">Tu palabra</label>
+              <input id="muro-in" maxlength="24" autocomplete="off" placeholder="nervios, ganas, una promesa…">
+              <button class="btn btn--oscuro" type="button" id="muro-btn">Al muro</button>
+            </div>
+            <p class="muro__estado" id="muro-estado" aria-live="polite"></p>
+            <div class="muro__nube" id="muro-nube" aria-label="Palabras del muro"></div>
+          </fieldset>
+
+          <fieldset class="paso-form" data-paso="4" hidden          <fieldset class="paso-form" data-paso="3" hidden style="border:0;margin:0;padding:0">
             <h3>Pago</h3>
             <div class="resumen" id="resumen"></div>
             <div class="campo"><span class="rotulo" id="r-metodo">Método de pago</span>
@@ -816,19 +927,22 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
             <div class="campo" id="campo-cuotas"><label for="cuotas">Cuotas</label>
               <select id="cuotas" name="cuotas"><option value="1">1 pago</option><option value="3" selected>3 cuotas sin interés</option></select></div>
             <label class="check" id="c-tyc"><input type="checkbox" id="tyc" name="tyc"><span>Acepto los <button type="button" data-abrir="dlg-tyc">términos y condiciones</button> de Stop y el reglamento de la adidas Hyper Night 10K.</span></label>
-            <label class="check" id="c-imagen"><input type="checkbox" id="imagen" name="imagen"><span>Autorizo el uso de mi imagen y la de mis acompañantes según la <button type="button" data-abrir="dlg-imagen">cesión de derechos de imagen</button>.</span></label>
+            <div class="aviso-fotos" role="note"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 13h7l3-5h10l3 5h7v20H5z"/><circle cx="20" cy="22" r="6"/></svg><span><strong>Tené en cuenta:</strong> en Stop se sacan fotos y se registra material audiovisual de toda la noche, que puede usarse en el recap y la comunicación del evento.</span></div>
             <div class="aviso-demo" role="note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg><span>Prototipo de diseño: no se cobra nada ni se guardan tus datos. En la versión real, al confirmar te llevamos a la pasarela de pago para completar los datos de la tarjeta.</span></div>
           </fieldset>
 
-          <div class="paso-form listo" data-paso="4" hidden tabindex="-1" id="listo">
-            <span class="st st--rosa" data-t="¡Nos vemos en Stop!">¡Nos vemos en Stop!</span>
-            <div class="dorsal" aria-label="Tu pase">
-              <div class="dorsal__tope"><img src="assets/logo-stop.png" alt="" width="640" height="296"><span>28.11 · PRE + POST</span></div>
-              <div class="dorsal__numero" id="d-pase" style="font-size:34px;letter-spacing:-.03em;margin:14px 0 6px">Carrera + post</div>
-              <div class="dorsal__nombre" id="d-nombre"></div>
-              <div class="dorsal__nombre" id="d-acomp" style="opacity:.6;margin-top:4px"></div>
-              <div class="dorsal__palabra" id="d-palabra" hidden></div>
-              <div class="dorsal__chip" aria-hidden="true"></div>
+          <div class="paso-form listo" data-paso="5" hidden tabindex="-1" id="listo">
+            <span class="st st--rosa">¡Nos vemos en Stop!</span>
+            <div class="dorsal" aria-label="Tu dorsal">
+              <i class="dorsal__ojal"></i><i class="dorsal__ojal"></i><i class="dorsal__ojal"></i><i class="dorsal__ojal"></i>
+              <div class="dorsal__banda"><img src="assets/logo-stop.png" alt="Stop" width="640" height="296"><span>Night 10K · 28.11</span></div>
+              <div class="dorsal__cuerpo">
+                <div class="dorsal__numero" id="d-numero">0000</div>
+                <div class="dorsal__nombre" id="d-nombre"></div>
+                <div class="dorsal__etiquetas"><span class="dorsal__cat" id="d-pase">Carrera + post</span><span class="dorsal__palabra" id="d-palabra" hidden></span></div>
+              </div>
+              <div class="dorsal__chip" aria-hidden="true">CHIP<i></i></div>
+              <div class="dorsal__talon"><span id="d-talon-a">Post · Palacio Libertad</span><span id="d-acomp"></span></div>
             </div>
             <p class="comprobante">Código de pase: <span id="d-comprobante"></span></p>
             <p id="d-texto"></p>
@@ -855,8 +969,9 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <h2 class="titulo-seccion" id="t-faq" style="margin-top:12px">Antes de la parada</h2>
       <div class="faq">
         <details><summary>¿Stop organiza la carrera?</summary><p>No: la organiza adidas, con su reglamento. Stop arma el pre y el post. Tu pase incluye el cupo en la carrera.</p></details>
-        <details><summary>¿Mis acompañantes pueden venir al post?</summary><p>Sí, con su pase, hasta 2 por corredor. Sin pase igual recorren el pre y te mandan mensajes.</p></details>
-        <details><summary>Ya corrí, ¿me puedo sumar al post en el momento?</summary><p>Sí, en el mini stand de Stop hasta las 21:30, mientras haya cupo.</p></details>
+        <details><summary>¿Cómo funcionan los acompañantes?</summary><p>Hasta 2 por corredor, sin cargo al pre y la carrera. Para el post, $30.000 cada uno. Si no los anotás ahora, el día de la carrera podés sumarlos en el stand de Stop, con cupo limitado.</p></details>
+        <details><summary>Saqué solo la carrera, ¿me puedo sumar al post?</summary><p>Sí: al terminar la carrera te anotás en el stand de Stop, con cupo limitado.</p></details>
+        <details><summary>¿Hay edad mínima?</summary><p>Sí, Stop es un evento +18.</p></details>
       </div>
     </div>
   </section>
@@ -887,31 +1002,18 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     <h2 id="t-tyc">Términos y condiciones</h2>
     <ol>
       <li>Stop organiza el pre (Parque Mujeres Argentinas), el traslado y el post (Palacio Libertad). La adidas Hyper Night 10K la organiza adidas: al correr aceptás también su reglamento, apto médico y condiciones de participación.</li>
-      <li>Para correr es obligatorio tener 16 años cumplidos al 28/11. Quienes tengan 16 o 17 años necesitan la autorización de su madre, padre o tutor. Para ingresar al post con menos de 18 años hay que ir acompañado por una persona adulta.</li>
+      <li>Stop es un evento para mayores de 18 años: corredores y acompañantes deben tener 18 años cumplidos al 28/11 y presentar DNI.</li>
       <li>El pase es personal. Se puede transferir una vez, hasta el 20/11, desde la app SPOT!.</li>
-      <li>El ingreso al post se valida con el dorsal o con el código de pase y el DNI. Los acompañantes ingresan con su propio pase y DNI, hasta dos por corredor.</li>
+      <li>Cada corredor puede sumar hasta dos acompañantes sin cargo al pre y la carrera. Para ingresar al post, cada acompañante abona $30.000. Los acompañantes no inscriptos pueden sumarse el día de la carrera en el stand de Stop, sujeto a cupo.</li>
+      <li>Quien tenga el pase Carrera puede sumarse al post al terminar la carrera en el stand de Stop, sujeto a cupo.</li>
+      <li>Durante el evento se toman fotos y se registra material audiovisual que puede usarse en el recap y la comunicación de Stop y la comunidad SPOT!.</li>
       <li>El micro de Stop circula de 20:00 a 21:00. Quien no lo tome puede llegar al Palacio Libertad por sus medios hasta las 22:00.</li>
       <li>El guardarropa recibe un bolso por persona. Stop no se responsabiliza por objetos de valor que no se declaren al dejarlo.</li>
       <li>El pase no tiene reembolso. Si el evento se reprograma, vale para la nueva fecha; si se cancela, se devuelve el valor total.</li>
-      <li>En el post se sirven bebidas alcohólicas solo a mayores de 18 años.</li>
-      <li>Stop puede negar el ingreso o retirar a quien ponga en riesgo su seguridad o la de otras personas.</li>
+            <li>Stop puede negar el ingreso o retirar a quien ponga en riesgo su seguridad o la de otras personas.</li>
     </ol>
   </div>
   <div class="legal__pie"><button class="btn btn--oscuro" type="button" data-aceptar="tyc">Leí y acepto</button></div>
-</dialog>
-<dialog class="legal" id="dlg-imagen" aria-labelledby="t-img">
-  <div class="legal__cuerpo">
-    <h2 id="t-img">Cesión de derechos de imagen</h2>
-    <p>Un equipo registra toda la experiencia: clips en el pre, fotos en el recorrido y el post, y la cabina de fotos del piso 2. Con ese material se arma el recap de la noche.</p>
-    <ol>
-      <li>Autorizás a Stop y a la comunidad SPOT! a usar, sin cargo, las fotos, videos y audios en los que aparezcas durante el evento, incluidos los clips previos a la largada y los mensajes de las terminales.</li>
-      <li>El material se usa en el recap audiovisual, la app SPOT!, redes sociales y la comunicación de próximas ediciones, en medios digitales e impresos.</li>
-      <li>Tus fotos se publican en la galería oficial asociadas a tu número de dorsal para que puedas buscarlas.</li>
-      <li>Podés pedir que se retire una imagen puntual desde tu perfil en la app SPOT!.</li>
-      <li>Al sumar acompañantes, declarás que conocen y aceptan esta autorización.</li>
-    </ol>
-  </div>
-  <div class="legal__pie"><button class="btn btn--oscuro" type="button" data-aceptar="imagen">Leí y acepto</button></div>
 </dialog>
 <script>
 (() => {
@@ -920,29 +1022,32 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const REDUCIDO = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const LARGADA = new Date('2026-11-28T19:00:00-03:00');
-  const PRECIO = { carrera: 38000, completo: 56000, post: 18000, servicio: 1900 };
-  const NOMBRE_PASE = { carrera: 'Carrera', completo: 'Carrera + post', acompanante: 'Acompañante' };
-  const peso = (n) => '$' + n.toLocaleString('es-AR');
+  const PRECIO = { carrera: 38000, completo: 56000, post: 18000, acompPost: 30000, servicio: 1900 };
+    const peso = (n) => '$' + n.toLocaleString('es-AR');
 
-  // ---------- luces de la noche (estelas planas que cruzan el hero) ----------
+  // ---------- estrellitas de STOP que titilan y suben despacio en el hero ----------
   const cv = $('#luces'), cx = cv.getContext('2d');
-  const COLORES = ['#f79ee1', '#7aa1ff', '#ede8db', '#f79ee1', '#7aa1ff'];
-  let estelas = [], W = 0, H = 0;
+  const COLORES = ['#f79ee1', '#7aa1ff', '#ede8db'];
+  let estrellas = [], W = 0, H = 0;
   function medir() {
     const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
     W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    estelas = Array.from({ length: Math.round(W / 26) }, () => nueva(true));
+    estrellas = Array.from({ length: Math.round(W * H / 9000) }, () => nueva(true));
   }
   function nueva(inicio) {
-    return { x: inicio ? Math.random() * W : -300, y: Math.random() * H, l: 60 + Math.random() * 260, v: 2 + Math.random() * 7, g: .6 + Math.random() * 2.6, a: .12 + Math.random() * .4, c: COLORES[Math.floor(Math.random() * COLORES.length)], o: (Math.random() - .5) * .25 };
+    return { x: Math.random() * W, y: inicio ? Math.random() * H : H + 20, t: 3 + Math.random() * (Math.random() < .15 ? 12 : 5), v: .1 + Math.random() * .35, g: Math.random() * 6.28, f: .01 + Math.random() * .03, rot: Math.random() * 6.28, c: COLORES[Math.floor(Math.random() * 3)], p: Math.random() < .5 ? 4 : 5 };
+  }
+  function estrella(e) {
+    const n = e.p, r1 = e.t, r2 = e.t * (n === 4 ? .32 : .45);
+    cx.beginPath();
+    for (let i = 0; i < n * 2; i++) { const a = e.rot + i * Math.PI / n, r = i % 2 ? r2 : r1; cx.lineTo(e.x + Math.cos(a) * r, e.y + Math.sin(a) * r); }
+    cx.closePath(); cx.fill();
   }
   function dibujar() {
     cx.clearRect(0, 0, W, H);
-    cx.lineCap = 'round';
-    for (const e of estelas) {
-      cx.globalAlpha = e.a; cx.strokeStyle = e.c; cx.lineWidth = e.g;
-      cx.beginPath(); cx.moveTo(e.x, e.y); cx.lineTo(e.x + e.l, e.y + e.l * e.o); cx.stroke();
-      if (!REDUCIDO) { e.x += e.v; e.y += e.v * e.o; if (e.x > W + 20) Object.assign(e, nueva(false)); }
+    for (const e of estrellas) {
+      cx.globalAlpha = .25 + .55 * (.5 + .5 * Math.sin(e.g)); cx.fillStyle = e.c; estrella(e);
+      if (!REDUCIDO) { e.g += e.f; e.y -= e.v; e.rot += .004; if (e.y < -20) Object.assign(e, nueva(false)); }
     }
     cx.globalAlpha = 1;
     if (!REDUCIDO) requestAnimationFrame(dibujar);
@@ -1050,8 +1155,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       else pintarMuro(EJEMPLOS.map((q, i) => ({ id: 'e' + i, p: q })), { ejemplos: true });
     }, () => { muroDb = null; });
   }
-  $('#muro-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
+  async function guardarPalabra() {
     const p = limpiarPalabra($('#muro-in').value);
     if (!p) { estadoMuro.textContent = 'Escribí una palabra o una frase corta.'; $('#muro-in').focus(); return; }
     miPalabra = p;
@@ -1068,7 +1172,9 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       estadoMuro.textContent = 'Tu palabra quedó en el muro de este dispositivo.';
     }
     sonarPalabra();
-  });
+  }
+  $('#muro-btn').addEventListener('click', guardarPalabra);
+  $('#muro-in').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); guardarPalabra(); } });
   function sonarPalabra() { /* un pequeño rebote visual en la nube */ if (!REDUCIDO) nube.animate({ transform: ['scale(1)', 'scale(1.02)', 'scale(1)'] }, { duration: 400 }); }
   iniciarMuro();
 
@@ -1111,40 +1217,34 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 
   // ---------- formulario por pasos ----------
   const form = $('#form');
+  const PAGO = 4, LISTO = 5, MAX_ACOMP = 2;
   let paso = 1, acompanantes = 0;
   const pasosUI = $$('#pasos li');
   const pase = () => $('input[name=pase]:checked').value;
-  const corre = () => pase() !== 'acompanante';
-  const conPost = () => !corre() || pase() === 'completo' || $('#sumar-post').checked;
-  const maxAcomp = () => (corre() ? 2 : 1);
+  const conPost = () => pase() === 'completo' || $('#sumar-post').checked;
   const metodo = () => $('input[name=metodo]:checked').value;
+  const acompsPost = () => $$('[id^=acomp-post-]').filter((c) => c.checked).length;
 
   function total() {
-    let t = (corre() ? PRECIO.carrera : 0) + PRECIO.servicio;
-    if (conPost()) t += PRECIO.post;
-    for (let i = 1; i <= acompanantes; i++) if ($(`#acomp-post-${i}`)?.checked) t += PRECIO.post;
-    return t;
+    return PRECIO.carrera + PRECIO.servicio + (conPost() ? PRECIO.post : 0) + acompsPost() * PRECIO.acompPost;
   }
 
   function mostrarPaso(n) {
     paso = n;
     $$('.paso-form', form).forEach((f) => { f.hidden = Number(f.dataset.paso) !== n; });
     pasosUI.forEach((li, i) => { li.classList.toggle('hecho', i + 1 < n); li.classList.toggle('actual', i + 1 === n); });
-    $('#atras').hidden = n === 1 || n === 4;
-    $('#nav-form').hidden = n === 4;
-    $('#pasos').hidden = n === 4;
-    if (n === 2) {
-      $('#upsell').hidden = pase() !== 'carrera';
-      while (acompanantes > maxAcomp()) acompanantes--;
-      pintarAcomps();
-    }
-    if (n === 3) pintarResumen();
-    $('#seguir').firstChild.textContent = n === 3 ? `Pagar ${peso(total())} ` : 'Seguir ';
+    $('#atras').hidden = n === 1 || n === LISTO;
+    $('#nav-form').hidden = n === LISTO;
+    $('#pasos').hidden = n === LISTO;
+    if (n === 2) { $('#upsell').hidden = pase() !== 'carrera'; pintarAcomps(); }
+    if (n === PAGO) pintarResumen();
+    $('#seguir').firstChild.textContent = n === PAGO ? `Pagar ${peso(total())} ` : n === 3 && !miPalabra && !$('#muro-in').value.trim() ? 'Saltear ' : 'Seguir ';
     const card = $('#card');
     if (card.getBoundingClientRect().top < 0) card.scrollIntoView({ behavior: REDUCIDO ? 'auto' : 'smooth', block: 'start' });
-    const foco = n === 4 ? $('#listo') : $(`[data-paso="${n}"] h3`, form);
+    const foco = n === LISTO ? $('#listo') : $(`[data-paso="${n}"] h3`, form);
     if (foco) { foco.setAttribute('tabindex', '-1'); foco.focus({ preventScroll: true }); }
   }
+  $('#muro-in').addEventListener('input', () => { if (paso === 3) $('#seguir').firstChild.textContent = !miPalabra && !$('#muro-in').value.trim() ? 'Saltear ' : 'Seguir '; });
 
   const ERR = (campo, msg) => {
     const c = campo.closest('.campo');
@@ -1175,7 +1275,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     if (el.id === 'nacimiento') {
       const e = edad(v);
       if (Number.isNaN(e)) return ERR(el, 'Escribila como dd/mm/aaaa.');
-      if (e < 16 && corre()) return ERR(el, 'Para correr tenés que tener 16 años al 28/11.');
+      if (e < 18) return ERR(el, 'Stop es +18: tenés que tener 18 años al 28/11.');
       if (e > 100) return ERR(el, 'Revisá la fecha.');
     }
     return ERR(el, '');
@@ -1187,8 +1287,8 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     const campos = $$(`[data-paso="${n}"] .campo input:not([type=radio]):not([type=checkbox]), [data-paso="${n}"] .campo select`, form).filter((el) => el.required || el.value);
     let ok = true, primero = null;
     for (const el of campos) if (!validarCampo(el)) { ok = false; primero ||= el; }
-    if (n === 3) {
-      for (const id of ['tyc', 'imagen']) {
+    if (n === PAGO) {
+      for (const id of ['tyc']) {
         const marcado = $('#' + id).checked;
         $('#c-' + id).classList.toggle('con-error', !marcado);
         if (!marcado) { ok = false; primero ||= $('#' + id); }
@@ -1198,34 +1298,31 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     return ok;
   }
 
-  // acompañantes
+  // acompañantes: hasta 2, sin cargo; el post se suma aparte por cada uno
   function pintarAcomps() {
     $('#cant').textContent = acompanantes;
     $('#menos').disabled = acompanantes === 0;
-    $('#mas').disabled = acompanantes >= maxAcomp();
-    $('#acomp-titulo').textContent = corre() ? 'Acompañantes' : 'Viene con vos';
-    $('#acomp-sub').textContent = corre() ? 'Hasta 2 por corredor' : 'Una persona más, también con pase al post';
+    $('#mas').disabled = acompanantes >= MAX_ACOMP;
     const cont = $('#acomps');
     while (cont.children.length > acompanantes) cont.lastElementChild.remove();
-    $$('[id^=acomp-post-]').forEach((c) => { if (!corre()) c.checked = true; c.disabled = !corre(); });
     for (let i = cont.children.length + 1; i <= acompanantes; i++) {
       cont.insertAdjacentHTML('beforeend',
-        `<div class="acomp"><span class="acomp__titulo"><i>${i}</i>Acompañante ${i}</span><div class="grilla">` +
+        `<div class="acomp"><span class="acomp__titulo"><i>${i}</i>Acompañante ${i} · sin cargo</span><div class="grilla">` +
         `<div class="campo"><label for="acomp-nombre-${i}">Nombre y apellido</label><input id="acomp-nombre-${i}" required><span class="error"></span></div>` +
         `<div class="campo"><label for="acomp-dni-${i}">DNI</label><input id="acomp-dni-${i}" inputmode="numeric" placeholder="Sin puntos" required><span class="error"></span></div>` +
-        `</div><label class="check"><input type="checkbox" id="acomp-post-${i}" checked${corre() ? '' : ' disabled'}><span>Se suma al post (+${peso(PRECIO.post)}). Sin pase de post igual recorre el pre y te escribe desde las terminales.</span></label></div>`);
+        `</div><label class="check"><input type="checkbox" id="acomp-post-${i}"><span>Sumarlo al post (+${peso(PRECIO.acompPost)})</span></label></div>`);
     }
   }
-  $('#mas').addEventListener('click', () => { if (acompanantes < maxAcomp()) { acompanantes++; pintarAcomps(); $(`#acomp-nombre-${acompanantes}`).focus(); } });
+  $('#mas').addEventListener('click', () => { if (acompanantes < MAX_ACOMP) { acompanantes++; pintarAcomps(); $(`#acomp-nombre-${acompanantes}`).focus(); } });
   $('#menos').addEventListener('click', () => { if (acompanantes > 0) { acompanantes--; pintarAcomps(); } });
   pintarAcomps();
 
   // pago
   function pintarResumen() {
-    const filas = [corre() ? [conPost() ? 'Pase Carrera + post' : 'Pase Carrera', peso(conPost() ? PRECIO.completo : PRECIO.carrera)] : ['Pase Acompañante', peso(PRECIO.post)]];
+    const filas = [[conPost() ? 'Pase Carrera + post' : 'Pase Carrera', peso(conPost() ? PRECIO.completo : PRECIO.carrera)]];
     for (let i = 1; i <= acompanantes; i++) {
       const n = $(`#acomp-nombre-${i}`).value.trim().split(' ')[0] || `Acompañante ${i}`;
-      filas.push([`${n} · ${$(`#acomp-post-${i}`).checked ? 'post' : 'pre y recorrido'}`, $(`#acomp-post-${i}`).checked ? peso(PRECIO.post) : 'Sin cargo']);
+      filas.push([`${n} · ${$(`#acomp-post-${i}`).checked ? 'con post' : 'pre y carrera'}`, $(`#acomp-post-${i}`).checked ? peso(PRECIO.acompPost) : 'Sin cargo']);
     }
     filas.push(['Cargo por servicio', peso(PRECIO.servicio)]);
     const t = total();
@@ -1234,18 +1331,13 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       `<div class="total"><span>Total${cuotas}</span><span>${peso(t)}</span></div>`;
     $('#seguir').firstChild.textContent = `Pagar ${peso(t)} `;
   }
-  function pintarPase() {
-    $('#campo-talle').hidden = !corre();
-    $('#campo-corredor').hidden = corre();
-  }
-  form.addEventListener('change', (e) => { if (e.target.name === 'pase') pintarPase(); });
   $$('[data-elegir]').forEach((a) => a.addEventListener('click', () => {
-    $(`input[name=pase][value="${a.dataset.elegir}"]`).checked = true; pintarPase();
-    if (paso !== 1 && paso !== 4) mostrarPaso(1);
+    $(`input[name=pase][value="${a.dataset.elegir}"]`).checked = true;
+    if (paso !== 1 && paso !== LISTO) mostrarPaso(1);
   }));
   form.addEventListener('change', (e) => {
-    if (e.target.name === 'metodo' || e.target.id === 'cuotas') { $('#campo-cuotas').hidden = metodo() !== 'credito'; if (paso === 3) pintarResumen(); }
-    if (e.target.id === 'tyc' || e.target.id === 'imagen') $('#c-' + e.target.id).classList.toggle('con-error', false);
+    if (e.target.name === 'metodo' || e.target.id === 'cuotas' || e.target.id?.startsWith('acomp-post')) { $('#campo-cuotas').hidden = metodo() !== 'credito'; if (paso === PAGO) pintarResumen(); }
+    if (e.target.id === 'tyc') $('#c-tyc').classList.toggle('con-error', false);
   });
 
   // legales
@@ -1262,7 +1354,8 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validarPaso(paso)) return;
-    if (paso < 3) { mostrarPaso(paso + 1); return; }
+    if (paso === 3 && $('#muro-in').value.trim()) guardarPalabra();
+    if (paso < PAGO) { mostrarPaso(paso + 1); return; }
     confirmar();
   });
 
@@ -1271,26 +1364,23 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     const post = conPost();
     const acomps = [];
     for (let i = 1; i <= acompanantes; i++) acomps.push({ n: $(`#acomp-nombre-${i}`).value.trim(), post: $(`#acomp-post-${i}`).checked });
-    $('#d-pase').textContent = corre() ? (post ? 'Carrera + post' : 'Carrera') : 'Acompañante';
+    $('#d-numero').textContent = String(1000 + Math.floor(Math.random() * 8999));
+    $('#d-pase').textContent = post ? 'Carrera + post' : 'Carrera';
     $('#d-nombre').textContent = nombre;
-    $('#d-acomp').textContent = acomps.length ? '+ ' + acomps.map((a) => a.n.split(' ')[0]).join(' y ') : '';
     $('#d-palabra').hidden = !miPalabra;
     $('#d-palabra').textContent = miPalabra ? `Llegás con: ${miPalabra}` : '';
+    $('#d-talon-a').textContent = post ? 'Post · Palacio Libertad' : 'Pre · Parque M. Argentinas';
+    $('#d-acomp').textContent = acomps.length ? '+ ' + acomps.map((a) => a.n.split(' ')[0] + (a.post ? ' (post)' : '')).join(' y ') : '';
     $('#d-comprobante').textContent = `STOP-${String(Math.floor(100000 + Math.random() * 899999))}`;
-    const conPostAcomp = acomps.filter((a) => a.post).length;
-    $('#d-texto').textContent =
-      (corre() ? `Te esperamos el sábado 28 de noviembre desde las 17:30 en el Parque Mujeres Argentinas. Retirá tu kit de la carrera con tu DNI y este código.`
-        : `Te esperamos el sábado 28 de noviembre desde las 17:30 en el Parque Mujeres Argentinas. Desde las terminales de Stop vas a poder escribirle a tu corredor, y después de la meta suben juntos al micro al post.`) +
-      (!corre() ? '' : post ? ` Traé una muda de ropa: después de la meta, el micro de Stop te lleva al post en el Palacio Libertad.` : ` Si te tienta el post, podés sumarte en el mini stand de Stop hasta las 21:30.`) +
-      (conPostAcomp ? ` ${conPostAcomp === 1 ? 'Tu acompañante' : 'Tus acompañantes'} también ${conPostAcomp === 1 ? 'tiene' : 'tienen'} lugar en el post.` : '');
-    mostrarPaso(4);
+    $('#d-texto').textContent = 'Sábado 28/11 desde las 17:30 en el Parque Mujeres Argentinas. Retirá tu kit (remera, dorsal y chip) con tu DNI y este código.' +
+      (post ? ' Traé una muda de ropa para el post.' : ' Si te tienta el post, al terminar la carrera te anotás en el stand de Stop, con cupo limitado.');
+    mostrarPaso(LISTO);
   }
   $('#otra').addEventListener('click', () => {
     form.reset(); acompanantes = 0; pintarAcomps();
     $$('.con-error', form).forEach((c) => c.classList.remove('con-error'));
     $$('.error', form).forEach((c) => { c.textContent = ''; });
     $('#campo-cuotas').hidden = false;
-    pintarPase();
     mostrarPaso(1);
   });
 })();
