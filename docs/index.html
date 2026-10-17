@@ -510,6 +510,8 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 .logos li:nth-child(4n) { font: 700 16px var(--f-titulo); text-transform: uppercase; letter-spacing: .1em; }
 .logos svg { height: 44px; width: auto; fill: currentColor; }
 .logos .marca-sim { width: 18px; height: 18px; }
+.logos .logo-real svg { height: 16px; }
+.logos li:first-child svg { height: 40px; }
 
 /* ---------- estrellas del hero ---------- */
 .hero canvas { opacity: .9; }
@@ -587,6 +589,83 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 .pases--dos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .listo > * { max-width: 100%; }
 .listo > .st { font-size: clamp(26px, 7.4vw, 44px); }
+
+/* ---------- misceláneas de STOP animadas (las mismas de la Cápsula del tiempo) ---------- */
+.misc { position: absolute; inset: 0; pointer-events: none; z-index: 0; --fg: var(--crema); }
+.banda--crema .misc, .banda--rosa .misc, .banda--azul .misc, .pie .misc { --fg: var(--oscuro); }
+.misc__item { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); animation: flotar var(--d, 6s) ease-in-out var(--dl, 0s) infinite alternate; }
+.misc__item svg, .tira-misc svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.misc__item svg { animation: aparecer-deco .6s var(--ease-rebote) calc(var(--i, 0) * 70ms) backwards; }
+.m-estrella svg, .m-explosion svg, .m-aro-puntos svg { animation: aparecer-deco .6s var(--ease-rebote) calc(var(--i, 0) * 70ms) backwards, girar-lento 14s linear infinite; }
+.m-explosion svg { animation-direction: normal, reverse; }
+.m-estrella-llena svg, .m-explosion-llena svg { animation: aparecer-deco .6s var(--ease-rebote) calc(var(--i, 0) * 70ms) backwards, saltito 3.2s var(--ease-rebote) calc(var(--i, 0) * -.6s) infinite; }
+.m-x-puntos svg { animation: aparecer-deco .6s var(--ease-rebote) calc(var(--i, 0) * 70ms) backwards, vaiven 4s ease-in-out infinite alternate; }
+.m-rayos svg { animation: aparecer-deco .6s var(--ease-rebote) calc(var(--i, 0) * 70ms) backwards, respirar 2.6s ease-in-out calc(var(--i, 0) * -.5s) infinite alternate; }
+.m-rayos circle:nth-child(odd) { animation: titilar 2.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.m-punto svg, .m-circulo svg { animation: aparecer-deco .6s var(--ease-rebote) calc(var(--i, 0) * 70ms) backwards, latido 2.6s ease-in-out calc(var(--i, 0) * -.4s) infinite; }
+@keyframes flotar { 0% { transform: translate(0, 0); } 50% { transform: translate(var(--fx, 4px), var(--fy, -10px)); } 100% { transform: translate(calc(var(--fx, 4px) * -1), calc(var(--fy, -10px) * -.6)); } }
+@keyframes aparecer-deco { from { transform: scale(0); } }
+@keyframes girar-lento { to { rotate: 360deg; } }
+@keyframes vaiven { from { rotate: -14deg; } to { rotate: 14deg; } }
+@keyframes respirar { from { scale: .8; } to { scale: 1.2; } }
+@keyframes titilar { 0%, 100% { opacity: .15; transform: scale(.6); } 50% { opacity: 1; transform: scale(1.2); } }
+.hero .envolver, .banner .envolver { position: relative; z-index: 2; }
+
+/* separador entre la cápsula y los pases: tira de misceláneas en movimiento */
+.tira-misc { background: var(--oscuro); overflow: hidden; padding-block: 18px; --fg: var(--crema); border-block: 3px solid var(--oscuro); }
+.tira-misc__pista { display: flex; align-items: center; gap: 34px; width: max-content; animation: desplazar 36s linear infinite; }
+.tira-misc__pista > span { flex: none; width: var(--s); height: var(--s); }
+@keyframes desplazar { to { transform: translateX(-50%); } }
+
+/* títulos con recuadro: más aire entre letras, recuadro y líneas vecinas */
+.st { padding: .1em .36em .16em; letter-spacing: -.012em; margin-block: .08em; }
+.hero__titulo .st { margin-left: .2em; }
+.titulo-seccion { line-height: 1.2; }
+
+/* cápsula: el título entra en su columna y los objetos no pisan el texto */
+.capsula { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.capsula__texto { position: relative; z-index: 2; }
+#t-capsula { font-size: clamp(30px, 4vw, 48px); }
+.capsulas { margin-inline: 0; }
+.cap--botella { width: 40%; margin-right: -13%; }
+.cap--trofeo { width: 44%; }
+.cap--zapatilla { width: 50%; margin-left: -15%; }
+@media (max-width: 820px) { .capsula { grid-template-columns: minmax(0, 1fr); } }
+
+/* itinerario: el texto va debajo de la foto */
+.estacion__cont { grid-template-columns: minmax(0, 1fr); max-width: 560px; gap: 14px; align-items: start; }
+
+/* ---------- qué es stop: composición centrada, caritas sueltas ---------- */
+.banner__centro { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; max-width: 900px; gap: 26px; }
+.banner__texto { justify-items: center; }
+.banner__fila { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: clamp(24px, 5vw, 64px); margin-top: 10px; }
+.banner .cartel__tabla { text-align: left; }
+.banner .bajada { max-width: 46ch; }
+.carita { position: absolute; z-index: 1; left: var(--x); top: var(--y); width: var(--s); height: auto; rotate: var(--r, 0deg); animation: flotar-carita 5s ease-in-out var(--dl, 0s) infinite alternate; filter: drop-shadow(4px 5px 0 rgba(0, 0, 0, .35)); }
+@keyframes flotar-carita { from { translate: 0 0; rotate: var(--r, 0deg); } to { translate: 6px -14px; rotate: calc(var(--r, 0deg) + 8deg); } }
+@media (max-width: 760px) { .carita { width: calc(var(--s) * .55); } .carita--fuera { display: none; } }
+
+/* ---------- el circuito en la escala del mapa original ---------- */
+.mapa .calles path { stroke-width: 1.2; stroke: rgba(237, 232, 219, .08); }
+.mapa .calles .avenida { stroke-width: 2.6; stroke: rgba(237, 232, 219, .2); }
+.mapa .verde { fill: rgba(122, 161, 255, .08); }
+.mapa .rotulos text { font: 700 7.5px var(--f-mono); letter-spacing: .06em; fill: rgba(237, 232, 219, .42); }
+.mapa .rotulos .agua-txt { font-size: 8px; fill: rgba(237, 232, 219, .72); }
+.mapa .rotulos .cursiva { font: italic 600 11px var(--f-texto); letter-spacing: 0; }
+.mapa .rotulos .verde-txt { fill: rgba(122, 161, 255, .9); font-size: 7.5px; }
+.banda > .envolver { position: relative; z-index: 1; }
+.estacion__cont { max-width: 480px; }
+.mapa .ruta-borde { stroke-width: 8; stroke-linejoin: round; }
+.mapa .ruta { stroke-width: 4.2; stroke-linejoin: round; }
+.mapa .bus { stroke-width: 2.2; stroke-dasharray: 1 6; }
+.mapa #corredor { stroke-width: 2.2; }
+.mapa .pin circle { stroke-width: 2.2; }
+.mapa .pin--largada circle { r: 7.5; }
+.mapa .pin rect { stroke-width: 1; }
+.mapa .pin text { font-size: 7px; }
+.mapa .pin .grande { font-size: 11.5px; }
+.mapa .pin--km rect { stroke-width: 1.6; }
+.mapa .pin--km text { font-size: 8px; }
 .con-logo svg { height: 18px; width: auto; fill: currentColor; }
 .sponsor { display: inline-flex; align-items: center; gap: 12px; }
 .sponsor svg { height: 34px; width: auto; fill: currentColor; }
@@ -620,9 +699,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 <main id="inicio">
   <!-- ============ HERO ============ -->
   <section class="hero" aria-labelledby="t-hero">
-    <canvas id="luces" aria-hidden="true"></canvas>
-    <span class="deco gira" style="right:5%;top:3%;width:52px;height:52px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#explosion" fill="var(--rosa)" stroke="var(--crema)" stroke-width="3"/></svg></span>
-    <span class="deco late" style="left:2%;bottom:4%;width:80px;height:80px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#rayos" fill="var(--crema)"/></svg></span>
+    <div class="misc" data-semilla="3" data-n="14" aria-hidden="true"></div>
     <div class="envolver hero__grilla">
       <div class="hero__texto">
         <div class="hero__tope">
@@ -637,7 +714,6 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         <p class="bajada" style="color:var(--crema)">Vos corrés la 10K. Nosotros armamos el antes y el después.</p>
         <div class="hero__datos">
           <span class="chip"><b>Sáb</b>28 de noviembre</span>
-          <span class="chip"><b>Largada</b>19:00 h</span>
           <span class="chip"><b>Dónde</b>Puerto Madero</span>
         </div>
         <div class="hero__acciones">
@@ -665,34 +741,35 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 
   <!-- ============ QUÉ ES STOP: banner con la señal de la parada ============ -->
   <section class="banner" id="que-es" aria-labelledby="t-que">
-    <div class="blob" style="left:-46px;top:6%;--t:200px;--c:var(--azul);--r:-8deg;--dl:0s" aria-hidden="true"><img src="assets/sonadora-rosa.png" alt=""></div>
-    <div class="blob" style="right:-30px;top:-34px;--t:190px;--c:var(--crema);--r:10deg;--dl:-1.5s" aria-hidden="true"><img src="assets/gafas-azul.png" alt=""></div>
-    <div class="blob" style="left:6%;bottom:-60px;--t:160px;--c:var(--rosa);--r:6deg;--dl:-3s" aria-hidden="true"><img src="assets/dormida-crema.png" alt=""></div>
-    <div class="blob" style="right:-50px;bottom:12%;--t:210px;--c:var(--rosa);--r:-12deg;--dl:-2s" aria-hidden="true"><img src="assets/puntos-azul.png" alt=""></div>
-    <div class="blob" style="left:38%;top:-70px;--t:140px;--c:var(--crema);--r:4deg;--dl:-4s" aria-hidden="true"><span>META</span></div>
-    <div class="blob" style="right:22%;bottom:-70px;--t:150px;--c:var(--azul);--r:-4deg;--dl:-1s" aria-hidden="true"><img src="assets/canchera-rosa.png" alt=""></div>
+    <div class="misc" data-semilla="7" data-n="10" aria-hidden="true"></div>
+    <img class="carita " src="assets/sonadora-rosa.png" alt="" aria-hidden="true" style="--x:4%;--y:10%;--s:128px;--r:-10deg;--dl:0s">
+    <img class="carita " src="assets/gafas-azul.png" alt="" aria-hidden="true" style="--x:84%;--y:8%;--s:120px;--r:12deg;--dl:-1.4s">
+    <img class="carita carita--fuera" src="assets/dormida-crema.png" alt="" aria-hidden="true" style="--x:8%;--y:66%;--s:110px;--r:8deg;--dl:-2.6s">
+    <img class="carita carita--fuera" src="assets/puntos-azul.png" alt="" aria-hidden="true" style="--x:86%;--y:60%;--s:124px;--r:-8deg;--dl:-.8s">
+    <img class="carita carita--fuera" src="assets/canchera-rosa.png" alt="" aria-hidden="true" style="--x:20%;--y:36%;--s:84px;--r:-4deg;--dl:-3.2s">
+    <img class="carita carita--fuera" src="assets/estrella-rosa.png" alt="" aria-hidden="true" style="--x:74%;--y:34%;--s:96px;--r:10deg;--dl:-2s">
     <div class="envolver banner__centro">
-      <div class="senal" aria-hidden="true">
-        <div class="senal__octo"><div class="senal__aro"><div class="senal__cara"><img src="assets/logo-stop.png" alt="" width="640" height="296"></div></div></div>
-        <div class="senal__poste"></div>
-      </div>
-      <div class="banner__texto">
-        <span class="kicker" style="color:var(--rosa)">Qué es Stop</span>
-        <h2 class="titulo-seccion" id="t-que">Vos corrés.<br>Stop es <span class="st st--rosa">la parada.</span></h2>
+      <span class="kicker" style="color:var(--rosa)">Qué es Stop</span>
+      <h2 class="titulo-seccion" id="t-que">Vos corrés.<br>Stop es <span class="st st--rosa">la parada.</span></h2>
+      <div class="banner__fila">
+        <div class="senal" aria-hidden="true">
+          <div class="senal__octo"><div class="senal__aro"><div class="senal__cara"><img src="assets/logo-stop.png" alt="" width="640" height="296"></div></div></div>
+          <div class="senal__poste"></div>
+        </div>
         <div class="cartel__tabla" id="cartel" role="img" aria-label="Horarios: pre 17:30, largada 19:00, post 20:15">
           <p>Próximas salidas · 28/11</p>
           <div class="cartel__fila" style="--c:var(--rosa)"><span class="flap" data-v="17:30"></span><b>PRE</b><i>Parque Mujeres Arg.</i></div>
           <div class="cartel__fila" style="--c:var(--azul)"><span class="flap" data-v="19:00"></span><b>10K</b><i>Largada</i></div>
           <div class="cartel__fila" style="--c:var(--crema)"><span class="flap" data-v="20:15"></span><b>POST</b><i>Palacio Libertad</i></div>
         </div>
-        <p class="bajada">El evento de la comunidad SPOT! que arma el antes y el después de la carrera nocturna.</p>
       </div>
+      <p class="bajada">El evento de la comunidad SPOT! que arma el antes y el después de la carrera nocturna.</p>
     </div>
   </section>
 
   <!-- ============ LA LÍNEA: el recorrido de la experiencia ============ -->
   <section class="banda banda--noche" id="linea" aria-labelledby="t-linea">
-    <span class="deco late" style="right:5%;top:40px;width:70px;height:70px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#x-puntos" fill="var(--crema)" opacity=".5"/></svg></span>
+    <div class="misc" data-semilla="11" data-n="6" data-y0="2" data-y1="30" aria-hidden="true"></div>
     <div class="envolver">
       <span class="kicker" style="color:var(--rosa)">Cronograma · 7 paradas</span>
       <h2 class="titulo-seccion" id="t-linea">El itinerario de <span class="st st--azul">la mejor noche</span> del año</h2>
@@ -744,41 +821,27 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         </ul>
       </div>
       <figure class="mapa" id="mapa" style="margin:0">
-        <svg viewBox="0 0 740 865" role="img" aria-label="Circuito de la carrera de 10 km: largada y llegada en el Parque Mujeres Argentinas, vuelta por Puerto Madero y la Costanera Sur, y micro de Stop al Palacio Libertad">
-          <g class="calles">
-            <path d="M0 75H330M0 217H330M0 640H260M0 30H200M0 128H330M0 170H330M0 262H215M0 307H215M0 350H215M0 470H200M0 515H200M0 560H200M0 600H200M0 690H200M0 735H200M0 780H200M0 825H200"/>
-            <path d="M50 0V865M100 0V865M150 0V865"/>
-            <path class="avenida" d="M213 0L256 865M200 360V865M352 0L392 250M480 680L560 770L592 865"/>
-          </g>
-          <path class="verde" d="M352 0H585C612 70 650 150 700 220C715 245 730 262 740 270V640C650 668 560 682 485 672L462 645L428 410L392 250Z"/>
-          <path class="verde" d="M300 86H340L364 650H306Z" opacity=".6"/>
-          <g class="agua">
-            <path d="M585 0H740V272C700 262 668 220 645 168C625 118 600 60 585 0Z"/>
-            <path d="M470 118C540 102 610 128 645 175C664 205 658 262 640 300C620 340 575 360 520 355C460 350 425 315 414 270C404 225 420 145 470 118Z"/>
-            <path d="M500 362C560 352 620 372 632 420C640 470 625 530 598 575C578 605 546 616 520 600C480 575 455 520 452 460C450 410 465 370 500 362Z"/>
-            <rect x="220" y="-20" width="73" height="83" rx="12"/>
-            <rect x="227" y="88" width="65" height="235" rx="12"/>
-            <rect x="240" y="345" width="60" height="135" rx="12"/>
-            <rect x="253" y="500" width="59" height="150" rx="12"/>
-            <path d="M283 673H338Q348 673 350 683L362 880H292L276 685Q275 673 283 673Z"/>
-          </g>
+        <svg viewBox="20 20 418 668" role="img" aria-label="Circuito de la carrera de 10 km por Puerto Madero y la Costanera Sur: largada y llegada en el Parque Mujeres Argentinas, y micro de Stop al Palacio Libertad">
+          <path class="verde" d="M205 0H480V708H300L262 652L250 560L240 470L232 400L215 300L200 120Z"/>
+          <g class="calles"><path d="M0 20H130 M0 63H160 M0 100H140 M0 140H135 M0 175H140 M0 215H135 M0 255H135 M0 295H135 M0 338H135 M0 385H135 M0 420H135 M0 460H140 M0 495H150 M0 535H150 M0 575H150 M0 615H150 M0 655H150 M22 0V708 M48 0V708 M74 0V708"/><path class="avenida" d="M112 0L140 708M178 0L262 708"/></g>
+          <g class="agua"><path d="M93 -20C79 -15 93 2 95 8C97 14 101 13 104 16C107 19 106 21 111 24C116 27 128 31 133 32C138 33 131 33 140 32C149 31 178 27 186 24C194 21 186 19 186 16C186 13 187 14 186 8C185 2 196 -15 181 -20C166 -25 107 -25 93 -20Z"/><path d="M387 -20C374 -15 390 2 393 8C396 14 401 13 404 16C407 19 409 21 411 24C413 27 414 29 415 32C416 35 416 37 418 40C420 43 422 45 424 48C426 51 430 53 433 56C436 59 437 62 439 64C441 66 439 67 444 68C449 69 465 69 469 68C473 67 469 66 469 64C469 62 469 59 469 56C469 53 469 51 469 48C469 45 469 43 469 40C469 37 469 35 469 32C469 29 469 27 469 24C469 21 469 19 469 16C469 13 469 14 469 8C469 2 483 -15 469 -20C455 -25 400 -25 387 -20Z"/><path d="M136 75C130 76 124 80 122 83C120 86 122 88 122 91C122 94 122 96 122 99C122 102 124 104 124 107C124 110 124 112 124 115C124 118 125 120 125 123C125 126 125 128 125 131C125 134 126 136 126 139C126 142 128 144 128 147C128 150 129 152 129 155C129 158 130 160 130 163C130 166 131 168 131 171C131 174 131 176 131 179C131 182 132 184 132 187C132 190 133 192 133 195C133 198 134 200 134 203C134 206 135 209 135 211C135 213 134 214 136 214C138 214 141 214 147 214C153 214 167 213 171 211C175 209 171 206 171 203C171 200 170 198 170 195C170 192 169 190 169 187C169 184 168 182 168 179C168 176 167 174 167 171C167 168 167 166 167 163C167 160 166 158 166 155C166 152 165 150 165 147C165 144 165 142 165 139C165 136 164 134 164 131C164 128 163 126 163 123C163 120 163 118 163 115C163 112 162 110 162 107C162 104 161 102 161 99C161 96 160 94 160 91C160 88 160 86 160 83C160 80 162 76 158 75C154 74 142 74 136 75Z"/><path d="M320 96C316 97 309 101 306 104C303 107 302 109 300 112C298 115 296 117 292 120C288 123 282 125 279 128C276 131 275 133 274 136C273 139 274 141 274 144C274 147 276 149 277 152C278 155 280 157 281 160C282 163 282 165 283 168C284 171 285 173 286 176C287 179 287 181 287 184C287 187 288 189 288 192C288 195 289 197 290 200C291 203 291 205 292 208C293 211 294 213 295 216C296 219 297 221 298 224C299 227 300 229 301 232C302 235 303 237 304 240C305 243 307 245 308 248C309 251 309 253 310 256C311 259 312 261 313 264C314 267 313 269 313 272C313 275 313 277 314 280C315 283 316 285 317 288C318 291 322 293 317 296C312 299 291 301 286 304C281 307 285 309 285 312C285 315 286 317 287 320C288 323 288 325 289 328C290 331 291 333 292 336C293 339 293 341 294 344C295 347 295 349 296 352C297 355 297 357 298 360C299 363 299 365 300 368C301 371 302 373 302 376C302 379 303 381 302 384C301 387 297 389 297 392C297 395 299 397 301 400C303 403 309 405 311 408C313 411 312 413 313 416C314 419 314 421 316 424C318 427 324 429 326 432C328 435 327 437 326 440C325 443 322 445 322 448C322 451 323 453 324 456C325 459 325 461 326 464C327 467 327 469 328 472C329 475 329 477 330 480C331 483 332 485 333 488C334 491 334 493 335 496C336 499 330 502 339 504C348 506 379 508 390 509C401 510 399 510 403 509C407 508 411 506 413 504C415 502 415 499 416 496C417 493 417 491 418 488C419 485 420 483 420 480C420 477 421 475 421 472C421 469 421 467 421 464C421 461 422 459 423 456C424 453 426 451 426 448C426 445 426 443 426 440C426 437 427 435 427 432C427 429 427 427 427 424C427 421 427 419 428 416C429 413 431 411 433 408C435 405 436 403 442 400C448 397 464 395 469 392C474 389 469 387 469 384C469 381 469 379 469 376C469 373 469 371 469 368C469 365 469 363 469 360C469 357 469 355 469 352C469 349 469 347 469 344C469 341 474 339 469 336C464 333 447 331 442 328C437 325 439 323 438 320C437 317 446 315 434 312C422 309 376 307 367 304C358 301 377 299 380 296C383 293 384 291 387 288C390 285 397 283 401 280C405 277 409 275 413 272C417 269 423 267 425 264C427 261 425 259 425 256C425 253 426 251 427 248C428 245 428 243 428 240C428 237 428 235 428 232C428 229 427 227 426 224C425 221 425 219 424 216C423 213 422 211 421 208C420 205 421 203 418 200C415 197 405 195 401 192C397 189 394 187 392 184C390 181 388 179 387 176C386 173 385 171 384 168C383 165 383 163 383 160C383 157 384 155 384 152C384 149 386 147 386 144C386 141 387 139 387 136C387 133 388 131 387 128C386 125 384 123 381 120C378 117 376 115 371 112C366 109 358 107 351 104C344 101 333 97 328 96C323 95 324 95 320 96Z"/><path d="M154 236C149 237 141 241 138 244C135 247 138 249 138 252C138 255 138 257 138 260C138 263 140 265 140 268C140 271 140 273 140 276C140 279 141 281 141 284C141 287 142 289 142 292C142 295 142 297 142 300C142 303 142 305 143 308C144 311 146 313 146 316C146 319 145 321 145 324C145 327 145 329 145 332C145 335 146 337 147 340C148 343 149 345 149 348C149 351 149 353 149 356C149 359 149 361 149 364C149 367 150 369 150 372C150 375 150 377 150 380C150 383 148 386 151 388C154 390 162 394 166 395C170 396 170 396 173 395C176 394 184 390 186 388C188 386 186 383 186 380C186 377 186 375 186 372C186 369 186 367 186 364C186 361 184 359 184 356C184 353 184 351 184 348C184 345 184 343 184 340C184 337 182 335 181 332C180 329 181 327 181 324C181 321 181 319 181 316C181 313 181 311 181 308C181 305 181 303 180 300C179 297 182 295 177 292C172 289 151 287 151 284C151 281 173 279 177 276C181 273 176 271 176 268C176 265 176 263 176 260C176 257 175 255 175 252C175 249 175 247 174 244C173 241 170 237 167 236C164 235 159 235 154 236Z"/><path d="M168 411C162 412 157 416 155 419C153 422 157 424 157 427C157 430 157 432 157 435C157 438 156 440 156 443C156 446 156 448 156 451C156 454 156 456 156 459C156 462 158 464 158 467C158 470 158 472 158 475C158 478 160 480 160 483C160 486 161 488 161 491C161 494 161 496 161 499C161 502 163 504 163 507C163 510 163 512 163 515C163 518 164 520 164 523C164 526 164 528 164 531C164 534 165 537 165 539C165 541 162 541 166 541C170 541 182 541 188 541C194 541 198 541 200 539C202 537 200 534 200 531C200 528 199 526 199 523C199 520 199 518 199 515C199 512 198 510 198 507C198 504 197 502 197 499C197 496 197 494 197 491C197 488 195 486 195 483C195 480 195 478 195 475C195 472 194 470 193 467C192 464 192 462 192 459C192 456 192 454 192 451C192 448 193 446 193 443C193 440 193 438 193 435C193 432 192 430 192 427C192 424 191 422 190 419C189 416 192 412 188 411C184 410 174 410 168 411Z"/><path d="M183 559C177 560 170 564 168 567C166 570 168 572 168 575C168 578 170 580 170 583C170 586 170 588 170 591C170 594 171 596 171 599C171 602 172 604 172 607C172 610 172 612 172 615C172 618 173 620 173 623C173 626 174 628 174 631C174 634 175 636 175 639C175 642 175 644 175 647C175 650 176 652 176 655C176 658 177 660 177 663C177 666 178 668 178 671C178 674 179 676 179 679C179 682 179 685 179 687C179 689 177 690 179 690C181 690 187 690 193 690C199 690 212 689 216 687C220 685 216 682 216 679C216 676 214 674 214 671C214 668 214 666 214 663C214 660 213 658 213 655C213 652 212 650 212 647C212 644 210 642 210 639C210 636 210 634 210 631C210 628 210 626 210 623C210 620 210 618 210 615C210 612 209 610 209 607C209 604 208 602 208 599C208 596 208 594 207 591C206 588 205 586 205 583C205 580 205 578 205 575C205 572 206 570 205 567C204 564 206 560 202 559C198 558 189 558 183 559Z"/></g>
           <g class="rotulos">
-            <text x="10" y="68">Av. Córdoba</text><text x="10" y="210">Av. Corrientes</text><text x="10" y="632">Av. Independencia</text>
-            <text x="28" y="392">Plaza de Mayo</text><text x="125" y="372">Puente de la Mujer</text><text x="158" y="20">Puerto Madero</text>
-            <text class="agua-txt" x="534" y="236" text-anchor="middle">Laguna de</text><text class="agua-txt" x="534" y="254" text-anchor="middle">las Gaviotas</text>
-            <text class="agua-txt" x="545" y="470" text-anchor="middle">Laguna de</text><text class="agua-txt" x="545" y="488" text-anchor="middle">los Patos</text>
-            <text class="agua-txt cursiva" x="715" y="38" text-anchor="end">Río de la Plata</text>
-            <text class="agua-txt cursiva" x="262" y="210" transform="rotate(84 262 210)">Río Dique</text>
-            <text class="agua-txt cursiva" x="302" y="720" transform="rotate(84 302 720)">Dársena Sur</text>
-            <text class="verde-txt" x="560" y="640">Reserva Ecológica</text><text class="verde-txt" x="560" y="657">Costanera Sur</text>
+            <text x="26" y="58">AV. CÓRDOBA</text><text x="26" y="170">AV. CORRIENTES</text><text x="26" y="490">AV. INDEPENDENCIA</text>
+            <text x="150" y="282">PUENTE DE LA MUJER</text>
+            <text class="agua-txt" x="352" y="168" transform="rotate(76 352 168)">LAGUNA DE LAS GAVIOTAS</text>
+            <text class="agua-txt" x="372" y="352" transform="rotate(80 372 352)">LAGUNA DE LOS PATOS</text>
+            <text class="agua-txt cursiva" x="440" y="44" text-anchor="end">Río de la Plata</text>
+            <text class="agua-txt cursiva" x="150" y="130" transform="rotate(86 150 130)">Río Dique</text>
+            <text class="agua-txt cursiva" x="186" y="600" transform="rotate(86 186 600)">Dársena Sur</text>
+            <text class="verde-txt" x="345" y="600">RESERVA</text><text class="verde-txt" x="345" y="612">ECOLÓGICA</text>
           </g>
-          <path class="bus" d="M345 437C300 420 240 360 190 262"/>
-          <path class="ruta-borde" d="M345 437 C343.2 430.8 337.2 415.3 334 400 C330.8 384.7 328.5 365.0 326 345 C323.5 325.0 320.3 304.2 319 280 C317.7 255.8 318.2 228.0 318 200 C317.8 172.0 317.0 130.3 318 112 C319.0 93.7 321.0 95.0 324 90 C327.0 85.0 332.3 81.7 336 82 C339.7 82.3 343.0 85.3 346 92 C349.0 98.7 351.3 110.7 354 122 C356.7 133.3 359.0 139.5 362 160 C365.0 180.5 368.5 215.8 372 245 C375.5 274.2 382.8 334.5 383 335 C383.2 335.5 376.0 273.5 373 248 C370.0 222.5 363.8 187.5 365 182 C366.2 176.5 374.2 198.7 380 215 C385.8 231.3 393.3 257.5 400 280 C406.7 302.5 414.8 326.7 420 350 C425.2 373.3 427.7 398.3 431 420 C434.3 441.7 436.8 456.7 440 480 C443.2 503.3 446.3 533.3 450 560 C453.7 586.7 456.7 621.7 462 640 C467.3 658.3 479.3 661.7 482 670 C484.7 678.3 491.3 671.7 478 690 C464.7 708.3 416.7 764.0 402 780 C387.3 796.0 397.0 787.3 390 786 C383.0 784.7 367.2 778.3 360 772 C352.8 765.7 349.2 762.0 347 748 C344.8 734.0 345.2 702.0 347 688 C348.8 674.0 352.7 669.7 358 664 C363.3 658.3 374.8 660.0 379 654 C383.2 648.0 382.2 637.7 383 628 C383.8 618.3 383.2 606.3 384 596 C384.8 585.7 385.0 574.3 388 566 C391.0 557.7 397.0 554.3 402 546 C407.0 537.7 414.5 524.7 418 516 C421.5 507.3 424.0 500.0 423 494 C422.0 488.0 420.8 482.0 412 480 C403.2 478.0 372.0 483.0 370 482 C368.0 481.0 394.7 477.3 400 474 C405.3 470.7 403.0 466.0 402 462 C401.0 458.0 399.0 453.2 394 450 C389.0 446.8 380.2 445.2 372 443 C363.8 440.8 349.5 438.0 345 437"/>
-          <path class="ruta" id="ruta" pathLength="1000" d="M345 437 C343.2 430.8 337.2 415.3 334 400 C330.8 384.7 328.5 365.0 326 345 C323.5 325.0 320.3 304.2 319 280 C317.7 255.8 318.2 228.0 318 200 C317.8 172.0 317.0 130.3 318 112 C319.0 93.7 321.0 95.0 324 90 C327.0 85.0 332.3 81.7 336 82 C339.7 82.3 343.0 85.3 346 92 C349.0 98.7 351.3 110.7 354 122 C356.7 133.3 359.0 139.5 362 160 C365.0 180.5 368.5 215.8 372 245 C375.5 274.2 382.8 334.5 383 335 C383.2 335.5 376.0 273.5 373 248 C370.0 222.5 363.8 187.5 365 182 C366.2 176.5 374.2 198.7 380 215 C385.8 231.3 393.3 257.5 400 280 C406.7 302.5 414.8 326.7 420 350 C425.2 373.3 427.7 398.3 431 420 C434.3 441.7 436.8 456.7 440 480 C443.2 503.3 446.3 533.3 450 560 C453.7 586.7 456.7 621.7 462 640 C467.3 658.3 479.3 661.7 482 670 C484.7 678.3 491.3 671.7 478 690 C464.7 708.3 416.7 764.0 402 780 C387.3 796.0 397.0 787.3 390 786 C383.0 784.7 367.2 778.3 360 772 C352.8 765.7 349.2 762.0 347 748 C344.8 734.0 345.2 702.0 347 688 C348.8 674.0 352.7 669.7 358 664 C363.3 658.3 374.8 660.0 379 654 C383.2 648.0 382.2 637.7 383 628 C383.8 618.3 383.2 606.3 384 596 C384.8 585.7 385.0 574.3 388 566 C391.0 557.7 397.0 554.3 402 546 C407.0 537.7 414.5 524.7 418 516 C421.5 507.3 424.0 500.0 423 494 C422.0 488.0 420.8 482.0 412 480 C403.2 478.0 372.0 483.0 370 482 C368.0 481.0 394.7 477.3 400 474 C405.3 470.7 403.0 466.0 402 462 C401.0 458.0 399.0 453.2 394 450 C389.0 446.8 380.2 445.2 372 443 C363.8 440.8 349.5 438.0 345 437"/>
-          <circle id="corredor" r="9" cx="345" cy="437"/>
-          <g class="pin pin--post" transform="translate(190 262)"><circle r="10"/><rect x="-150" y="-50" width="190" height="34" rx="17"/><text x="-136" y="-28">POST · PALACIO LIBERTAD</text></g>
-          <g class="pin pin--largada" transform="translate(345 437)"><circle r="12"/><rect x="-292" y="-6" width="270" height="56" rx="14"/><text class="grande" x="-276" y="17">Largada y llegada</text><text x="-276" y="38">PARQUE MUJERES ARGENTINAS</text></g>
-          <g class="pin pin--km" transform="translate(470 545)"><rect x="0" y="0" width="166" height="36" rx="18"/><text x="18" y="23">CARRERA · 10 KM</text></g>
+          <path class="bus" d="M210 330C170 300 120 240 100 165"/>
+          <path class="ruta-borde" d="M210 330 L232 345 L250 353 L267 365 L280 367 L285 383 L283 387 L237 392 L233 397 L238 399 L293 398 L295 410 L270 430 L255 450 L252 470 L260 497 L265 520 L268 533 L230 540 L225 547 L232 553 L237 633 L257 633 L242 628 L237 556 L275 548 L280 630 L262 652 L338 553 L335 530 L305 525 L300 470 L296 410 L292 370 L280 310 L260 243 L242 170 L220 130 L203 53 L195 50 L192 58 L257 288 L192 58 L185 50 L190 100 L200 215 L222 216 L222 222 L201 224 L210 330"/>
+          <path class="ruta" id="ruta" pathLength="1000" d="M210 330 L232 345 L250 353 L267 365 L280 367 L285 383 L283 387 L237 392 L233 397 L238 399 L293 398 L295 410 L270 430 L255 450 L252 470 L260 497 L265 520 L268 533 L230 540 L225 547 L232 553 L237 633 L257 633 L242 628 L237 556 L275 548 L280 630 L262 652 L338 553 L335 530 L305 525 L300 470 L296 410 L292 370 L280 310 L260 243 L242 170 L220 130 L203 53 L195 50 L192 58 L257 288 L192 58 L185 50 L190 100 L200 215 L222 216 L222 222 L201 224 L210 330"/>
+          <circle id="corredor" r="5.5" cx="210" cy="330"/>
+          <g class="pin pin--post" transform="translate(100 165)"><circle r="6"/><rect x="-74" y="-34" width="126" height="20" rx="10"/><text x="-66" y="-20">POST · PALACIO LIBERTAD</text></g>
+          <g class="pin pin--largada" transform="translate(210 330)"><circle r="7.5"/><rect x="-176" y="2" width="164" height="34" rx="9"/><text class="grande" x="-167" y="17">Largada y llegada</text><text x="-167" y="30">PARQUE MUJERES ARGENTINAS</text></g>
+          <g class="pin pin--km" transform="translate(318 446)"><rect x="0" y="0" width="98" height="22" rx="11"/><text x="11" y="15">CARRERA · 10 KM</text></g>
         </svg>
       </figure>
     </div>
@@ -803,6 +866,8 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   </section>
 
   <!-- ============ PASES ============ -->
+  <div class="tira-misc" aria-hidden="true"><div class="tira-misc__pista" id="tira-misc"></div></div>
+
   <section class="banda banda--crema" aria-labelledby="t-precios" style="padding-block:72px">
     <div class="envolver">
       <span class="kicker">Pases</span>
@@ -978,8 +1043,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 </main>
 
 <footer class="pie">
-  <span class="deco gira" style="right:6%;top:30px;width:90px;height:90px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#explosion" fill="var(--crema)" stroke="var(--oscuro)" stroke-width="3"/></svg></span>
-  <span class="deco late" style="right:26%;top:36px;width:56px;height:56px" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#x-puntos" fill="var(--oscuro)"/></svg></span>
+  <div class="misc" data-semilla="5" data-n="6" data-y0="4" data-y1="40" aria-hidden="true"></div>
   <div class="envolver">
     <div class="pie__grande">
       <h2 class="pie__titulo"><span class="st st--azul" data-t="Seguí,">Seguí,</span><span class="st st--crema" data-t="que alguien te espera">que alguien te espera</span><span class="st st--azul" data-t="en la parada.">en la parada.</span></h2>
@@ -1025,35 +1089,47 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   const PRECIO = { carrera: 38000, completo: 56000, post: 18000, acompPost: 30000, servicio: 1900 };
     const peso = (n) => '$' + n.toLocaleString('es-AR');
 
-  // ---------- estrellitas de STOP que titilan y suben despacio en el hero ----------
-  const cv = $('#luces'), cx = cv.getContext('2d');
-  const COLORES = ['#f79ee1', '#7aa1ff', '#ede8db'];
-  let estrellas = [], W = 0, H = 0;
-  function medir() {
-    const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
-    W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    estrellas = Array.from({ length: Math.round(W * H / 9000) }, () => nueva(true));
+  // ---------- misceláneas de STOP (estrellas, explosión, X y rayos de puntos, aro punteado) ----------
+  const estrellaPath = (puntas, rExt, rInt) => Array.from({ length: puntas * 2 }, (_, i) => {
+    const a = (i / (puntas * 2)) * Math.PI * 2 - Math.PI / 2, r = i % 2 ? rInt : rExt;
+    return (i ? 'L' : 'M') + (50 + r * Math.cos(a)).toFixed(2) + ' ' + (50 + r * Math.sin(a)).toFixed(2);
+  }).join('') + 'Z';
+  const ESTRELLA = estrellaPath(6, 46, 19), EXPLOSION = estrellaPath(12, 47, 31);
+  const puntos = (pts, r) => pts.map(([x, y]) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="var(--fg)"/>`).join('');
+  const X_PUNTOS = (() => { const p = []; for (let i = 0; i < 7; i++) { const t = 8 + i * 14; p.push([t, t], [100 - t, t]); } return p.filter(([x, y], i, a) => a.findIndex(([u, v]) => u === x && v === y) === i); })();
+  const RAYOS = [[50, 50]];
+  for (let k = 0; k < 8; k++) { const a = (k / 8) * Math.PI * 2; (k % 2 ? [17, 31, 44] : [13, 25, 37, 49]).forEach((r) => RAYOS.push([50 + r * Math.cos(a), 50 + r * Math.sin(a)])); }
+  const ARO_PUNTOS = Array.from({ length: 11 }, (_, k) => { const a = (k / 11) * Math.PI * 2; return [50 + 43 * Math.cos(a), 50 + 43 * Math.sin(a)]; });
+  const COL = { azul: 'var(--azul)', rosa: 'var(--rosa)', crema: 'var(--crema)' };
+  function forma(t, c) {
+    c = COL[c] || COL.azul;
+    if (t === 'punto') return `<circle cx="50" cy="50" r="42" fill="${c}" stroke="var(--oscuro)" stroke-width="9"/>`;
+    if (t === 'circulo') return `<circle cx="50" cy="50" r="42" fill="none" stroke="${c}" stroke-width="6"/>`;
+    if (t === 'estrella' || t === 'explosion') return `<path d="${t === 'estrella' ? ESTRELLA : EXPLOSION}" fill="none" stroke="var(--fg)" stroke-width="3" stroke-linejoin="round"/>`;
+    if (t.endsWith('-llena')) return `<path d="${t === 'estrella-llena' ? ESTRELLA : EXPLOSION}" fill="${c}" stroke="var(--fg)" stroke-width="3" stroke-linejoin="round"/>`;
+    return puntos(t === 'x-puntos' ? X_PUNTOS : t === 'rayos' ? RAYOS : ARO_PUNTOS, t === 'rayos' ? 2.9 : 4.5);
   }
-  function nueva(inicio) {
-    return { x: Math.random() * W, y: inicio ? Math.random() * H : H + 20, t: 3 + Math.random() * (Math.random() < .15 ? 12 : 5), v: .1 + Math.random() * .35, g: Math.random() * 6.28, f: .01 + Math.random() * .03, rot: Math.random() * 6.28, c: COLORES[Math.floor(Math.random() * 3)], p: Math.random() < .5 ? 4 : 5 };
+  const TIPOS = [['rayos', 54, 70], ['punto', 10, 18], ['estrella-llena', 30, 40], ['x-puntos', 28, 38], ['circulo', 12, 20], ['explosion', 32, 44],
+    ['aro-puntos', 34, 46], ['estrella', 26, 36], ['explosion-llena', 28, 38], ['punto', 8, 12]];
+  // mezcla repetible pegada a los bordes para no tapar el texto
+  function mezcla(semilla, n, y0 = 4, y1 = 92) {
+    let x = semilla * 9301 + 49297;
+    const rnd = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
+    return Array.from({ length: n }, (_, i) => {
+      const [t, a, b] = TIPOS[(i + semilla) % TIPOS.length], izq = i % 2 === 0;
+      return { t, s: Math.round(a + rnd() * (b - a)), c: ['rosa', 'azul', 'rosa', 'crema', 'azul'][(i + semilla) % 5],
+        x: (izq ? 2 + rnd() * 16 : 76 + rnd() * 16).toFixed(1) + '%', y: (y0 + ((i + rnd() * .8) / n) * (y1 - y0)).toFixed(1) + '%' };
+    });
   }
-  function estrella(e) {
-    const n = e.p, r1 = e.t, r2 = e.t * (n === 4 ? .32 : .45);
-    cx.beginPath();
-    for (let i = 0; i < n * 2; i++) { const a = e.rot + i * Math.PI / n, r = i % 2 ? r2 : r1; cx.lineTo(e.x + Math.cos(a) * r, e.y + Math.sin(a) * r); }
-    cx.closePath(); cx.fill();
-  }
-  function dibujar() {
-    cx.clearRect(0, 0, W, H);
-    for (const e of estrellas) {
-      cx.globalAlpha = .25 + .55 * (.5 + .5 * Math.sin(e.g)); cx.fillStyle = e.c; estrella(e);
-      if (!REDUCIDO) { e.g += e.f; e.y -= e.v; e.rot += .004; if (e.y < -20) Object.assign(e, nueva(false)); }
-    }
-    cx.globalAlpha = 1;
-    if (!REDUCIDO) requestAnimationFrame(dibujar);
-  }
-  medir(); dibujar();
-  addEventListener('resize', () => { medir(); if (REDUCIDO) dibujar(); });
+  $$('.misc[data-semilla]').forEach((cont) => {
+    const d = cont.dataset;
+    cont.innerHTML = mezcla(+d.semilla, +d.n, +(d.y0 || 4), +(d.y1 || 92)).map((it, i) =>
+      `<span class="misc__item m-${it.t}" style="--x:${it.x};--y:${it.y};--s:${it.s}px;--d:${4.5 + (i % 4) * 1.2}s;--dl:${-(i * .9).toFixed(1)}s;--fx:${i % 2 ? 7 : -7}px;--fy:${i % 3 ? -12 : -18}px;--i:${i}"><svg viewBox="0 0 100 100">${forma(it.t, it.c)}</svg></span>`).join('');
+  });
+  // tira separadora: la serie se repite dos veces para que el desplazamiento no tenga corte
+  const SERIE = [['explosion-llena', 'rosa'], ['x-puntos'], ['estrella', ''], ['punto', 'azul'], ['rayos'], ['estrella-llena', 'azul'], ['aro-puntos'], ['explosion', ''], ['punto', 'rosa'], ['estrella-llena', 'crema']];
+  const serie = SERIE.map(([t, c], i) => `<span class="m-${t}" style="--s:${t === 'punto' ? 18 : t === 'rayos' ? 52 : 40}px;--i:${i}"><svg viewBox="0 0 100 100">${forma(t, c)}</svg></span>`).join('');
+  $('#tira-misc').innerHTML = serie.repeat(4);
 
   // ---------- cuenta regresiva ----------
   function tic() {
