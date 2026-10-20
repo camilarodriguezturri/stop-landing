@@ -573,8 +573,8 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 
 /* ---------- formulario: reglas de acompañantes, muro y aviso de fotos ---------- */
 .reglas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.reglas li { padding: 12px; border-radius: 16px; background: var(--oscuro); color: var(--crema); font-size: 13px; line-height: 1.35; }
-.reglas b { display: block; font: 800 17px var(--f-titulo); color: var(--c); margin-bottom: 2px; }
+.reglas li { padding: 2px 0 2px 14px; border-left: 4px solid var(--c); color: rgba(37, 37, 37, .75); font-size: 13px; line-height: 1.35; }
+.reglas b { display: block; font: 800 17px var(--f-titulo); color: var(--oscuro); margin-bottom: 2px; }
 @media (max-width: 520px) { .reglas { grid-template-columns: minmax(0, 1fr); } .reglas li { display: flex; gap: 10px; align-items: baseline; } .reglas b { margin: 0; } }
 .nota { font-size: 14px; color: rgba(37, 37, 37, .72); padding-left: 12px; border-left: 3px solid var(--rosa); }
 .card-muro { display: grid; gap: 14px; }
@@ -941,7 +941,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
             <ul class="reglas">
               <li style="--c:var(--rosa)"><b>Hasta 2</b>por corredor</li>
               <li style="--c:var(--azul)"><b>Sin cargo</b>al pre y la carrera</li>
-              <li style="--c:var(--crema)"><b>+$30.000</b>cada uno para el post</li>
+              <li style="--c:var(--oscuro)"><b>+$30.000</b>cada uno para el post</li>
             </ul>
             <label class="opcion opcion--post" id="upsell" hidden>
               <input type="checkbox" id="sumar-post" name="sumar-post">
