@@ -1029,7 +1029,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
             <p class="comprobante">Código de pase: <span id="d-comprobante"></span></p>
             <p id="d-texto"></p>
             <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
-              <a class="btn btn--oscuro" href="https://claude.ai/artifact/5wfWNB3oxHaz2D1wSzP9PK" target="_blank" rel="noopener">Armar mi cápsula del tiempo</a>
+              <a class="btn btn--oscuro" id="a-capsula" href="https://claude.ai/artifact/5wfWNB3oxHaz2D1wSzP9PK" target="_blank" rel="noopener">Armar mi cápsula del tiempo</a>
               <button class="btn btn--borde" type="button" id="otra">Sacar otro pase</button>
             </div>
           </div>
@@ -1459,7 +1459,13 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     const post = conPost();
     const acomps = [];
     for (let i = 1; i <= acompanantes; i++) acomps.push({ n: $(`#acomp-nombre-${i}`).value.trim(), post: $(`#acomp-post-${i}`).checked });
-    $('#d-numero').textContent = String(1000 + Math.floor(Math.random() * 8999));
+    const dorsal = String(1000 + Math.floor(Math.random() * 8999));
+    $('#d-numero').textContent = dorsal;
+    // La cápsula recibe el titular del pase para armar su QR (nombre, dorsal, pase y palabra).
+    const CAPSULA = location.hostname.endsWith('github.io') ? 'https://camilarodriguezturri.github.io/stop-evento/' : 'https://claude.ai/artifact/5wfWNB3oxHaz2D1wSzP9PK';
+    const q = new URLSearchParams({ nombre, dorsal, pase: post ? 'completo' : 'carrera' });
+    if (miPalabra) q.set('palabra', miPalabra);
+    $('#a-capsula').href = CAPSULA + '#' + q.toString();
     $('#d-pase').textContent = post ? 'Carrera + post' : 'Carrera';
     $('#d-nombre').textContent = nombre;
     $('#d-palabra').hidden = !miPalabra;
