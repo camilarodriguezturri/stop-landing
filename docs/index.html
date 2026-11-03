@@ -336,11 +336,10 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 /* ---------- galería del evento: tira fina ---------- */
 .galeria-tira { display: flex; align-items: center; gap: 20px; }
 .galeria-tira .kicker { flex: none; writing-mode: vertical-rl; rotate: 180deg; }
-.galeria { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.galeria { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0; }
 .galeria figure { position: relative; margin: 0; overflow: hidden; height: clamp(110px, 12vw, 150px); border-radius: 12px; background: var(--c); box-shadow: 3px 3px 0 var(--c); }
 .galeria img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease-out); }
 .galeria figure:hover img { transform: scale(1.05); }
-.galeria figcaption { position: absolute; left: 8px; bottom: 8px; max-width: calc(100% - 16px); padding: 3px 8px; border-radius: 12px; background: rgba(29, 29, 31, .84); color: var(--crema); font: 700 11px/1.2 var(--f-texto); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 @media (max-width: 760px) {
   .galeria-tira { display: block; }
   .galeria-tira .kicker { writing-mode: horizontal-tb; rotate: none; margin-bottom: 12px; }
@@ -844,11 +843,10 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     <div class="envolver galeria-tira">
       <h2 class="kicker" id="t-galeria" style="color:var(--rosa);margin:0">Así se ve Stop</h2>
       <div class="galeria">
-        <figure style="--c:var(--rosa)"><img src="assets/galeria-parada.jpg" alt="Parada fotográfica frente al Palacio Libertad: una carita gigante con anteojos, carteles de Stop y gente sacándose fotos" loading="lazy"><figcaption>Parada fotográfica</figcaption></figure>
-        <figure style="--c:var(--azul)"><img src="assets/galeria-inflables-1.jpg" alt="Zapatilla y botella inflables gigantes de Stop, iluminadas de noche" loading="lazy"><figcaption>Inflables Stop</figcaption></figure>
-        <figure style="--c:var(--crema)"><img src="assets/galeria-inflables-2.jpg" alt="Trofeo, estrella y carita inflables de Stop frente al Palacio Libertad" loading="lazy"><figcaption>Inflables Stop</figcaption></figure>
-        <figure style="--c:var(--azul)"><img src="assets/galeria-zapatilla.jpg" alt="Zapatilla gigante donde los corredores escriben y pegan mensajes" loading="lazy"><figcaption>Zapatilla de mensajes</figcaption></figure>
-        <figure style="--c:var(--rosa)"><img src="assets/galeria-busstop.jpg" alt="El Bus Stop de Stop frente al Palacio Libertad, de noche" loading="lazy"><figcaption>Bus Stop · llegada al post</figcaption></figure>
+        <figure style="--c:var(--rosa)"><img src="assets/galeria-parada.jpg" alt="Parada fotográfica frente al Palacio Libertad: una carita gigante con anteojos, carteles de Stop y gente sacándose fotos" loading="lazy"></figure>
+        <figure style="--c:var(--azul)"><img src="assets/galeria-inflables-1.jpg" alt="Zapatilla y botella inflables gigantes de Stop, iluminadas de noche" loading="lazy"></figure>
+        <figure style="--c:var(--crema)"><img src="assets/galeria-inflables-2.jpg" alt="Trofeo, estrella y carita inflables de Stop frente al Palacio Libertad" loading="lazy"></figure>
+        <figure style="--c:var(--azul)"><img src="assets/galeria-zapatilla.jpg" alt="Zapatilla gigante donde los corredores escriben y pegan mensajes" loading="lazy"></figure>
       </div>
     </div>
   </section>
