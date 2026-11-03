@@ -333,6 +333,21 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 .revelar { animation: subir .8s var(--ease-out) both; }
 @keyframes subir { from { opacity: .001; transform: translateY(24px); } }
 
+/* ---------- galería del evento ---------- */
+.galeria { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.galeria figure { position: relative; margin: 0; overflow: hidden; border-radius: 18px; background: var(--c); box-shadow: 6px 6px 0 var(--c); aspect-ratio: 16 / 10; }
+.galeria figure:nth-child(1) { grid-column: span 4; grid-row: span 2; aspect-ratio: auto; }
+.galeria figure:nth-child(2), .galeria figure:nth-child(3) { grid-column: span 2; }
+.galeria figure:nth-child(4), .galeria figure:nth-child(5) { grid-column: span 3; aspect-ratio: 16 / 9; }
+.galeria img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease-out); }
+.galeria figure:hover img { transform: scale(1.04); }
+.galeria figcaption { position: absolute; left: 12px; bottom: 12px; padding: 6px 12px; border-radius: 20px; background: rgba(29, 29, 31, .84); color: var(--crema); font: 700 13px/1.2 var(--f-texto); }
+@media (max-width: 760px) {
+  .galeria { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 6px 12px 0; scrollbar-width: none; }
+  .galeria::-webkit-scrollbar { display: none; }
+  .galeria figure, .galeria figure:nth-child(n) { flex: 0 0 84%; aspect-ratio: 4 / 3; scroll-snap-align: start; }
+}
+@media (prefers-reduced-motion: reduce) { .galeria img { transition: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
@@ -703,6 +718,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     <a class="cabecera__logo" href="#inicio" aria-label="Stop, inicio"><img src="assets/logo-stop.png" alt="STOP" width="535" height="248"></a>
     <nav class="nav" aria-label="Secciones">
       <a href="#linea">La noche</a>
+      <a href="#galeria">Galería</a>
       <a href="#recorrido">Recorrido</a>
       <a href="#capsula">Cápsula</a>
       <a href="#preguntas">Preguntas</a>
@@ -791,34 +807,49 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <p class="bajada" style="margin-top:22px">Tocá cada parada.</p>
       <ol class="paradas-linea" id="paradas">
         <li class="estacion estacion--pre abierta">
-          <button class="estacion__btn" type="button" aria-expanded="true" aria-controls="panel-1"><span class="estacion__hora">17:30</span><span class="estacion__punto">1</span><span class="estacion__cab"><span class="estacion__lugar">El pre · Plaza Héctor Oesterheld</span><strong>¿Cómo llego?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-1"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-pre.jpg" alt="Stand “A Spot to Stop” en el pre, con la terminal, los lockers y el merch" loading="lazy" width="1280" height="720"></figure><p>Dejás tu palabra, armás tu cápsula y te grabamos antes de largar.</p></div></div></div>
+          <button class="estacion__btn" type="button" aria-expanded="true" aria-controls="panel-1"><span class="estacion__hora">17:30</span><span class="estacion__punto">1</span><span class="estacion__cab"><span class="estacion__lugar">Plaza Héctor Oesterheld</span><strong>El pre</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-1"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-pre.jpg" alt="Stand “A Spot to Stop” en el pre, con la terminal, los lockers y el merch" loading="lazy" width="1280" height="720"></figure><p>Armás tu cápsula del tiempo, dejás tus cosas en el guardarropa y te grabamos un clip antes de largar.</p></div></div></div>
         </li>
         <li class="estacion estacion--carrera">
-          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-2"><span class="estacion__hora">19:00</span><span class="estacion__punto">2</span><span class="estacion__cab"><span class="estacion__lugar">La carrera · 10K</span><strong>¿Quién me acompaña?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-2"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-carrera.jpg" alt="Corredores de noche y la pantalla del recorrido con una notita: ¡Vamos, Julián!" loading="lazy" width="1280" height="720"></figure><p>Los mensajes de tu gente aparecen en las pantallas del recorrido.</p></div></div></div>
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-2"><span class="estacion__hora">19:00</span><span class="estacion__punto">2</span><span class="estacion__cab"><span class="estacion__lugar">10K · Puerto Madero</span><strong>La carrera</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-2"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-carrera.jpg" alt="Corredores de noche y la pantalla del recorrido con una notita: ¡Vamos, Julián!" loading="lazy" width="1280" height="720"></figure><p>Tu gente te manda notas de aliento desde el stand y aparecen en las 5 pantallas del recorrido.</p></div></div></div>
         </li>
         <li class="estacion estacion--carrera">
-          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-3"><span class="estacion__hora">20:00</span><span class="estacion__punto">3</span><span class="estacion__cab"><span class="estacion__lugar">Micro Stop · 7 min</span><strong>¿Qué acabo de hacer?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-3"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-micro.jpg" alt="El Bus Stop de Stop, de donde sale el micro al post" loading="lazy" width="1280" height="720"></figure><p>Subís al micro y escuchás los audios que te dejaron antes de largar.</p></div></div></div>
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-3"><span class="estacion__hora">20:00</span><span class="estacion__punto">3</span><span class="estacion__cab"><span class="estacion__lugar">Parada Stop · micro</span><strong>El traslado</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-3"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-micro.jpg" alt="El Bus Stop de Stop, de donde sale el micro al post" loading="lazy" width="1280" height="720"></figure><p>Esperás en la parada de Stop y el micro te lleva al Palacio Libertad. Al subir, agua y una toalla de Stop.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
-          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-4"><span class="estacion__hora">20:15</span><span class="estacion__punto">4</span><span class="estacion__cab"><span class="estacion__lugar">Piso 1 · Palacio Libertad</span><strong>¿Qué dejo atrás?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-4"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-cambiadores.jpg" alt="Cambiadores del post, para dejar atrás la carrera" loading="lazy" width="1280" height="720"></figure><p>Te cambiás y dejás el cansancio en el espejo.</p></div></div></div>
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-4"><span class="estacion__hora">20:15</span><span class="estacion__punto">4</span><span class="estacion__cab"><span class="estacion__lugar">Planta baja · Palacio Libertad</span><strong>Higiene</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-4"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-cambiadores.jpg" alt="Cambiadores del post, para dejar atrás la carrera" loading="lazy" width="1280" height="720"></figure><p>Cambiadores, sanitización y un kit de higiene para dejar atrás la carrera.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
-          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-5"><span class="estacion__hora">20:15</span><span class="estacion__punto">5</span><span class="estacion__cab"><span class="estacion__lugar">Piso 2 · Palacio Libertad</span><strong>¿Con quién lo viví?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-5"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-fotos.jpg" alt="Pared “Poné la cara” para sacarse fotos con los tuyos" loading="lazy" width="1280" height="720"></figure><p>Café, algo dulce y la cabina de fotos con los tuyos.</p></div></div></div>
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-5"><span class="estacion__hora">20:15</span><span class="estacion__punto">5</span><span class="estacion__cab"><span class="estacion__lugar">Piso 1 · Palacio Libertad</span><strong>Social</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-5"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-fotos.jpg" alt="Pared “Poné la cara” para sacarse fotos con los tuyos" loading="lazy" width="1280" height="720"></figure><p>Café, algo dulce, comida al paso y la cabina de fotos con los tuyos.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
-          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-6"><span class="estacion__hora">20:15</span><span class="estacion__punto">6</span><span class="estacion__cab"><span class="estacion__lugar">Piso 3 · Palacio Libertad</span><strong>¿Qué me costó llegar?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-6"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-descanso.jpg" alt="Zona de descanso con puffs bajo un gazebo" loading="lazy" width="1280" height="720"></figure><p>Elongación, masajes y una sala en silencio para respirar.</p></div></div></div>
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-6"><span class="estacion__hora">20:15</span><span class="estacion__punto">6</span><span class="estacion__cab"><span class="estacion__lugar">Piso 2 · Palacio Libertad</span><strong>Recuperación</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-6"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-descanso.jpg" alt="Zona de descanso con puffs bajo un gazebo" loading="lazy" width="1280" height="720"></figure><p>Elongación, kinesiología, masajes y una sala en silencio con respiración guiada.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
-          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-7"><span class="estacion__hora">21:30</span><span class="estacion__punto">7</span><span class="estacion__cab"><span class="estacion__lugar">La terraza</span><strong>¿Hacia dónde sigo?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-7"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-terraza.jpg" alt="La terraza de noche, con DJ y la ciudad de fondo" loading="lazy" width="1280" height="720"></figure><p>Coffee rave, la ciudad de noche y tu cápsula, abierta.</p></div></div></div>
+          <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-7"><span class="estacion__hora">21:30</span><span class="estacion__punto">7</span><span class="estacion__cab"><span class="estacion__lugar">Terraza · Palacio Libertad</span><strong>El cierre</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
+          <div class="estacion__panel" id="panel-7"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-terraza.jpg" alt="La terraza de noche, con DJ y la ciudad de fondo" loading="lazy" width="1280" height="720"></figure><p>Café y bar con DJ en vivo, con la ciudad de noche de fondo.</p></div></div></div>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- ============ GALERÍA: el evento en imágenes ============ -->
+  <section class="banda banda--noche" id="galeria" aria-labelledby="t-galeria" style="padding-top:8px">
+    <div class="envolver">
+      <span class="kicker" style="color:var(--rosa)">Así se ve Stop</span>
+      <h2 class="titulo-seccion" id="t-galeria">La noche en <span class="st st--rosa">imágenes</span></h2>
+      <div class="galeria">
+        <figure style="--c:var(--rosa)"><img src="assets/galeria-parada.jpg" alt="Parada fotográfica frente al Palacio Libertad: una carita gigante con anteojos, carteles de Stop y gente sacándose fotos" loading="lazy"><figcaption>Parada fotográfica · Palacio Libertad</figcaption></figure>
+        <figure style="--c:var(--azul)"><img src="assets/galeria-inflables-1.jpg" alt="Zapatilla y botella inflables gigantes de Stop, iluminadas de noche" loading="lazy"><figcaption>Inflables Stop</figcaption></figure>
+        <figure style="--c:var(--crema)"><img src="assets/galeria-inflables-2.jpg" alt="Trofeo, estrella y carita inflables de Stop frente al Palacio Libertad" loading="lazy"><figcaption>Inflables Stop</figcaption></figure>
+        <figure style="--c:var(--azul)"><img src="assets/galeria-zapatilla.jpg" alt="Zapatilla gigante donde los corredores escriben y pegan mensajes" loading="lazy"><figcaption>Zapatilla de mensajes</figcaption></figure>
+        <figure style="--c:var(--rosa)"><img src="assets/galeria-busstop.jpg" alt="El Bus Stop de Stop frente al Palacio Libertad, de noche" loading="lazy"><figcaption>Bus Stop · llegada al post</figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -891,7 +922,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         <div class="precio"><span>Carrera</span><strong>$38.000</strong><small>La 10K y el pre.</small>
           <ul><li>Kit: remera, dorsal y chip</li><li>Pre y cápsula del tiempo</li></ul><a class="btn btn--borde btn--chico" href="#inscripcion" data-elegir="carrera">Elegir</a></div>
         <div class="precio precio--vigente"><span>Carrera + post</span><strong>$56.000</strong><small>De la largada al cierre.</small>
-          <ul><li>Todo lo del pase Carrera</li><li>Micro, 3 pisos y terraza</li></ul><span class="etiqueta-agotado">El más elegido</span><a class="btn btn--crema btn--chico" href="#inscripcion" data-elegir="completo">Elegir</a></div>
+          <ul><li>Todo lo del pase Carrera</li><li>Micro, planta baja, 2 pisos y terraza</li></ul><span class="etiqueta-agotado">El más elegido</span><a class="btn btn--crema btn--chico" href="#inscripcion" data-elegir="completo">Elegir</a></div>
       </div>
       <p class="precios-nota"><b>+ hasta 2 acompañantes sin cargo.</b> Para sumarlos al post: $30.000 cada uno.</p>
     </div>
