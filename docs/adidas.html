@@ -946,7 +946,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <div class="inscripcion__intro">
         <span class="kicker" style="color:var(--rosa)">Sacá tu pase</span>
         <h2 class="titulo-seccion" id="t-inscripcion">Tu lugar en Stop</h2>
-        <p class="bajada">4 pasos y estás adentro.</p>
+        <p class="bajada">5 pasos y estás adentro.</p>
         <ul class="datos-lista" style="color:var(--crema)">
           <li style="border-color:rgba(237,232,219,.14)"><span>Edad</span><span>Evento +18</span></li>
           <li style="border-color:rgba(237,232,219,.14)"><span>Kit</span><span>Remera, dorsal y chip</span></li>
@@ -959,6 +959,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <div class="form-card" id="card">
         <ol class="pasos" id="pasos" aria-label="Pasos de la inscripción">
           <li class="actual">Datos</li>
+          <li>Corral</li>
           <li>Acomp.</li>
           <li>Palabra</li>
           <li>Pago</li>
@@ -989,8 +990,16 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
                   <label><input type="radio" name="talle" value="XL" id="t-xl"><span>XL</span></label>
                   <label><input type="radio" name="talle" value="XXL" id="t-xxl"><span>XXL</span></label>
                 </div></div>
-              <div class="campo ancho" id="campo-corral"><span class="rotulo" id="r-corral">Tu corral de largada</span>
-                <p class="ayuda" style="margin:0 0 10px">Elegí el ritmo al que querés correr (en minutos por km): la letra de tu corral va impresa en el dorsal y largás en su oleada, desde las 19:00. ¿Corren en grupo? Anótense con el ritmo más tranquilo del grupo y comparten corral.</p>
+              <p class="subtitulo ancho">Contacto de emergencia</p>
+              <div class="campo"><label for="em-nombre">Nombre y apellido</label><input id="em-nombre" name="em-nombre" required><span class="error"></span></div>
+              <div class="campo"><label for="em-tel">Teléfono</label><input id="em-tel" name="em-tel" type="tel" required><span class="error"></span></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="paso-form" data-paso="2" hidden style="border:0;margin:0;padding:0">
+            <h3 id="r-corral">Tu corral de largada</h3>
+            <p class="ayuda">Elegí el ritmo al que querés correr (en minutos por km): la letra de tu corral va impresa en el dorsal y largás en su oleada, desde las 19:00. ¿Corren en grupo? Anótense con el ritmo más tranquilo del grupo y comparten corral.</p>
+            <div class="campo" id="campo-corral">
                 <div class="corrales" role="radiogroup" aria-labelledby="r-corral">
                   <label style="--c:var(--rosa)"><input type="radio" name="corral" value="A" data-oleada="19:00"><span><b>A</b><strong>hasta 4:00</strong><small>10K en &lt;40 min</small><small>Sale 19:00</small></span></label>
                   <label style="--c:var(--rosa)"><input type="radio" name="corral" value="B" data-oleada="19:03"><span><b>B</b><strong>4:00–4:30</strong><small>10K en 40–45 min</small><small>Sale 19:03</small></span></label>
@@ -1001,13 +1010,9 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
                   <label style="--c:var(--azul)"><input type="radio" name="corral" value="G" data-oleada="19:18"><span><b>G</b><strong>6:30–7:30</strong><small>10K en 65–75 min</small><small>Sale 19:18</small></span></label>
                   <label style="--c:var(--azul)"><input type="radio" name="corral" value="H" data-oleada="19:21"><span><b>H</b><strong>más de 7:30</strong><small>10K en +75 min</small><small>Sale 19:21</small></span></label>
                 </div><span class="error"></span></div>
-              <p class="subtitulo ancho">Contacto de emergencia</p>
-              <div class="campo"><label for="em-nombre">Nombre y apellido</label><input id="em-nombre" name="em-nombre" required><span class="error"></span></div>
-              <div class="campo"><label for="em-tel">Teléfono</label><input id="em-tel" name="em-tel" type="tel" required><span class="error"></span></div>
-            </div>
           </fieldset>
 
-          <fieldset class="paso-form" data-paso="2" hidden style="border:0;margin:0;padding:0">
+          <fieldset class="paso-form" data-paso="3" hidden style="border:0;margin:0;padding:0">
             <h3>Acompañantes</h3>
             <ul class="reglas">
               <li style="--c:var(--rosa)"><b>Hasta 2</b>por corredor</li>
@@ -1030,7 +1035,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
             <p class="nota">¿No los anotás ahora? Los que te queden libres los podés sumar el día de la carrera en el stand de Stop, con cupo limitado.</p>
           </fieldset>
 
-          <fieldset class="paso-form card-muro" data-paso="3" hidden style="border:0;margin:0;padding:0">
+          <fieldset class="paso-form card-muro" data-paso="4" hidden style="border:0;margin:0;padding:0">
             <h3>¿Cómo llegás?</h3>
             <p class="ayuda">Una palabra. Va al muro del pre y te espera en la meta.</p>
             <div class="muro__form">
@@ -1042,7 +1047,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
             <div class="muro__nube" id="muro-nube" aria-label="Palabras del muro"></div>
           </fieldset>
 
-          <fieldset class="paso-form" data-paso="4" hidden          <fieldset class="paso-form" data-paso="3" hidden style="border:0;margin:0;padding:0">
+          <fieldset class="paso-form" data-paso="5" hidden style="border:0;margin:0;padding:0">
             <h3>Pago</h3>
             <div class="resumen" id="resumen"></div>
             <div class="campo"><span class="rotulo" id="r-metodo">Método de pago</span>
@@ -1068,7 +1073,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
             <div class="aviso-demo" role="note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg><span>Prototipo de diseño: no se cobra nada ni se guardan tus datos. En la versión real, al confirmar te llevamos a la pasarela de pago para completar los datos de la tarjeta.</span></div>
           </fieldset>
 
-          <div class="paso-form listo" data-paso="5" hidden tabindex="-1" id="listo">
+          <div class="paso-form listo" data-paso="6" hidden tabindex="-1" id="listo">
             <span class="st st--rosa">¡Nos vemos en Stop!</span>
             <div class="dorsal" aria-label="Tu dorsal">
               <i class="dorsal__ojal"></i><i class="dorsal__ojal"></i><i class="dorsal__ojal"></i><i class="dorsal__ojal"></i>
@@ -1369,7 +1374,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 
   // ---------- formulario por pasos ----------
   const form = $('#form');
-  const PAGO = 4, LISTO = 5, MAX_ACOMP = 2;
+  const PAGO = 5, LISTO = 6, MAX_ACOMP = 2;
   let paso = 1, acompanantes = 0;
   const pasosUI = $$('#pasos li');
   const pase = () => $('input[name=pase]:checked').value;
@@ -1388,15 +1393,15 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     $('#atras').hidden = n === 1 || n === LISTO;
     $('#nav-form').hidden = n === LISTO;
     $('#pasos').hidden = n === LISTO;
-    if (n === 2) { $('#upsell').hidden = pase() !== 'carrera'; pintarAcomps(); }
+    if (n === 3) { $('#upsell').hidden = pase() !== 'carrera'; pintarAcomps(); }
     if (n === PAGO) pintarResumen();
-    $('#seguir').firstChild.textContent = n === PAGO ? `Pagar ${peso(total())} ` : n === 3 && !miPalabra && !$('#muro-in').value.trim() ? 'Saltear ' : 'Seguir ';
+    $('#seguir').firstChild.textContent = n === PAGO ? `Pagar ${peso(total())} ` : n === 4 && !miPalabra && !$('#muro-in').value.trim() ? 'Saltear ' : 'Seguir ';
     const card = $('#card');
     if (card.getBoundingClientRect().top < 0) card.scrollIntoView({ behavior: REDUCIDO ? 'auto' : 'smooth', block: 'start' });
     const foco = n === LISTO ? $('#listo') : $(`[data-paso="${n}"] h3`, form);
     if (foco) { foco.setAttribute('tabindex', '-1'); foco.focus({ preventScroll: true }); }
   }
-  $('#muro-in').addEventListener('input', () => { if (paso === 3) $('#seguir').firstChild.textContent = !miPalabra && !$('#muro-in').value.trim() ? 'Saltear ' : 'Seguir '; });
+  $('#muro-in').addEventListener('input', () => { if (paso === 4) $('#seguir').firstChild.textContent = !miPalabra && !$('#muro-in').value.trim() ? 'Saltear ' : 'Seguir '; });
 
   const ERR = (campo, msg) => {
     const c = campo.closest('.campo');
@@ -1446,7 +1451,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         if (!marcado) { ok = false; primero ||= $('#' + id); }
       }
     }
-    if (n === 1 && !form.querySelector('input[name=corral]:checked')) {
+    if (n === 2 && !form.querySelector('input[name=corral]:checked')) {
       $('#campo-corral').classList.add('con-error');
       $('.error', $('#campo-corral')).textContent = 'Elegí tu corral.';
       ok = false; primero ||= form.querySelector('input[name=corral]');
@@ -1511,7 +1516,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validarPaso(paso)) return;
-    if (paso === 3 && $('#muro-in').value.trim()) guardarPalabra();
+    if (paso === 4 && $('#muro-in').value.trim()) guardarPalabra();
     if (paso < PAGO) { mostrarPaso(paso + 1); return; }
     confirmar();
   });
