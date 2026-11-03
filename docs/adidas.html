@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Stop Pre y Post</title>
+<title>Stop Pre y After</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -333,6 +333,20 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 .revelar { animation: subir .8s var(--ease-out) both; }
 @keyframes subir { from { opacity: .001; transform: translateY(24px); } }
 
+/* ---------- corrales de largada ---------- */
+.corrales { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.corrales label { cursor: pointer; }
+.corrales input { position: absolute; opacity: 0; pointer-events: none; }
+.corrales span { display: grid; gap: 2px; height: 100%; padding: 10px 12px; border-radius: 14px; background: rgba(37, 37, 37, .08); transition: background .15s, transform .15s; }
+.corrales b { display: grid; place-items: center; width: 28px; height: 28px; margin-bottom: 4px; border-radius: 50%; background: var(--c); color: var(--oscuro); box-shadow: 0 0 0 2px var(--oscuro); font: 800 14px var(--f-mono); }
+.corrales strong { font: 700 14px/1.2 var(--f-texto); }
+.corrales small { font-size: 12px; opacity: .7; }
+.corrales input:checked + span { background: var(--oscuro); color: var(--crema); transform: scale(1.02); }
+.corrales input:checked + span b { box-shadow: 0 0 0 2px var(--crema); }
+.corrales input:focus-visible + span { outline: 3px solid var(--azul); outline-offset: 2px; }
+#campo-corral.con-error .corrales span { box-shadow: inset 0 0 0 2px var(--rosa); }
+.dorsal__corral { background: var(--c, var(--rosa)); }
+@media (max-width: 520px) { .corrales { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 /* ---------- galería del evento: tira fina ---------- */
 .galeria-tira { display: flex; align-items: center; gap: 20px; }
 .galeria-tira .kicker { flex: none; writing-mode: vertical-rl; rotate: 180deg; }
@@ -787,11 +801,11 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
           <div class="senal__octo"><div class="senal__aro"><div class="senal__cara"><img src="assets/logo-stop.png" alt="" width="535" height="248"></div></div></div>
           <div class="senal__poste"></div>
         </div>
-        <div class="cartel__tabla" id="cartel" role="img" aria-label="Horarios: pre 17:30, largada 19:00, post 20:15">
+        <div class="cartel__tabla" id="cartel" role="img" aria-label="Horarios: pre 17:30, largada 19:00, After 20:15">
           <p>Próximas salidas · 28/11</p>
           <div class="cartel__fila" style="--c:var(--rosa)"><span class="flap" data-v="17:30"></span><b>PRE</b><i>Plaza Oesterheld</i></div>
           <div class="cartel__fila" style="--c:var(--azul)"><span class="flap" data-v="19:00"></span><b>10K</b><i>Largada</i></div>
-          <div class="cartel__fila" style="--c:var(--crema)"><span class="flap" data-v="20:15"></span><b>POST</b><i>Palacio Libertad</i></div>
+          <div class="cartel__fila" style="--c:var(--crema)"><span class="flap" data-v="20:15"></span><b>AFTER</b><i>Palacio Libertad</i></div>
         </div>
       </div>
       <p class="bajada">El evento de la comunidad SPOT! que arma el antes y el después de la adidas Hyper Night 10K.</p>
@@ -816,11 +830,11 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         </li>
         <li class="estacion estacion--carrera">
           <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-3"><span class="estacion__hora">20:00</span><span class="estacion__punto">3</span><span class="estacion__cab"><span class="estacion__lugar">Parada Stop · micro</span><strong>El traslado</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-3"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-micro.jpg" alt="El Bus Stop de Stop, de donde sale el micro al post" loading="lazy" width="1280" height="720"></figure><p>Esperás en la parada de Stop y el micro te lleva al Palacio Libertad. Al subir, agua y una toalla de Stop.</p></div></div></div>
+          <div class="estacion__panel" id="panel-3"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-micro.jpg" alt="El Bus Stop de Stop, de donde sale el micro al After" loading="lazy" width="1280" height="720"></figure><p>Esperás en la parada de Stop y el micro te lleva al Palacio Libertad. Al subir, agua y una toalla de Stop.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
           <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-4"><span class="estacion__hora">20:15</span><span class="estacion__punto">4</span><span class="estacion__cab"><span class="estacion__lugar">Planta baja · Palacio Libertad</span><strong>Higiene</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-4"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-cambiadores.jpg" alt="Cambiadores del post, para dejar atrás la carrera" loading="lazy" width="1280" height="720"></figure><p>Cambiadores, sanitización y un kit de higiene para dejar atrás la carrera.</p></div></div></div>
+          <div class="estacion__panel" id="panel-4"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-cambiadores.jpg" alt="Cambiadores del After, para dejar atrás la carrera" loading="lazy" width="1280" height="720"></figure><p>Cambiadores, sanitización y un kit de higiene para dejar atrás la carrera.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
           <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-5"><span class="estacion__hora">20:15</span><span class="estacion__punto">5</span><span class="estacion__cab"><span class="estacion__lugar">Piso 1 · Palacio Libertad</span><strong>Social</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
@@ -883,7 +897,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
           <path class="ruta-borde" d="M257 288 L192 58 L195 50 L203 53 L220 130 L242 170 L260 243 L280 310 L292 370 L296 410 L300 470 L305 525 L335 530 L338 553 L262 652 L280 630 L275 548 L237 556 L242 628 L257 633 L237 633 L232 553 L225 547 L230 540 L268 533 L265 520 L260 497 L252 470 L255 450 L270 430 L295 410 L293 398 L238 399 L233 397 L237 392 L283 387 L285 383 L280 367 L267 365 L250 353 L232 345 L210 330 L201 224 L222 222 L222 216 L200 215 L190 100 L185 50 L192 58 L257 288"/>
           <path class="ruta" id="ruta" pathLength="1000" d="M257 288 L192 58 L195 50 L203 53 L220 130 L242 170 L260 243 L280 310 L292 370 L296 410 L300 470 L305 525 L335 530 L338 553 L262 652 L280 630 L275 548 L237 556 L242 628 L257 633 L237 633 L232 553 L225 547 L230 540 L268 533 L265 520 L260 497 L252 470 L255 450 L270 430 L295 410 L293 398 L238 399 L233 397 L237 392 L283 387 L285 383 L280 367 L267 365 L250 353 L232 345 L210 330 L201 224 L222 222 L222 216 L200 215 L190 100 L185 50 L192 58 L257 288"/>
           <circle id="corredor" r="5.5" cx="257" cy="288"/>
-          <g class="pin pin--post" transform="translate(100 165)"><circle r="6"/><rect x="-74" y="-34" width="126" height="20" rx="10"/><text x="-66" y="-20">POST · PALACIO LIBERTAD</text></g>
+          <g class="pin pin--post" transform="translate(100 165)"><circle r="6"/><rect x="-74" y="-34" width="126" height="20" rx="10"/><text x="-66" y="-20">AFTER · PALACIO LIBERTAD</text></g>
           <g class="pin pin--largada" transform="translate(257 288)"><circle r="7.5"/><rect x="31" y="8" width="114" height="34" rx="9"/><text class="grande" x="41" y="23">Largada y llegada</text><text x="41" y="36">AV. DE LOS ITALIANOS</text></g>
           <g class="pin pin--km" transform="translate(318 446)"><rect x="0" y="0" width="98" height="22" rx="11"/><text x="11" y="15">CARRERA · 10 KM</text></g>
         </svg>
@@ -919,10 +933,10 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <div class="precios precios--dos">
         <div class="precio"><span>Carrera</span><strong>$38.000</strong><small>La 10K y el pre.</small>
           <ul><li>Kit: remera, dorsal y chip</li><li>Pre y cápsula del tiempo</li></ul><a class="btn btn--borde btn--chico" href="#inscripcion" data-elegir="carrera">Elegir</a></div>
-        <div class="precio precio--vigente"><span>Carrera + post</span><strong>$56.000</strong><small>De la largada al cierre.</small>
+        <div class="precio precio--vigente"><span>Carrera + After</span><strong>$56.000</strong><small>De la largada al cierre.</small>
           <ul><li>Todo lo del pase Carrera</li><li>Micro, planta baja, 2 pisos y terraza</li></ul><span class="etiqueta-agotado">El más elegido</span><a class="btn btn--crema btn--chico" href="#inscripcion" data-elegir="completo">Elegir</a></div>
       </div>
-      <p class="precios-nota"><b>+ hasta 2 acompañantes sin cargo.</b> Para sumarlos al post: $30.000 cada uno.</p>
+      <p class="precios-nota"><b>+ hasta 2 acompañantes sin cargo.</b> Para sumarlos al After: $30.000 cada uno.</p>
     </div>
   </section>
 
@@ -937,7 +951,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
           <li style="border-color:rgba(237,232,219,.14)"><span>Edad</span><span>Evento +18</span></li>
           <li style="border-color:rgba(237,232,219,.14)"><span>Kit</span><span>Remera, dorsal y chip</span></li>
           <li style="border-color:rgba(237,232,219,.14)"><span>Retiro del kit</span><span>Parque Sarmiento, Saavedra<br>Lun a sáb, 10 a 18 h<br>Desde el 1/11</span></li>
-          <li style="border-color:rgba(237,232,219,.14)"><span>Traé</span><span>Una muda de ropa para el post</span></li>
+          <li style="border-color:rgba(237,232,219,.14)"><span>Traé</span><span>Una muda de ropa para el After</span></li>
           <li style="border-color:rgba(237,232,219,.14)"><span>Si llueve</span><span>Se hace igual</span></li>
         </ul>
       </div>
@@ -956,7 +970,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
             <div class="campo"><span class="rotulo" id="r-pase">Tu pase</span>
               <div class="pases pases--dos" role="radiogroup" aria-labelledby="r-pase">
                 <label class="pase"><input type="radio" name="pase" value="carrera" id="p-carrera"><strong>Carrera</strong><span>$38.000</span><small>10K, pre y kit</small></label>
-                <label class="pase"><input type="radio" name="pase" value="completo" id="p-completo" checked><strong>Carrera + post</strong><span>$56.000</span><small>De la largada al cierre</small></label>
+                <label class="pase"><input type="radio" name="pase" value="completo" id="p-completo" checked><strong>Carrera + After</strong><span>$56.000</span><small>De la largada al cierre</small></label>
               </div></div>
             <p class="ayuda" style="margin-top:0">Tal como figuran en tu DNI. Stop es un evento +18.</p>
             <div class="grilla">
@@ -975,6 +989,18 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
                   <label><input type="radio" name="talle" value="XL" id="t-xl"><span>XL</span></label>
                   <label><input type="radio" name="talle" value="XXL" id="t-xxl"><span>XXL</span></label>
                 </div></div>
+              <div class="campo ancho" id="campo-corral"><span class="rotulo" id="r-corral">Tu corral de largada</span>
+                <p class="ayuda" style="margin:0 0 10px">Elegí el ritmo al que querés correr (en minutos por km): la letra de tu corral va impresa en el dorsal y largás en su oleada, desde las 19:00. ¿Corren en grupo? Anótense con el ritmo más tranquilo del grupo y comparten corral.</p>
+                <div class="corrales" role="radiogroup" aria-labelledby="r-corral">
+                  <label style="--c:var(--rosa)"><input type="radio" name="corral" value="A" data-oleada="19:00"><span><b>A</b><strong>hasta 4:00</strong><small>10K en &lt;40 min</small><small>Sale 19:00</small></span></label>
+                  <label style="--c:var(--rosa)"><input type="radio" name="corral" value="B" data-oleada="19:03"><span><b>B</b><strong>4:00–4:30</strong><small>10K en 40–45 min</small><small>Sale 19:03</small></span></label>
+                  <label style="--c:var(--rosa)"><input type="radio" name="corral" value="C" data-oleada="19:06"><span><b>C</b><strong>4:30–5:00</strong><small>10K en 45–50 min</small><small>Sale 19:06</small></span></label>
+                  <label style="--c:var(--rosa)"><input type="radio" name="corral" value="D" data-oleada="19:09"><span><b>D</b><strong>5:00–5:30</strong><small>10K en 50–55 min</small><small>Sale 19:09</small></span></label>
+                  <label style="--c:var(--azul)"><input type="radio" name="corral" value="E" data-oleada="19:12"><span><b>E</b><strong>5:30–6:00</strong><small>10K en 55–60 min</small><small>Sale 19:12</small></span></label>
+                  <label style="--c:var(--azul)"><input type="radio" name="corral" value="F" data-oleada="19:15"><span><b>F</b><strong>6:00–6:30</strong><small>10K en 60–65 min</small><small>Sale 19:15</small></span></label>
+                  <label style="--c:var(--azul)"><input type="radio" name="corral" value="G" data-oleada="19:18"><span><b>G</b><strong>6:30–7:30</strong><small>10K en 65–75 min</small><small>Sale 19:18</small></span></label>
+                  <label style="--c:var(--azul)"><input type="radio" name="corral" value="H" data-oleada="19:21"><span><b>H</b><strong>más de 7:30</strong><small>10K en +75 min</small><small>Sale 19:21</small></span></label>
+                </div><span class="error"></span></div>
               <p class="subtitulo ancho">Contacto de emergencia</p>
               <div class="campo"><label for="em-nombre">Nombre y apellido</label><input id="em-nombre" name="em-nombre" required><span class="error"></span></div>
               <div class="campo"><label for="em-tel">Teléfono</label><input id="em-tel" name="em-tel" type="tel" required><span class="error"></span></div>
@@ -986,11 +1012,11 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
             <ul class="reglas">
               <li style="--c:var(--rosa)"><b>Hasta 2</b>por corredor</li>
               <li style="--c:var(--azul)"><b>Sin cargo</b>al pre y la carrera</li>
-              <li style="--c:var(--oscuro)"><b>+$30.000</b>cada uno para el post</li>
+              <li style="--c:var(--oscuro)"><b>+$30.000</b>cada uno para el After</li>
             </ul>
             <label class="opcion opcion--post" id="upsell" hidden>
               <input type="checkbox" id="sumar-post" name="sumar-post">
-              <span><strong>Sumarme al post (+$18.000)</strong><small>Si no, al terminar la carrera podés anotarte en el stand de Stop, con cupo limitado.</small></span>
+              <span><strong>Sumarme al After (+$18.000)</strong><small>Si no, al terminar la carrera podés anotarte en el stand de Stop, con cupo limitado.</small></span>
             </label>
             <div class="contador">
               <div><strong>Acompañantes</strong><small>Máximo 2</small></div>
@@ -1050,10 +1076,10 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
               <div class="dorsal__cuerpo">
                 <div class="dorsal__numero" id="d-numero">0000</div>
                 <div class="dorsal__nombre" id="d-nombre"></div>
-                <div class="dorsal__etiquetas"><span class="dorsal__cat" id="d-pase">Carrera + post</span><span class="dorsal__palabra" id="d-palabra" hidden></span></div>
+                <div class="dorsal__etiquetas"><span class="dorsal__cat" id="d-pase">Carrera + After</span><span class="dorsal__corral" id="d-corral" hidden></span><span class="dorsal__palabra" id="d-palabra" hidden></span></div>
               </div>
               <div class="dorsal__chip" aria-hidden="true">CHIP<i></i></div>
-              <div class="dorsal__talon"><span id="d-talon-a">Post · Palacio Libertad</span><span id="d-acomp"></span></div>
+              <div class="dorsal__talon"><span id="d-talon-a">After · Palacio Libertad</span><span id="d-acomp"></span></div>
             </div>
             <p class="comprobante">Código de pase: <span id="d-comprobante"></span></p>
             <p id="d-texto"></p>
@@ -1079,10 +1105,11 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <span class="kicker" style="color:var(--azul)">Preguntas frecuentes</span>
       <h2 class="titulo-seccion" id="t-faq" style="margin-top:12px">Antes de la parada</h2>
       <div class="faq">
-        <details><summary>¿Stop organiza la carrera?</summary><p>No: la organiza adidas, con su reglamento. Stop arma el pre y el post. Tu pase incluye el cupo en la carrera.</p></details>
-        <details><summary>¿Cómo funcionan los acompañantes?</summary><p>Hasta 2 por corredor, sin cargo al pre y la carrera. Para el post, $30.000 cada uno. Si no los anotás ahora, el día de la carrera podés sumarlos en el stand de Stop, con cupo limitado.</p></details>
-        <details><summary>Saqué solo la carrera, ¿me puedo sumar al post?</summary><p>Sí: al terminar la carrera te anotás en el stand de Stop, con cupo limitado.</p></details>
+        <details><summary>¿Stop organiza la carrera?</summary><p>No: la organiza adidas, con su reglamento. Stop arma el pre y el After. Tu pase incluye el cupo en la carrera.</p></details>
+        <details><summary>¿Cómo funcionan los acompañantes?</summary><p>Hasta 2 por corredor, sin cargo al pre y la carrera. Para el After, $30.000 cada uno. Si no los anotás ahora, el día de la carrera podés sumarlos en el stand de Stop, con cupo limitado.</p></details>
+        <details><summary>Saqué solo la carrera, ¿me puedo sumar al After?</summary><p>Sí: al terminar la carrera te anotás en el stand de Stop, con cupo limitado.</p></details>
         <details><summary>¿Hay edad mínima?</summary><p>Sí, Stop es un evento +18.</p></details>
+        <details><summary>¿Cómo funcionan los corrales?</summary><p>La largada se ordena en 8 corrales, de la A a la H, según el ritmo que elegís al inscribirte. A las 18:30 te ubicás en el tuyo y desde las 19:00 sale una oleada cada 3 minutos desde el mismo arco. Tu tiempo arranca cuando pisás la alfombra de largada, así que no importa en qué oleada salgas.</p></details>
         <details><summary>¿Dónde retiro el kit?</summary><p>En el Parque Sarmiento, en el barrio de Saavedra, de lunes a sábados de 10 a 18 h desde el 1 de noviembre. Llevá tu DNI y el código de tu pase. El kit trae remera, dorsal y chip.</p></details>
         <details><summary>¿Qué pasa si llueve?</summary><p>Stop no se suspende por lluvia: traé campera. Si se pronostican lluvias fuertes, el viernes 27/11 te avisamos por mail y en la app SPOT! que el evento pasa al 2 de diciembre. Tu pase vale para esa fecha.</p></details>
       </div>
@@ -1113,11 +1140,11 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   <div class="legal__cuerpo">
     <h2 id="t-tyc">Términos y condiciones</h2>
     <ol>
-      <li>Stop organiza el pre (Plaza Héctor Oesterheld), el traslado y el post (Palacio Libertad). La adidas Hyper Night 10K la organiza adidas: al correr aceptás también su reglamento, apto médico y condiciones de participación.</li>
+      <li>Stop organiza el pre (Plaza Héctor Oesterheld), el traslado y el After (Palacio Libertad). La adidas Hyper Night 10K la organiza adidas: al correr aceptás también su reglamento, apto médico y condiciones de participación.</li>
       <li>Stop es un evento para mayores de 18 años: corredores y acompañantes deben tener 18 años cumplidos al 28/11 y presentar DNI.</li>
       <li>El pase es personal. Se puede transferir una vez, hasta el 20/11, desde la app SPOT!.</li>
-      <li>Cada corredor puede sumar hasta dos acompañantes sin cargo al pre y la carrera. Para ingresar al post, cada acompañante abona $30.000. Los acompañantes no inscriptos pueden sumarse el día de la carrera en el stand de Stop, sujeto a cupo.</li>
-      <li>Quien tenga el pase Carrera puede sumarse al post al terminar la carrera en el stand de Stop, sujeto a cupo.</li>
+      <li>Cada corredor puede sumar hasta dos acompañantes sin cargo al pre y la carrera. Para ingresar al After, cada acompañante abona $30.000. Los acompañantes no inscriptos pueden sumarse el día de la carrera en el stand de Stop, sujeto a cupo.</li>
+      <li>Quien tenga el pase Carrera puede sumarse al After al terminar la carrera en el stand de Stop, sujeto a cupo.</li>
       <li>Durante el evento se toman fotos y se registra material audiovisual que puede usarse en el recap y la comunicación de Stop y la comunidad SPOT!.</li>
       <li>El micro de Stop circula de 20:00 a 21:00. Quien no lo tome puede llegar al Palacio Libertad por sus medios hasta las 22:00.</li>
       <li>El guardarropa recibe un bolso por persona. Stop no se responsabiliza por objetos de valor que no se declaren al dejarlo.</li>
@@ -1419,11 +1446,16 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         if (!marcado) { ok = false; primero ||= $('#' + id); }
       }
     }
+    if (n === 1 && !form.querySelector('input[name=corral]:checked')) {
+      $('#campo-corral').classList.add('con-error');
+      $('.error', $('#campo-corral')).textContent = 'Elegí tu corral.';
+      ok = false; primero ||= form.querySelector('input[name=corral]');
+    }
     if (primero) primero.focus();
     return ok;
   }
 
-  // acompañantes: hasta 2, sin cargo; el post se suma aparte por cada uno
+  // acompañantes: hasta 2, sin cargo; el After se suma aparte por cada uno
   function pintarAcomps() {
     $('#cant').textContent = acompanantes;
     $('#menos').disabled = acompanantes === 0;
@@ -1435,7 +1467,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
         `<div class="acomp"><span class="acomp__titulo"><i>${i}</i>Acompañante ${i} · sin cargo</span><div class="grilla">` +
         `<div class="campo"><label for="acomp-nombre-${i}">Nombre y apellido</label><input id="acomp-nombre-${i}" required><span class="error"></span></div>` +
         `<div class="campo"><label for="acomp-dni-${i}">DNI</label><input id="acomp-dni-${i}" inputmode="numeric" placeholder="Sin puntos" required><span class="error"></span></div>` +
-        `</div><label class="check"><input type="checkbox" id="acomp-post-${i}"><span>Sumarlo al post (+${peso(PRECIO.acompPost)})</span></label></div>`);
+        `</div><label class="check"><input type="checkbox" id="acomp-post-${i}"><span>Sumarlo al After (+${peso(PRECIO.acompPost)})</span></label></div>`);
     }
   }
   $('#mas').addEventListener('click', () => { if (acompanantes < MAX_ACOMP) { acompanantes++; pintarAcomps(); $(`#acomp-nombre-${acompanantes}`).focus(); } });
@@ -1444,10 +1476,10 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 
   // pago
   function pintarResumen() {
-    const filas = [[conPost() ? 'Pase Carrera + post' : 'Pase Carrera', peso(conPost() ? PRECIO.completo : PRECIO.carrera)]];
+    const filas = [[conPost() ? 'Pase Carrera + After' : 'Pase Carrera', peso(conPost() ? PRECIO.completo : PRECIO.carrera)]];
     for (let i = 1; i <= acompanantes; i++) {
       const n = $(`#acomp-nombre-${i}`).value.trim().split(' ')[0] || `Acompañante ${i}`;
-      filas.push([`${n} · ${$(`#acomp-post-${i}`).checked ? 'con post' : 'pre y carrera'}`, $(`#acomp-post-${i}`).checked ? peso(PRECIO.acompPost) : 'Sin cargo']);
+      filas.push([`${n} · ${$(`#acomp-post-${i}`).checked ? 'con After' : 'pre y carrera'}`, $(`#acomp-post-${i}`).checked ? peso(PRECIO.acompPost) : 'Sin cargo']);
     }
     filas.push(['Cargo por servicio', peso(PRECIO.servicio)]);
     const t = total();
@@ -1484,6 +1516,12 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     confirmar();
   });
 
+  form.addEventListener('change', (e) => {
+    if (e.target.name !== 'corral') return;
+    $('#campo-corral').classList.remove('con-error');
+    $('.error', $('#campo-corral')).textContent = '';
+  });
+
   function confirmar() {
     const nombre = `${$('#nombre').value.trim()} ${$('#apellido').value.trim()}`;
     const post = conPost();
@@ -1496,15 +1534,19 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
     const q = new URLSearchParams({ nombre, dorsal, pase: post ? 'completo' : 'carrera' });
     if (miPalabra) q.set('palabra', miPalabra);
     $('#a-capsula').href = CAPSULA + '#' + q.toString();
-    $('#d-pase').textContent = post ? 'Carrera + post' : 'Carrera';
+    $('#d-pase').textContent = post ? 'Carrera + After' : 'Carrera';
     $('#d-nombre').textContent = nombre;
+    const corral = form.querySelector('input[name=corral]:checked');
+    $('#d-corral').hidden = !corral;
+    if (corral) { $('#d-corral').textContent = `Corral ${corral.value}`; $('#d-corral').style.setProperty('--c', 'ABCD'.includes(corral.value) ? 'var(--rosa)' : 'var(--azul)'); }
     $('#d-palabra').hidden = !miPalabra;
     $('#d-palabra').textContent = miPalabra ? `Llegás con: ${miPalabra}` : '';
-    $('#d-talon-a').textContent = post ? 'Post · Palacio Libertad' : 'Pre · Plaza H. Oesterheld';
-    $('#d-acomp').textContent = acomps.length ? '+ ' + acomps.map((a) => a.n.split(' ')[0] + (a.post ? ' (post)' : '')).join(' y ') : '';
+    $('#d-talon-a').textContent = post ? 'After · Palacio Libertad' : 'Pre · Plaza H. Oesterheld';
+    $('#d-acomp').textContent = acomps.length ? '+ ' + acomps.map((a) => a.n.split(' ')[0] + (a.post ? ' (After)' : '')).join(' y ') : '';
     $('#d-comprobante').textContent = `STOP-${String(Math.floor(100000 + Math.random() * 899999))}`;
     $('#d-texto').textContent = 'Sábado 28/11 desde las 17:30 en la Plaza Héctor Oesterheld. Retirá tu kit (remera, dorsal y chip) en el Parque Sarmiento, Saavedra, de lunes a sábados de 10 a 18 h desde el 1 de noviembre, con tu DNI y este código.' +
-      (post ? ' Traé una muda de ropa para el post.' : ' Si te tienta el post, al terminar la carrera te anotás en el stand de Stop, con cupo limitado.');
+      (corral ? ` Corral ${corral.value}: a las 18:30 entrás a tu corral y tu oleada larga a las ${corral.dataset.oleada}.` : '') +
+      (post ? ' Traé una muda de ropa para el After.' : ' Si te tienta el After, al terminar la carrera te anotás en el stand de Stop, con cupo limitado.');
     mostrarPaso(LISTO);
   }
   $('#otra').addEventListener('click', () => {
