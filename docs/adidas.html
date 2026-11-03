@@ -333,19 +333,20 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 .revelar { animation: subir .8s var(--ease-out) both; }
 @keyframes subir { from { opacity: .001; transform: translateY(24px); } }
 
-/* ---------- galería del evento ---------- */
-.galeria { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
-.galeria figure { position: relative; margin: 0; overflow: hidden; border-radius: 18px; background: var(--c); box-shadow: 6px 6px 0 var(--c); aspect-ratio: 16 / 10; }
-.galeria figure:nth-child(1) { grid-column: span 4; grid-row: span 2; aspect-ratio: auto; }
-.galeria figure:nth-child(2), .galeria figure:nth-child(3) { grid-column: span 2; }
-.galeria figure:nth-child(4), .galeria figure:nth-child(5) { grid-column: span 3; aspect-ratio: 16 / 9; }
+/* ---------- galería del evento: tira fina ---------- */
+.galeria-tira { display: flex; align-items: center; gap: 20px; }
+.galeria-tira .kicker { flex: none; writing-mode: vertical-rl; rotate: 180deg; }
+.galeria { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.galeria figure { position: relative; margin: 0; overflow: hidden; height: clamp(110px, 12vw, 150px); border-radius: 12px; background: var(--c); box-shadow: 3px 3px 0 var(--c); }
 .galeria img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease-out); }
-.galeria figure:hover img { transform: scale(1.04); }
-.galeria figcaption { position: absolute; left: 12px; bottom: 12px; padding: 6px 12px; border-radius: 20px; background: rgba(29, 29, 31, .84); color: var(--crema); font: 700 13px/1.2 var(--f-texto); }
+.galeria figure:hover img { transform: scale(1.05); }
+.galeria figcaption { position: absolute; left: 8px; bottom: 8px; max-width: calc(100% - 16px); padding: 3px 8px; border-radius: 12px; background: rgba(29, 29, 31, .84); color: var(--crema); font: 700 11px/1.2 var(--f-texto); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 @media (max-width: 760px) {
-  .galeria { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 6px 12px 0; scrollbar-width: none; }
+  .galeria-tira { display: block; }
+  .galeria-tira .kicker { writing-mode: horizontal-tb; rotate: none; margin-bottom: 12px; }
+  .galeria { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; scrollbar-width: none; }
   .galeria::-webkit-scrollbar { display: none; }
-  .galeria figure, .galeria figure:nth-child(n) { flex: 0 0 84%; aspect-ratio: 4 / 3; scroll-snap-align: start; }
+  .galeria figure { flex: 0 0 62%; height: 130px; scroll-snap-align: start; }
 }
 @media (prefers-reduced-motion: reduce) { .galeria img { transition: none; } }
 @media (prefers-reduced-motion: reduce) {
@@ -839,12 +840,11 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
   </section>
 
   <!-- ============ GALERÍA: el evento en imágenes ============ -->
-  <section class="banda banda--noche" id="galeria" aria-labelledby="t-galeria" style="padding-top:8px">
-    <div class="envolver">
-      <span class="kicker" style="color:var(--rosa)">Así se ve Stop</span>
-      <h2 class="titulo-seccion" id="t-galeria">La noche en <span class="st st--rosa">imágenes</span></h2>
+  <section class="banda banda--noche" id="galeria" aria-labelledby="t-galeria" style="padding-block:0 56px;margin-top:-48px">
+    <div class="envolver galeria-tira">
+      <h2 class="kicker" id="t-galeria" style="color:var(--rosa);margin:0">Así se ve Stop</h2>
       <div class="galeria">
-        <figure style="--c:var(--rosa)"><img src="assets/galeria-parada.jpg" alt="Parada fotográfica frente al Palacio Libertad: una carita gigante con anteojos, carteles de Stop y gente sacándose fotos" loading="lazy"><figcaption>Parada fotográfica · Palacio Libertad</figcaption></figure>
+        <figure style="--c:var(--rosa)"><img src="assets/galeria-parada.jpg" alt="Parada fotográfica frente al Palacio Libertad: una carita gigante con anteojos, carteles de Stop y gente sacándose fotos" loading="lazy"><figcaption>Parada fotográfica</figcaption></figure>
         <figure style="--c:var(--azul)"><img src="assets/galeria-inflables-1.jpg" alt="Zapatilla y botella inflables gigantes de Stop, iluminadas de noche" loading="lazy"><figcaption>Inflables Stop</figcaption></figure>
         <figure style="--c:var(--crema)"><img src="assets/galeria-inflables-2.jpg" alt="Trofeo, estrella y carita inflables de Stop frente al Palacio Libertad" loading="lazy"><figcaption>Inflables Stop</figcaption></figure>
         <figure style="--c:var(--azul)"><img src="assets/galeria-zapatilla.jpg" alt="Zapatilla gigante donde los corredores escriben y pegan mensajes" loading="lazy"><figcaption>Zapatilla de mensajes</figcaption></figure>
