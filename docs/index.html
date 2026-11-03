@@ -374,8 +374,7 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
 .estacion__cont { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; align-items: end; padding: 6px 0 22px; }
 .estacion__cont p { font-size: 17px; line-height: 1.45; opacity: .85; }
 .duo { position: relative; margin: 0; overflow: hidden; border-radius: 18px; aspect-ratio: 16 / 9; background: var(--c); box-shadow: 6px 6px 0 var(--c); }
-.duo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--p, center); filter: grayscale(1) contrast(1.15) brightness(1.5); mix-blend-mode: multiply; transform: scale(1.15); transition: transform 1.2s var(--ease-out); }
-.duo::after { content: ""; position: absolute; inset: 0; background: var(--oscuro); mix-blend-mode: lighten; }
+.duo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--p, center); transform: scale(1.12); transition: transform 1.2s var(--ease-out); }
 .estacion.abierta .duo img { transform: none; }
 @media (max-width: 640px) {
   .paradas-linea { --x: 23px; }
@@ -793,31 +792,31 @@ dialog.legal::backdrop { background: rgba(0, 0, 0, .6); }
       <ol class="paradas-linea" id="paradas">
         <li class="estacion estacion--pre abierta">
           <button class="estacion__btn" type="button" aria-expanded="true" aria-controls="panel-1"><span class="estacion__hora">17:30</span><span class="estacion__punto">1</span><span class="estacion__cab"><span class="estacion__lugar">El pre · Plaza Héctor Oesterheld</span><strong>¿Cómo llego?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-1"><div><div class="estacion__cont"><figure class="duo" style="--p:30% 40%"><img src="assets/foto-salto.jpg" alt="" loading="lazy"></figure><p>Dejás tu palabra, armás tu cápsula y te grabamos antes de largar.</p></div></div></div>
+          <div class="estacion__panel" id="panel-1"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-pre.jpg" alt="Stand “A Spot to Stop” en el pre, con la terminal, los lockers y el merch" loading="lazy" width="1280" height="720"></figure><p>Dejás tu palabra, armás tu cápsula y te grabamos antes de largar.</p></div></div></div>
         </li>
         <li class="estacion estacion--carrera">
           <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-2"><span class="estacion__hora">19:00</span><span class="estacion__punto">2</span><span class="estacion__cab"><span class="estacion__lugar">La carrera · 10K</span><strong>¿Quién me acompaña?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-2"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 30%"><img src="assets/foto-luces.jpg" alt="" loading="lazy"></figure><p>Los mensajes de tu gente aparecen en las pantallas del recorrido.</p></div></div></div>
+          <div class="estacion__panel" id="panel-2"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-carrera.jpg" alt="Corredores de noche y la pantalla del recorrido con una notita: ¡Vamos, Julián!" loading="lazy" width="1280" height="720"></figure><p>Los mensajes de tu gente aparecen en las pantallas del recorrido.</p></div></div></div>
         </li>
         <li class="estacion estacion--carrera">
           <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-3"><span class="estacion__hora">20:00</span><span class="estacion__punto">3</span><span class="estacion__cab"><span class="estacion__lugar">Micro Stop · 7 min</span><strong>¿Qué acabo de hacer?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-3"><div><div class="estacion__cont"><figure class="duo" style="--p:75% 80%"><img src="assets/foto-salto.jpg" alt="" loading="lazy"></figure><p>Subís al micro y escuchás los audios que te dejaron antes de largar.</p></div></div></div>
+          <div class="estacion__panel" id="panel-3"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-micro.jpg" alt="El Bus Stop de Stop, de donde sale el micro al post" loading="lazy" width="1280" height="720"></figure><p>Subís al micro y escuchás los audios que te dejaron antes de largar.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
           <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-4"><span class="estacion__hora">20:15</span><span class="estacion__punto">4</span><span class="estacion__cab"><span class="estacion__lugar">Piso 1 · Palacio Libertad</span><strong>¿Qué dejo atrás?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-4"><div><div class="estacion__cont"><figure class="duo" style="--p:15% 40%"><img src="assets/foto-meta.jpg" alt="" loading="lazy"></figure><p>Te cambiás y dejás el cansancio en el espejo.</p></div></div></div>
+          <div class="estacion__panel" id="panel-4"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-cambiadores.jpg" alt="Cambiadores del post, para dejar atrás la carrera" loading="lazy" width="1280" height="720"></figure><p>Te cambiás y dejás el cansancio en el espejo.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
           <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-5"><span class="estacion__hora">20:15</span><span class="estacion__punto">5</span><span class="estacion__cab"><span class="estacion__lugar">Piso 2 · Palacio Libertad</span><strong>¿Con quién lo viví?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-5"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 40%"><img src="assets/foto-meta.jpg" alt="" loading="lazy"></figure><p>Café, algo dulce y la cabina de fotos con los tuyos.</p></div></div></div>
+          <div class="estacion__panel" id="panel-5"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-fotos.jpg" alt="Pared “Poné la cara” para sacarse fotos con los tuyos" loading="lazy" width="1280" height="720"></figure><p>Café, algo dulce y la cabina de fotos con los tuyos.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
           <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-6"><span class="estacion__hora">20:15</span><span class="estacion__punto">6</span><span class="estacion__cab"><span class="estacion__lugar">Piso 3 · Palacio Libertad</span><strong>¿Qué me costó llegar?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-6"><div><div class="estacion__cont"><figure class="duo" style="--p:45% 60%"><img src="assets/foto-salto.jpg" alt="" loading="lazy"></figure><p>Elongación, masajes y una sala en silencio para respirar.</p></div></div></div>
+          <div class="estacion__panel" id="panel-6"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-descanso.jpg" alt="Zona de descanso con puffs bajo un gazebo" loading="lazy" width="1280" height="720"></figure><p>Elongación, masajes y una sala en silencio para respirar.</p></div></div></div>
         </li>
         <li class="estacion estacion--post">
           <button class="estacion__btn" type="button" aria-expanded="false" aria-controls="panel-7"><span class="estacion__hora">21:30</span><span class="estacion__punto">7</span><span class="estacion__cab"><span class="estacion__lugar">La terraza</span><strong>¿Hacia dónde sigo?</strong></span><span class="estacion__mas" aria-hidden="true"></span></button>
-          <div class="estacion__panel" id="panel-7"><div><div class="estacion__cont"><figure class="duo" style="--p:85% 20%"><img src="assets/foto-luces.jpg" alt="" loading="lazy"></figure><p>Coffee rave, la ciudad de noche y tu cápsula, abierta.</p></div></div></div>
+          <div class="estacion__panel" id="panel-7"><div><div class="estacion__cont"><figure class="duo" style="--p:50% 50%"><img src="assets/evento-terraza.jpg" alt="La terraza de noche, con DJ y la ciudad de fondo" loading="lazy" width="1280" height="720"></figure><p>Coffee rave, la ciudad de noche y tu cápsula, abierta.</p></div></div></div>
         </li>
       </ol>
     </div>
